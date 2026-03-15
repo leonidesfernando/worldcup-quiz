@@ -9,6 +9,10 @@
 - players
 - substitutions
 
+### Account
+
+### Monetize
+
 ### Generate questions
  - Runner-up
  - How many goals a player scored in a tourment
@@ -19,11 +23,17 @@
  - Which team had the best defense
  - Which team the player play for
  
+ ### Categorize questions
+ - easy
+ - medium
+ - difficult
+ - impossible
 
 ### Languages
 - Polish
 - German
 - French
+- *Translate the country names*
 
 
 ### Annimation
@@ -31,3 +41,5 @@
 - correct answer
 - incorrect answer
 - round finished
+
+### Timer
