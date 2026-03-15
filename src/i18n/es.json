@@ -1,0 +1,57 @@
+{
+  "app": {
+    "title": "Quiz Mundial",
+    "subtitle": "1930 – 2022 • Offline • Sin anuncios",
+    "builtBy": "Hecho como PWA • 2–3 horas al día",
+    "dataFrom": "Datos de jfjelstul/worldcup"
+  },
+  "home": {
+    "emoji": "⚽",
+    "ready": "¿Listo para probar tus conocimientos?",
+    "description": "Preguntas aleatorias de todos los Mundiales.<br />100% offline después de la primera carga.",
+    "startButton": "Iniciar Quiz Ahora",
+    "selectLanguage": "Seleccionar Idioma"
+  },
+  "quiz": {
+      "back": "← Voltar para Início",
+      "score": "Pontuação: {count}",
+      "correct": "✅ Correto!",
+      "wrong": "❌ Errado!",
+      "correctWas": "A resposta correta era: <strong>{answer}</strong>",
+      "next": "Próxima Pergunta",
+      "draw": "Empate",
+      "notAwardedYet": "El premio aún no había sido entregado.",
+      "unknownScorer": "Anotador desconocido",
+      "noScorer": "Sin anotador",
+      "someoneElse": "Otra persona",
+      "finish": "Finalizar ronda"
+    },
+    "results": {
+      "title": "¡Ronda completada!",
+      "correct": "Correcto",
+      "wrong": "Incorrecto",
+      "points": "Puntos",
+      "playAgain": "Jugar de nuevo",
+      "backToHome": "Volver a la página principal"
+    },
+    "questions": {
+      "winner": "Qual país venceu a Copa do Mundo Masculina de {year}?",
+      "finalScore": "Qual foi o placar final da final da Copa do Mundo Masculina de {year}?",
+      "host": "Qual país sediou a Copa do Mundo Masculina de {year}?",
+      "goalScorer": "Quem marcou pelo {team} na final da Copa do Mundo Masculina de {year}?",
+      "bestPlayer": "¿Quién fue nombrado mejor jugador (Balón de Oro) del Mundial {year}?",
+      "topScorer": "Quem foi o artilheiro da Copa de {year}?",
+      "awardWinner": "Quem ganhou o {award} em {year}?",
+      "explanation": "{winner} ganó el torneo de {year}",
+      "explanationHost": "{host} fue sede del torneo de {year}.",
+      "explanationFinal": "{winner} venceu por {score}.",
+      "explanationWinner": "{winner} ganó el torneo de {year}.",
+      "explanationDraw": "La final de {year} terminó en empate (o se resolvió sin ganador único).",
+      "explanationAward": "{player} ganhou o {award} em {year}.",
+      "explanationTopScorer": "{player} marcou {goals} gols em {year}.",
+      "explanationPre1982": "La Bota de Oro se otorgó por primera vez en 1982.",
+      "explanationBestPlayer": "{player} ganó el premio de mejor jugador (Balón de Oro) en {year}.",
+      "explanationNotAwarded": "El premio al mejor jugador (Balón de Oro) se entregó por primera vez en 1982.",
+      "explanationScorer": "{scorer} anotó para la selección del {team} en la final de {year}."
+    }
+}

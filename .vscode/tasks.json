@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "npm: dev",
+      "type": "npm",
+      "script": "dev",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Terminate All Tasks",
+      "type": "process",
+      "command": "killall",
+      "args": ["node"],
+      "problemMatcher": []
+    }
+  ]
+}

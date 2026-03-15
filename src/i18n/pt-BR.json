@@ -1,0 +1,57 @@
+{
+  "app": {
+    "title": "Quiz Copa do Mundo",
+    "subtitle": "1930 – 2022 • Offline • Sem anúncios",
+    "builtBy": "Feito como PWA • 2–3 horas por dia",
+    "dataFrom": "Dados de jfjelstul/worldcup"
+  },
+  "home": {
+    "emoji": "⚽",
+    "ready": "Pronto para testar seu conhecimento?",
+    "description": "Perguntas aleatórias de todas as Copas do Mundo.<br />100% offline após o primeiro carregamento.",
+    "startButton": "Iniciar Quiz Agora",
+    "selectLanguage": "Selecione o idioma"
+  },
+  "quiz": {
+    "back": "← Voltar para Início",
+    "score": "Pontuação: {count}",
+    "correct": "✅ Correto!",
+    "wrong": "❌ Errado!",
+    "correctWas": "A resposta correta era: ",
+    "next": "Próxima Pergunta",
+    "draw": "Empate",
+    "notAwardedYet": "O prêmio ainda não havia sido concedido.",
+    "unknownScorer": "Marcador desconhecido",
+    "noScorer": "Sem marcador",
+    "someoneElse": "Outro jogador",
+    "finish": "Finalizar Rodada"
+  },
+  "results": {
+    "title": "Rodada Complete!",
+    "correct": "Correto",
+    "wrong": "Errado",
+    "points": "Pontos",
+    "playAgain": "Jogar novamente",
+    "backToHome": "Voltar para o início"
+  },
+  "questions": {
+    "winner": "Qual país venceu a Copa do Mundo de {year}?",
+    "finalScore": "Qual foi o placar final da final da Copa do Mundo de {year}?",
+    "host": "Qual país sediou a Copa do Mundo de {year}?",
+    "goalScorer": "Quem marcou gol pelo {team} na final da Copa do Mundo de {year}?",
+    "awardWinner": "Quem ganhou o {award} em {year}?",
+    "topScorer": "Quem foi o artilheiro da Copa de {year}?",
+    "bestPlayer": "Quem foi o nomeado o melhor jogador (Golden Ball) na Copa de {year}?",
+    "explanationFinal": "{winner} venceu por {score}.",
+    "explanation": "{winner} venceu a Copa de {year}.",
+    "explanationHost": "{host} sediou a Copa de {year}.",
+    "explanationWinner": "{winner} venceu o torneio de {year}.",
+    "explanationDraw": "A final de {year} terminou empatada (ou foi resolvida sem vencedor único).",
+    "explanationAward": "{player} ganhou o {award} em {year}.",
+    "explanationTopScorer": "{player} marcou {goals} gols em {year}.",
+    "explanationPre1982": "A Chuteira de Ouro foi atribuída pela primeira vez em 1982.",
+    "explanationBestPlayer": "{player} ganhou prêmio de melhor jogador(Golden Ball) em {year}.",
+    "explanationNotAwarded": "O prêmio de melhor jogador (Golden Ball) foi concedido pela primeira vez em 1982.",
+    "explanationScorer": "{scorer} marcou pela seleção do(a) {team} na final de {year}."
+  }
+}

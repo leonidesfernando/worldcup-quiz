@@ -1,0 +1,56 @@
+{
+  "app": {
+    "title": "World Cup Quiz",
+    "subtitle": "• 1930 – 2022 •",
+    "builtBy": "Built as PWA • 2–3 hours a day project",
+    "dataFrom": "Data from jfjelstul/worldcup"
+  },
+  "home": {
+    "emoji": "⚽",
+    "ready": "Ready to test your knowledge?",
+    "description": "Random questions from all World Cups.<br />100% offline after first load.",
+    "startButton": "Start Quiz Now",
+    "selectLanguage": "Select language"
+  },
+  "quiz": {
+    "back": "Back to Home",
+    "score": "Score: {count}",
+    "correct": "✅ Correct!",
+    "wrong": "❌ Wrong!",
+    "correctWas": "The correct answer was: ",
+    "next": "Next Question",
+    "draw": "Draw",
+    "notAwardedYet": "The prize had not yet been awarded.",
+    "unknownScorer": "Unknown scorer",
+    "noScorer": "No scorer",
+    "someoneElse": "Someone else",
+    "finish": "Finish Round"
+  },
+  "results": {
+    "title": "Round Complete!",
+    "correct": "Correct",
+    "wrong": "Wrong",
+    "points": "Points",
+    "playAgain": "Play Again",
+    "backToHome": "Back to Home"
+  },
+  "questions": {
+    "winner": "Which country won the FIFA World Cup in {year}?",
+    "finalScore": "What was the final score of the {year} World Cup final?",
+    "host": "Which country hosted the World Cup in {year}?",
+    "goalScorer": "Who scored for {team} in the {year} World Cup final?",
+    "awardWinner": "Who won the {award} in {year}?",
+    "topScorer": "Who was the top goalscorer of the {year} World Cup?",
+    "bestPlayer": "Who was named the best player (Golden Ball) of the {year} World Cup?",
+    "explanationFinal": "{winner} won {score}.",
+    "explanation": "{winner} won the {year} tournament.",
+    "explanationHost": "{host} hosted the {year} tournament.",
+    "explanationWinner": "{winner} won the {year} tournament.",
+    "explanationDraw": "The {year} final ended in a draw (or was resolved without a single winner).",
+    "explanationAward": "{player} won the {award} in {year}.",
+    "explanationTopScorer": "{player} scored {goals} goals in {year}.",
+    "explanationBestPlayer": "{player} won the Golden Ball award for best player in {year}.",
+    "explanationPre1982": "The Golden Boot was first awarded in 1982.",
+    "explanationScorer": "{scorer} scored for {team} in the {year} final."
+  }
+}
