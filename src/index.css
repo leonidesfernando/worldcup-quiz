@@ -73,7 +73,7 @@ body {
 
 .lang-label {
   font-size: 0.9rem;
-  color: #374151;
+  /*color: #374151;*/
   font-weight: 500;
 }
 
@@ -313,6 +313,30 @@ footer {
   font-size: 0.95rem;
   border-top: 1px solid #e5e7eb;
   background: white;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+  padding: calc(1.5rem + env(safe-area-inset-top, 1.5rem)) 1.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 10;
+}
+
+.app-logo {
+  max-width: 280px;          /* adjust size as needed */
+  /* width: 80vw; */               /* responsive */
+  max-height: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+  transition: transform 0.3s ease;
+}
+
+.app-logo:hover {
+  transform: scale(1.05);
 }
 
 /* Mobile safe areas */

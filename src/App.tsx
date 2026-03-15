@@ -1,10 +1,36 @@
 // src/App.tsx
 import { useState } from 'react';
 import ReactCountryFlag from "react-country-flag"
+import Select from 'react-select';
 import QuizScreen from './components/QuizScreen';
 import { useTranslation } from './useTranslation';
+import Header from './components/Header';
 
 type Screen = 'home' | 'quiz' | 'results';
+
+const languageOptions = [
+  { value: 'en', label: 'English', flag: 'US' },
+  { value: 'es', label: 'Español', flag: 'ES' },
+  { value: 'pl', label: 'Polski', flag: 'PL' },
+  { value: 'pt-BR', label: 'Português (BR)', flag: 'BR' },
+];
+
+const customStyles = {
+  control: (base: any) => ({
+    ...base,
+    borderRadius: '0.5rem',
+    borderColor: '#d1d5db',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    padding: '0.3rem',
+    minWidth: '160px',
+  }),
+  option: (base: any) => ({
+    ...base,
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+  }),
+};
 
 interface RoundResult {
   correct: number;
@@ -37,27 +63,25 @@ function App() {
       {/* Language switcher - only visible on home screen */}
       {screen === 'home' && (
         <div className="lang-dropdown-container">
-          <label htmlFor="language-select" className="lang-label">
-            {t('home.selectLanguage')}
-          </label>
-          <select
-            id="language-select"
-            value={lang}
-            onChange={(e) => setLanguage(e.target.value as 'en' | 'es' | 'pt-BR' | 'pl')}
-            className="lang-dropdown"
-          >
-            <option value="en"><ReactCountryFlag countryCode="US" /> English</option>
-            <option value="es"><ReactCountryFlag countryCode="ES" /> Español</option>
-            <option value="pl"><ReactCountryFlag countryCode="PL" /> Polski</option>
-            <option value="pt-BR"><ReactCountryFlag countryCode="BR" /> Português (BR)</option>
-          </select>
-        </div>
-      )}
 
-      <header>
-        <h1>{t('app.title')}</h1>
-        <p>{t('app.subtitle')}</p>
-      </header>
+        <Select
+          options={languageOptions}
+          value={languageOptions.find(opt => opt.value === lang)}
+          onChange={(selected) => setLanguage(selected!.value as any)}
+          formatOptionLabel={(option) => (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <ReactCountryFlag countryCode={option.flag} svg />
+              {option.label}
+            </div>
+          )}
+          styles={customStyles}
+          isSearchable={false}
+          className=""
+          classNamePrefix="lang"/>
+                </div>
+              )}
+
+      <Header/>
 
       <main>
         {screen === 'home' && (
