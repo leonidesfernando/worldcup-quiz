@@ -28,20 +28,23 @@ export interface Match {
   city_name: string;
   country_name: string;
   home_team_id: string;
+  home_team_code: string,
   home_team_name: string;
   away_team_id: string;
+  away_team_code: string;
   away_team_name: string;
   home_team_score: number;
   away_team_score: number;
   score: string;
-  home_team_score_penalties?: number | null;
-  away_team_score_penalties?: number | null;
+  home_team_score_penalties: number;
+  away_team_score_penalties: number;
   draw: number;
   extra_time: number;
 	penalty_shootout: number;
 	score_penalties: string;
 	home_team_win: number;
 	away_team_win: number;
+  result: string;
 }
 
 export interface Goal {
@@ -61,11 +64,17 @@ export interface Goal {
   team_code: string;
   home_team: number;
 	away_team: number;
-  minute?: number;
-  minute_label?: string;
+  minute_regulation: number;
+  minute_label: string;
   own_goal: boolean | number;
   penalty: number;
-  match_period: string; 
+  match_period: string;
+  player_id: string;
+  shirt_number: number;
+  player_team_id: string;
+  player_team_name: string;
+  player_team_code:string;
+  minute_stoppage?: number;
 }
 
 export interface AwardWinners {
@@ -105,4 +114,14 @@ export interface PlayerApparences {
 	position_code: string;
 	starter: number;
 	substitute: number;
+}
+
+export interface Hosts {
+  key_id: number;
+  tournament_id: string;
+  tournament_name: string;
+  team_id: string;
+  team_name:string;
+  team_code:string;
+  performance:string;
 }

@@ -1,10 +1,4 @@
-//import  seedrandom from 'seedrandom';
-
-//const rng = seedrandom("my-seed-world-cup");
 export const Utils = {
-/*random(): number{
-     return Math.floor(rng() *  Date.now().valueOf())
-  }*/
   getFullPlayerName(name: string, lastName: string): string {
     const player = name?.trim();
     if (player != "not applicable") {
@@ -18,6 +12,10 @@ export const Utils = {
     if (array.length === 0) throw new Error('Empty array in getRandomItem');
     return array[Math.floor(Math.random() * array.length)];
   },
+
+  getRandomNumberInRange(min:number, max:number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  },
   
   shuffleArray<T>(array: T[]): T[] {
     const shuffled = [...array];
@@ -30,6 +28,10 @@ export const Utils = {
   addWrongOptions(uniqueWrong: string[], t: (key: string, params?: Record<string, any>) => string): string[]{
       const wrongOptions = [t('quiz.unknownScorer'), t('quiz.noScorer'), t('quiz.someoneElse')];
       return [...uniqueWrong, ...wrongOptions].slice(0, 3);
+  },
+
+  getYearByTournamentId(tournamentId:string): string {
+    return tournamentId?.replace('WC-', '');
   }
 
 };

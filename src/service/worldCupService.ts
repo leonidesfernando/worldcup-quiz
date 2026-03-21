@@ -9,7 +9,12 @@ export class WorldCupService {
     return Utils.getRandomItem(mensData.tournaments);
   }
 
-  getMatches() {
+  getTournamentById(tournamentId: string){
+    return mensData.tournaments.filter(t => t.tournament_id === tournamentId)[0];
+  }
+
+  
+  /*getMatches() {
     return mensData.matches;
   }
 
@@ -18,7 +23,7 @@ export class WorldCupService {
                 .filter(m => m.stage_name?.toLowerCase() === 'final')
                 .sort(randomSort)
                 //.sort(() => Math.random() - 0.5);
-  }
+  }*/
 
   getGoals() {
     return mensData.goals;

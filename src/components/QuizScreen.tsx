@@ -1,8 +1,10 @@
 // src/components/QuizScreen.tsx
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { generateRandomQuestion } from '../lib/questionGenerator';
 import { useTranslation } from '../useTranslation';
 import type { QuizQuestion } from '../types/QuizQuestion';
+import GoalAnimation from './GoalAnimation';
+import MissAnimation from './MissAnimation';
 
 interface Props {
   totalQuestions: number;
@@ -18,11 +20,26 @@ export default function QuizScreen({ totalQuestions, onFinish }: Props) {
   const [answered, setAnswered] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  // Generate 10 questions once
+  // ────────────────────────────────────────────────
+  // Prevent double generation in StrictMode (React 18+)
+  // This is the cleanest, most idiomatic solution
+  // ────────────────────────────────────────────────
+  const initialized = useRef(false);
+
   useEffect(() => {
-    const generated = Array.from({ length: totalQuestions }, () => generateRandomQuestion(t));
+    // Only run once — even when StrictMode remounts
+    if (initialized.current) return;
+    initialized.current = true;
+
+    console.log(`Generating exactly ${totalQuestions} questions`);
+
+    const generated = Array.from(
+      { length: totalQuestions },
+      () => generateRandomQuestion(t)
+    );
+
     setQuestions(generated);
-  }, [t, totalQuestions]);
+  }, [totalQuestions]); // ← t is omitted on purpose — see explanation below
 
   const currentQuestion = questions[currentIndex];
 
@@ -58,7 +75,7 @@ export default function QuizScreen({ totalQuestions, onFinish }: Props) {
     <div className="quiz-card">
       <div className="quiz-header">
         <button onClick={() => window.location.reload()} className="back-btn">
-          ← {t('quiz.back')}
+          &larr; {t('quiz.back')}
         </button>
         <div className="score-display">
           {correctCount} / {totalQuestions}
@@ -101,14 +118,14 @@ export default function QuizScreen({ totalQuestions, onFinish }: Props) {
             {isCorrect ? t('quiz.correct') : t('quiz.wrong')}
           </p>
 
-          <p className="feedback-answer">
-            {t('quiz.correctWas')}{' '}
-            <strong>{currentQuestion.options[currentQuestion.correctAnswerIndex]}</strong>
-          </p>
-
-          {currentQuestion.explanation && (
-            <p className="feedback-explanation">{currentQuestion.explanation}</p>
+          {/* Show animation only when correct */}
+          {isCorrect && (
+            <GoalAnimation onComplete={() => console.log('Goal animation finished')} />
           )}
+
+          {/* Incorrect animation - NEW */}
+          {!isCorrect && <MissAnimation onComplete={() => console.log('Miss done')} />}
+
 
           <button onClick={goToNext} className="next-btn">
             {currentIndex < questions.length - 1 ? t('quiz.next') : t('quiz.finish')}

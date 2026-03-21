@@ -1,4 +1,5 @@
 // src/data/worldcup.ts
+import { Constants } from './../utils/Constants';
 import data from '../../public/data/worldcup.json' assert { type: 'json' };
 
 import type { Match, Goal, Tournament, AwardWinners, PlayerApparences } from '../types/worldcup';
@@ -24,15 +25,12 @@ export default WorldCupService;
 
 export const worldCupData = {
   matches: data.matches as Match[],
-  //goals: data.goals as Goal[],          // ← now matches real structure
   goals: data.goals as unknown as Goal[],   // double assertion bypasses strict check
   tournaments: data.tournaments as Tournament[], // ← now matches real structure
   awardWinners: data.award_winners as AwardWinners[],
   playerApparences: data.player_appearances as PlayerApparences[]
   // add any other arrays you want later (team_appearances, awards, etc.)
 } as const;
-
-const WOMEN = 'Women';
 
 // Fast lookups (still useful)
 export const matchesById = new Map(
@@ -41,7 +39,7 @@ export const matchesById = new Map(
 
 export const goalsByMatchId = new Map<string, Goal[]>(
   worldCupData.goals
-  .filter(g => !g.tournament_name.includes(WOMEN))
+  .filter(g => !g.tournament_name.includes(Constants.WOMEN))
   .reduce((acc, goal) => {
     if (!acc.has(goal.match_id)) acc.set(goal.match_id, []);
     acc.get(goal.match_id)!.push(goal);
@@ -52,13 +50,13 @@ export const goalsByMatchId = new Map<string, Goal[]>(
 // Helper examples (still work perfectly)
 export function getTournamentByYear(year: number) {
   return worldCupData.tournaments
-  .filter(t => !t.tournament_name.includes(WOMEN))
+  .filter(t => !t.tournament_name.includes(Constants.WOMEN))
   .find(t => t.year === year);
 }
 
 export function getFinals() {
   return worldCupData.matches
-  .filter(m => !m.tournament_name.includes(WOMEN))
+  .filter(m => !m.tournament_name.includes(Constants.WOMEN))
   .filter(m => 
     m.stage_name?.toLowerCase() === 'final'
   );

@@ -34,12 +34,22 @@
 - German
 - French
 - *Translate the country names*
+- Adjust West Germany and leave only Germany if the year great or equal to 1990
 
 
 ### Annimation
-- logo
-- correct answer
-- incorrect answer
+- logo - Done
+- correct answer - Done
+- incorrect answer - Done
 - round finished
 
 ### Timer
+
+### Generate script to build Android version
+
+### Adjust Android layout
+- decrease header(logo, etc.) - Done
+- On Quiz, dar um padding or marging(as perguntas e opções estão muito apertadas)
+- Animatons
+    - decrease text - Done
+    - aligin text - Done
