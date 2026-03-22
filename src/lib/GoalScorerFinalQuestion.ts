@@ -4,12 +4,13 @@ import type { QuizQuestion } from "../types/QuizQuestion";
 import { GoalUtils } from "../utils/GoalUtils";
 import { Utils } from "../utils/Utils";
 import { WorldCupService } from '../service/worldCupService';
-import { MatchesService } from '../service/MatchesService';
+//import { MatchesService } from '../service/MatchesService';
 import type { Match } from '../types/worldcup';
 import { LangUtils } from '../utils/LangUtils';
+import { createMatchesService } from '../service/fatory/MatchesServiceFactory';
 
 const worldCupService = new WorldCupService();
-const matchesService = new MatchesService();
+const matchesService = createMatchesService();
 
 function getYear(finalMatch: Match): string {
     return finalMatch.tournament_name.replace(Constants.WORLD_CUP_REGEX, '');

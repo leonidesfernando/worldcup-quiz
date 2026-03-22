@@ -1,7 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { VitePWA } from 'vite-plugin-pwa'
-import tailwindcss from '@tailwindcss/vite'
+/// <reference types="vitest" />
+/// <reference types="vite/client" />  // optional but good for Vite client types
+
+import { defineConfig } from 'vitest/config';  // ← IMPORTANT: import from 'vitest/config'
+import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [
@@ -13,7 +16,7 @@ export default defineConfig({
       manifest: {
         name: 'World Cup Quiz',
         short_name: 'WC Quiz',
-        description: 'Offline World Cup trivia',
+        description: 'World Cup quiz',
         theme_color: '#1d4ed8',
         background_color: '#ffffff',
         display: 'standalone',
@@ -27,5 +30,16 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 40 * 1024 * 1024
       }
     })
-  ]
-})
+  ],
+
+  // Vitest config – now recognized because we imported from 'vitest/config'
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './vitest.setup.ts',  // create this file if you need global mocks/setup
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+    },
+  },
+});

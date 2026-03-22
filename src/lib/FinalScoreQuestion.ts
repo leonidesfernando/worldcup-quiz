@@ -1,16 +1,15 @@
-import { MatchesService } from "../service/MatchesService";
+import { createMatchesService } from "../service/fatory/MatchesServiceFactory";
 import type { QuizQuestion } from "../types/QuizQuestion";
 import { LangUtils } from "../utils/LangUtils";
 import { Utils } from "../utils/Utils";
-import { WinnerQuestion } from "./WinnerQuestion";
 
 
-const matchesService = new MatchesService();
+const matchesService = createMatchesService();
 
 export const FinalScoreQuestion = {
     generateFinalScoreQuestion(t: (key: string, params?: Record<string, any>) => string): QuizQuestion {
         const finals = matchesService.getFinals();
-        if (finals.length < 4) return WinnerQuestion.generateWinnerQuestion(t); // safety
+        //if (finals.length < 4) return WinnerQuestion.generateWinnerQuestion(t); // safety
 
         // Pick 4 different finals
         const selectedFinals = Utils.shuffleArray(finals).slice(0, 3);
@@ -21,14 +20,34 @@ export const FinalScoreQuestion = {
         const correctAwayTeamName = LangUtils.getCountyName(year, t(`countries.${correctMatch.away_team_code}`));
         const correctAnswer = `${correctHomeTeamName} ${correctMatch.home_team_score} - ${correctMatch.away_team_score} ${correctAwayTeamName}`;
 
-        const options = selectedFinals.map(m => {
-            const homeTeamName = LangUtils.getCountyName(year, t(`countries.${m.home_team_code}`));
-            const awayTeamName = LangUtils.getCountyName(year, t(`countries.${m.away_team_code}`));
-            return `${homeTeamName} ${m.home_team_score} - ${m.away_team_score} ${awayTeamName}`;
-        }
+        const options = selectedFinals
+                .filter(m => m.match_id != correctMatch.match_id)
+                .map(m => {
+                        const homeTeamName = LangUtils.getCountyName(year, t(`countries.${m.home_team_code}`));
+                        const awayTeamName = LangUtils.getCountyName(year, t(`countries.${m.away_team_code}`));
+                        return `${homeTeamName} ${m.home_team_score} - ${m.away_team_score} ${awayTeamName}`;
+                }
         );
 
-        options.push(`${correctHomeTeamName} ${Utils.getRandomNumberInRange(0, Number(correctMatch.home_team_score - 1))} - ${Utils.getRandomNumberInRange(0, Number(correctMatch.away_team_score - 1))} ${correctAwayTeamName}`)
+        let incorrectHomeTeamScore = Number(correctMatch.home_team_score);
+        let incorrectAwayteamScore = Number(correctMatch.away_team_score);
+        let initialIncorrectHomeScore = 0;
+        let initialIncorrectAwayScore = 0;
+        if(incorrectHomeTeamScore === 0){
+            incorrectHomeTeamScore = 5;
+            initialIncorrectHomeScore = 1;
+        }else{
+            incorrectHomeTeamScore--;
+        }
+
+        if(incorrectAwayteamScore === 0){
+            incorrectAwayteamScore = 4;
+            initialIncorrectAwayScore = 1;
+        }else{
+            incorrectAwayteamScore--;
+        }
+
+        options.push(correctAnswer, `${correctHomeTeamName} ${Utils.getRandomNumberInRange(initialIncorrectHomeScore, incorrectHomeTeamScore)} - ${Utils.getRandomNumberInRange(initialIncorrectAwayScore, incorrectAwayteamScore)} ${correctAwayTeamName}`)
 
         // Shuffle so correct can be anywhere
         const shuffledOptions = Utils.shuffleArray(options);

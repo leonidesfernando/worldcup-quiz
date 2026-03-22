@@ -58,7 +58,7 @@ function App() {
         )}
 
         {screen === "quiz" && (
-          <QuizScreen totalQuestions={1} onFinish={handleRoundFinish} />
+          <QuizScreen totalQuestions={10} onFinish={handleRoundFinish} />
         )}
 
         {screen === "results" && roundResult && (

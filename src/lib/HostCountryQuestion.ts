@@ -1,9 +1,11 @@
 import {Utils} from '../utils/Utils'
 import type { QuizQuestion } from '../types/QuizQuestion';
-import { MatchesService } from '../service/MatchesService';
+//import { MatchesService } from '../service/MatchesService';
 import { HostService } from '../service/HostService';
+import { createMatchesService } from '../service/fatory/MatchesServiceFactory';
+import { LangUtils } from '../utils/LangUtils';
 
-const matchService = new MatchesService();
+const matchService = createMatchesService();
 const hostService = new HostService();
 export const HostCountryQuestion = {
 
@@ -20,8 +22,8 @@ export const HostCountryQuestion = {
 
   const wrongHosts = Utils.shuffleArray(uniqueWrongHosts).slice(0, 3);
   const wrongHostsNames:string[] = [];
-  const correctHost = t(`countries.${host.team_code}`);
-  wrongHosts.forEach(w => wrongHostsNames.push(t(`countries.${w}`)));
+  const correctHost = LangUtils.getCountyName(year, t(`countries.${host.team_code}`));
+  wrongHosts.forEach(w => wrongHostsNames.push(LangUtils.getCountyName(year, t(`countries.${w}`))));
 
   const options = Utils.shuffleArray([correctHost,... wrongHostsNames]);
 

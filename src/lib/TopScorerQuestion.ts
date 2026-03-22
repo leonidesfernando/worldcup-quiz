@@ -3,9 +3,9 @@ import { Utils } from "../utils/Utils";
 import { GoalUtils } from '../utils/GoalUtils';
 import type { QuizQuestion } from '../types/QuizQuestion';
 import { WinnerQuestion } from './WinnerQuestion';
-import { MatchesService } from '../service/MatchesService';
+import { createMatchesService } from '../service/fatory/MatchesServiceFactory';
 
-const matchesService = new MatchesService();
+const matchesService = createMatchesService();
 export const TopScorerQuestion = {
 
     generateTopScorerQuestion(t: (key: string, params?: Record<string, any>) => string): QuizQuestion {

@@ -1,22 +1,30 @@
 import { randomSort } from "../filters/filters";
-import { matchesData } from "../selectors/matchDataSelector";
+//import { matchesData } from "../selectors/matchDataSelector";
 import type { Match } from "../types/worldcup";
 import { Utils } from "../utils/Utils";
 
 
 export class MatchesService {
 
+  private readonly matches: Match[];
+  private readonly finals: Match[];
+  private readonly semiFinals: Match[];
+  constructor(data: {matches: Match[], finals: Match[], semiFinals: Match[]}) {
+    this.matches = data.matches;
+    this.finals = data.finals;
+    this.semiFinals = data.semiFinals;
+  }
 
   getMatches() {
-    return matchesData.matches;
+    return this.matches;
   }
 
   getFinals() {
-    return matchesData.finals
+    return this.finals
   }
 
   getSemiFinals() {
-    return matchesData.semiFinals
+    return this.semiFinals
   }
 
   getFinalByTournamentId(tournamentId:string): Match {

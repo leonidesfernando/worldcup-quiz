@@ -1,4 +1,3 @@
-import { th } from 'framer-motion/client';
 import type { Match } from './../types/worldcup';
 
 export const MatchUtils = {

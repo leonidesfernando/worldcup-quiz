@@ -1,12 +1,12 @@
 import { isStage, randomSort } from "../filters/filters";
-import { MatchesService } from "../service/MatchesService";
+import { createMatchesService } from "../service/fatory/MatchesServiceFactory";
 import type { QuizQuestion } from "../types/QuizQuestion";
 import { LangUtils } from "../utils/LangUtils";
 import { MatchUtils } from "../utils/MatchUtils";
 import { Utils } from "../utils/Utils";
 import { FinalScoreQuestion } from "./FinalScoreQuestion";
 
-const matchService = new MatchesService();
+const matchService = createMatchesService();
 
 export const WinnerQuestion = {
 

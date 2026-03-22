@@ -1,6 +1,7 @@
 // src/components/QuizScreen.tsx
 import { useState, useEffect, useRef } from 'react';
 import { generateRandomQuestion } from '../lib/questionGenerator';
+import { questionGenerators } from '../lib/questionGeneratorsList';
 import { useTranslation } from '../useTranslation';
 import type { QuizQuestion } from '../types/QuizQuestion';
 import GoalAnimation from './GoalAnimation';
@@ -35,7 +36,7 @@ export default function QuizScreen({ totalQuestions, onFinish }: Props) {
 
     const generated = Array.from(
       { length: totalQuestions },
-      () => generateRandomQuestion(t)
+      () => generateRandomQuestion(t, questionGenerators)
     );
 
     setQuestions(generated);
