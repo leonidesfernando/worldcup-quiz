@@ -18,4 +18,10 @@ export class HostService {
   getRandomHost(): Hosts {
     return Utils.getRandomItem(this.getHosts());
   }
-}
+
+  getHostsByTournamentId(tournamentId: string): string[] {
+    return this.hosts
+                .filter(h => h.tournament_id === tournamentId)
+                .map(h => h.team_code);
+  }
+ }
