@@ -1,10 +1,13 @@
 // src/components/Results.tsx
-import { useTranslation } from '../useTranslation';
-import correctIcon from '../assets/correct.png';
-import incorrectIcon from '../assets/incorrect.png';
-import worldCupTrophy from '../assets/world-cup-trophy.png';
-import silverMedal from '../assets/silver-medal.png';
-import bronzeMedal from '../assets/bronze-medal.png';
+import { useTranslation } from "../useTranslation";
+import { motion } from "framer-motion";
+import { useConfetti } from "../hooks/useConfetti";
+import correctIcon from "../assets/correct.png";
+import incorrectIcon from "../assets/incorrect.png";
+import worldCupTrophy from "../assets/world-cup-trophy.png";
+import silverMedal from "../assets/silver-medal.png";
+import bronzeMedal from "../assets/bronze-medal.png";
+import SafeHtmlFormatter from "./SafeHtmlFormatter";
 
 interface RoundResult {
   correct: number;
@@ -18,50 +21,92 @@ interface Props {
   onBackToHome: () => void;
 }
 
-export default function Results({ result, onPlayAgain, onBackToHome }: Readonly<Props>) {
+export default function Results({
+  result,
+  onPlayAgain,
+  onBackToHome,
+}: Readonly<Props>) {
   const { t } = useTranslation();
   const percentage = Math.round((result.correct / result.total) * 100);
 
+  // Trigger confetti rain needed
+  useConfetti(percentage);
+
   // Trophy / Medal logic
   let trophyImage = null;
-  let trophyClass = '';
-  let message = '';
+  let trophyClass = "";
+  let message = "";
+  let animationVariant = {};
 
   if (percentage === 100) {
     trophyImage = worldCupTrophy;
-    trophyClass = 'gold';
+    trophyClass = "gold";
     message = t("results.champion");
+    animationVariant = {
+      initial: { scale: 0.6, rotate: -15, y: 50 },
+      animate: {
+        scale: 1,
+        rotate: 0,
+        y: 0,
+        transition: { type: "spring", stiffness: 120, damping: 12 },
+      },
+    };
   } else if (percentage >= 80) {
     trophyImage = silverMedal;
-    trophyClass = 'silver';
+    trophyClass = "silver";
     message = t("results.secondPosition");
+    animationVariant = {
+      initial: { scale: 0.7, y: 40 },
+      animate: {
+        scale: 1,
+        y: 0,
+        transition: { type: "spring", stiffness: 100, damping: 15 },
+      },
+    };
   } else if (percentage >= 70) {
     trophyImage = bronzeMedal;
-    trophyClass = 'bronze';
+    trophyClass = "bronze";
     message = t("results.thirdPosition");
+    animationVariant = {
+      initial: { scale: 0.8, rotate: 10 },
+      animate: {
+        scale: 1,
+        rotate: 0,
+        transition: { duration: 0.6, ease: "easeOut" },
+      },
+    };
   } else {
     trophyImage = null;
-    trophyClass = 'no-trophy';
+    trophyClass = "no-trophy";
     message = t("results.keepGoing");
   }
 
   return (
     <div className="results-screen">
       <div className="results-card">
-        {/* Trophy / Medal Section */}
-        <div className={`trophy-section ${trophyClass}`}>
+        {/* Trophy Section with Animation */}
+        <motion.div
+          className={`trophy-section ${trophyClass}`}
+          initial="initial"
+          animate="animate"
+          variants={animationVariant}
+        >
           {trophyImage && (
-            <img 
-              src={trophyImage} 
-              alt="Achievement" 
-              className="achievement-trophy" 
+            <motion.img
+              src={trophyImage}
+              alt="Achievement"
+              className="achievement-trophy"
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
             />
           )}
-          <h3 className="results-title">{t("results.title")}</h3>
-        </div>
+          <h2 className="results-title">{t("results.title")}</h2>
+        </motion.div>
 
         {/* Motivational Message */}
-        <p className="results-message">{message}</p>
+        <SafeHtmlFormatter html={message} className="results-message" />
+
 
         {/* Big Score Circle */}
         <div className="results-score-circle">

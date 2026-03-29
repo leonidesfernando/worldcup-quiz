@@ -31,7 +31,7 @@
     "champion": "Parabéns! Você é o campeão!",
     "secondPosition": "Você foi ótimo! Quase alcançou a glória.",
     "thirdPosition": "Você está entre os melhores. Tenha orgulho disso!",
-    "keepGoing": "Nem sempre vamos ganhar. Concentre-se na próxima rodada — você pode fazer melhor!",
+    "keepGoing": "<strong>Nem sempre vamos ganhar</strong>.<br/>Concentre-se na próxima rodada.<br>Você pode fazer melhor!",
     "title": "Rodada Complete!",
     "correct": "Correto",
     "wrong": "Errado",
@@ -53,7 +53,7 @@
   },
   "questions": {
     "winner": "Qual país venceu a Copa do Mundo de {year}?",
-    "finalScore": "Qual foi o placar final da final da Copa do Mundo de {year}?",
+    "finalScore": "Qual foi o placar no fim do tempo regulamentar na final da Copa do Mundo de  {year}?",
     "host": "Qual país sediou a Copa do Mundo de {year}?",
     "firstFinalGoalScorer": "Quem marcou o primeiro gol na final {team} x {awayTeam} em {year}?",
     "totalFinalGoalsScored": "Quantos gols foram marcados na final de {year} entre {team} x {awayTeam}?",

@@ -31,7 +31,7 @@
       "champion": "¡Bien hecho! ¡Eres el campeón!",
       "secondPosition": "¡Lo hiciste genial! Casi alcanzas la gloria.",
       "thirdPosition": "Estás entre los mejores. ¡Siéntete orgulloso de ello!",
-      "keepGoing": "No siempre ganaremos. Concéntrate en la siguiente ronda: ¡puedes hacerlo mejor!",
+      "keepGoing": "<strong>No siempre ganaremos</strong>.<br/>Concéntrate en la siguiente ronda.<br>¡Puedes hacerlo mejor!",
       "title": "¡Ronda completada!",
       "correct": "Correcto",
       "wrong": "Incorrecto",
@@ -53,7 +53,7 @@
     },
     "questions": {
       "winner": "Qual país venceu a Copa do Mundo Masculina de {year}?",
-      "finalScore": "Qual foi o placar final da final da Copa do Mundo Masculina de {year}?",
+      "finalScore": "¿Cuál fue el marcador al final del tiempo reglamentario en la final de la Copa Mundial de la FIFA {year}?",
       "host": "Qual país sediou a Copa do Mundo Masculina de {year}?",
       "firstFinalGoalScorer": "¿Quién marcó el primer gol en la final {team} x {awayTeam} en {year}?",
       "totalFinalGoalsScored": "¿Cuántos goles se marcaron en la final entre {team} y {awayTeam} de {year}?",

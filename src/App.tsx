@@ -3,7 +3,6 @@ import { useState } from "react";
 import QuizScreen from "./components/QuizScreen";
 import { useTranslation } from "./useTranslation";
 import Header from "./components/Header";
-import LanguageSelector from "./components/LanguageSelector";
 import Results from "./components/Results";
 import Settings from "./components/Settings";
 
@@ -61,7 +60,7 @@ function App() {
         )}
 
         {screen === "quiz" && (
-          <QuizScreen totalQuestions={5} onFinish={handleRoundFinish} />
+          <QuizScreen totalQuestions={1} onFinish={handleRoundFinish} />
         )}
 
         {screen === "results" && roundResult && (

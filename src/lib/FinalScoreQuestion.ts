@@ -32,21 +32,25 @@
             let incorrectAwayteamScore = Number(correctMatch.away_team_score);
             let initialIncorrectHomeScore = 0;
             let initialIncorrectAwayScore = 0;
-            if(incorrectHomeTeamScore === 0){
-                incorrectHomeTeamScore = 5;
-                initialIncorrectHomeScore = 1;
-            }else{
-                incorrectHomeTeamScore--;
-            }
+            let incorrectAnswer = correctAnswer;
 
-            if(incorrectAwayteamScore === 0){
-                incorrectAwayteamScore = 4;
-                initialIncorrectAwayScore = 1;
-            }else{
-                incorrectAwayteamScore--;
-            }
+            while (incorrectAnswer === correctAnswer) {
+                if(incorrectHomeTeamScore === 0){
+                    incorrectHomeTeamScore = 5;
+                    initialIncorrectHomeScore = 1;
+                }else{
+                    incorrectHomeTeamScore--;
+                }
 
-            options.push(correctAnswer, `${correctHomeTeamName} ${Utils.getRandomNumberInRange(initialIncorrectHomeScore, incorrectHomeTeamScore)} - ${Utils.getRandomNumberInRange(initialIncorrectAwayScore, incorrectAwayteamScore)} ${correctAwayTeamName}`)
+                if(incorrectAwayteamScore === 0){
+                    incorrectAwayteamScore = 4;
+                    initialIncorrectAwayScore = 1;
+                }else{
+                    incorrectAwayteamScore--;
+                }
+                incorrectAnswer = `${correctHomeTeamName} ${Utils.getRandomNumberInRange(initialIncorrectHomeScore, incorrectHomeTeamScore)} - ${Utils.getRandomNumberInRange(initialIncorrectAwayScore, incorrectAwayteamScore)} ${correctAwayTeamName}`;
+            }
+            options.push(correctAnswer, incorrectAnswer);
 
             // Shuffle so correct can be anywhere
             const shuffledOptions = Utils.shuffleArray(options);

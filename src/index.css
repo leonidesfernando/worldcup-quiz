@@ -432,7 +432,7 @@ footer {
 .net-ripple {
   position: absolute;
   bottom: 350px;
-  left: 60%;
+  left: 25%;
   transform: translateX(-50%);
   width: 302px;
   aspect-ratio: 4 / 1.4;
@@ -547,14 +547,15 @@ footer {
 
 .results-card {
   background: white;
-  border-radius: 2.25rem;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
-  padding: 2.5rem 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.16);
+  padding: 2.5rem 1.75rem;
   width: 100%;
   max-width: 540px;
   text-align: center;
 }
 
+/* ========================== TROPHY ========================== */
 .trophy-section {
   margin-bottom: 1.5rem;
   min-height: 180px;
@@ -571,9 +572,21 @@ footer {
   filter: drop-shadow(0 15px 30px rgba(0,0,0,0.25));
 }
 
-.gold .achievement-trophy { filter: drop-shadow(0 15px 35px #fbbf24); }
+/*.gold .achievement-trophy { filter: drop-shadow(0 15px 35px #fbbf24); } */
+.gold .achievement-trophy {
+  filter: drop-shadow(0 15px 35px #fbbf24);
+  animation: trophy-shine 3s infinite alternate ease-in-out;
+}
+
 .silver .achievement-trophy { filter: drop-shadow(0 12px 30px #94a3b8); }
 .bronze .achievement-trophy { filter: drop-shadow(0 10px 25px #cd7f32); }
+
+@keyframes trophy-shine {
+  0% { filter: drop-shadow(0 15px 35px #fbbf24); }
+  100% { filter: drop-shadow(0 20px 45px #fde047); }
+}
+
+/* ========================== END TROPHY ========================== */
 
 .results-title {
   font-size: 2.35rem;
@@ -582,13 +595,26 @@ footer {
   letter-spacing: -0.02em;
 }
 
-.results-message {
+/*.results-message {
   font-size: 1.32rem;
   font-weight: 600;
   color: #334155;
   margin: 1rem 0 2.5rem;
   line-height: 1.45;
   min-height: 3.4em;
+}*/
+
+.results-message {
+  font-size: 1.28rem;
+  font-weight: 600;
+  color: #334155;
+  line-height: 1.5;
+  text-align: center;
+  margin: 1.25rem 0 2.25rem;
+  padding: 0 0.3rem;                    /* prevents text touching edges on small screens */
+  max-width: 420px;                   /* keeps long messages readable */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Big Score Circle */
@@ -641,7 +667,7 @@ footer {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
-  margin: 2rem 0 3rem;
+  margin: 0;
 }
 
 .stat-item {
@@ -685,6 +711,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .primary-btn, .secondary-btn {
@@ -919,6 +946,7 @@ footer {
 
 .dark .results-card {
   background: #1e2937;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
 }
 
 .dark .results-title {
@@ -935,7 +963,8 @@ footer {
 }
 
 .dark .results-message {
-  color: #cbd5e1;
+  /*color: #cbd5e1;*/
+  color: #e2e8f0;
 }
 
 .dark .results-stats .stat-item {
