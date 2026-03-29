@@ -19,6 +19,14 @@ export const MatchUtils = {
         }
         throw new Error("Match has no winner");
     },
+    getLoserMatchByCountyCode(match: Match): string {
+        const winner = this.getWinnerCountryCode(match);
+        if(match.home_team_code === winner) {
+            return match.away_team_code;
+        }
+        return match.home_team_code;
+    },
+
     isDraw(match: Match): boolean{
         return match.draw == 1 || match.extra_time == 1;
     }

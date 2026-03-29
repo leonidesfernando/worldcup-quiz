@@ -52,6 +52,7 @@
   },
   "questions": {
     "winner": "Quel pays a remporté la Coupe du Monde de la FIFA en {year} ?",
+    "runnerUp": "Quel pays a terminé deuxième de la Coupe du Monde de la FIFA en {year} ?",
     "finalScore": "Quel était le score à la fin du temps réglementaire lors de la finale de la Coupe du Monde de la FIFA {year} ?",
     "host": "Quel pays a accueilli la Coupe du Monde en {year} ?",
     "firstFinalGoalScorer": "Qui a marqué le premier but lors de la finale {team} x {awayTeam} en {year} ?",

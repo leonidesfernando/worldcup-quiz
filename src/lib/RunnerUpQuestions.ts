@@ -4,20 +4,26 @@ import type { QuizQuestion } from "../types/QuizQuestion";
 import { LangUtils } from "../utils/LangUtils";
 import { MatchUtils } from "../utils/MatchUtils";
 import { Utils } from "../utils/Utils";
-import { FinalScoreQuestion } from "./FinalScoreQuestion";
+
 
 const matchService = createMatchesService();
 
-export const WinnerQuestion = {
+export const RunnerUpQuestion = {
 
-    generateWinnerQuestion(t: (key: string, params?: Record<string, any>) => string): QuizQuestion {
+    generateRunnerUpQuestion(t: (key: string, params?: Record<string, any>) => string): QuizQuestion {
 
         const finalMatch = Utils.getRandomItem(matchService.getFinals().filter(m => isStage(m, 'final')));
         const year = Utils.getYearByTournamentId(finalMatch.tournament_id);
         const countryWinnerCode = MatchUtils.getWinnerCountryCode(finalMatch);
+        const runnerUpCode = MatchUtils.getLoserMatchByCountyCode(finalMatch);
 
+//LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, correctMatch.home_team_code));
+
+        //const winnerCountryCode = t(`countries.${countryWinnerCode}`);
         const winnerCountryCode = LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, countryWinnerCode));
-        const correctAnswer: string = LangUtils.getCountyName(year + '', winnerCountryCode);
+        const runnerUpCountryCode = LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, runnerUpCode));
+        const correctAnswer: string = LangUtils.getCountyName(year + '', runnerUpCountryCode);
+        const inCorrectAnswer: string = LangUtils.getCountyName(year + '', winnerCountryCode);
 
         let games = matchService.getFinals();
         games.push(...matchService.getSemiFinals());
@@ -26,29 +32,24 @@ export const WinnerQuestion = {
         const possibleAnswers = [...new Set(games
             .map(g => LangUtils.getCountyName(year + '', LangUtils.getCountryNameByi18n(t, MatchUtils.getWinnerCountryCode(g))))
         )].sort(randomSort);
-        // Get unique possible answers (winners + "Draw" if needed)
 
 
         // Remove the correct one to generate wrongs
 
-        const uniqueWrongAnswers = Array.from(possibleAnswers.filter(p => p != correctAnswer));
-        if (uniqueWrongAnswers.length < 3) {
-            // Very rare — fallback
-            return FinalScoreQuestion.generateFinalScoreQuestion(t);
-        }
+        const uniqueWrongAnswers = Array.from(possibleAnswers.filter(p => p != correctAnswer).filter(p => p != inCorrectAnswer));
 
         // Pick 3 different wrong answers
-        const wrongAnswers = Utils.shuffleArray(uniqueWrongAnswers).slice(0, 3);
+        const wrongAnswers = Utils.shuffleArray(uniqueWrongAnswers).slice(0, 2);
 
         // All options
-        const options = Utils.shuffleArray([correctAnswer, ...wrongAnswers]);
+        const options = Utils.shuffleArray([correctAnswer, inCorrectAnswer, ...wrongAnswers]);
 
         return {
-            question: t('questions.winner', { year }),
+            question: t('questions.runnerUp', { year }),
             options,
             correctAnswerIndex: options.indexOf(correctAnswer),
-            difficulty: correctAnswer === t('quiz.draw') ? 'hard' : 'easy', // draws are harder
-            category: 'Winners',
+            difficulty: 'hard',
+            category: 'Runner-up',
         };
     }
 }

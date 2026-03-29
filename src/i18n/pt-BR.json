@@ -52,6 +52,7 @@
   },
   "questions": {
     "winner": "Qual país venceu a Copa do Mundo de {year}?",
+    "runnerUp": "Qual país foi vice-campeão  da Copa do Mundo da FIFA em {year}?",
     "finalScore": "Qual foi o placar no fim do tempo regulamentar na final da Copa do Mundo de  {year}?",
     "host": "Qual país sediou a Copa do Mundo de {year}?",
     "firstFinalGoalScorer": "Quem marcou o primeiro gol na final {team} x {awayTeam} em {year}?",

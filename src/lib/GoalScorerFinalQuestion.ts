@@ -39,8 +39,8 @@ export const NumberOfGoalsFinalQuestion = {
         return {
             question: t('questions.totalFinalGoalsScored', {
                 year,
-                team: LangUtils.getCountyName(year, t(`countries.${finalMatch.home_team_code}`)),
-                awayTeam: LangUtils.getCountyName(year, t(`countries.${finalMatch.away_team_code}`))
+                team: LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, finalMatch.home_team_code)),
+                awayTeam: LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, finalMatch.away_team_code))
             }),
             options,
             correctAnswerIndex: options.indexOf(numberOfGoals.toString()),
@@ -61,8 +61,8 @@ export const FirstGoalScorerFinalQuestion = {
         const goals = matchGoals.sort((a, b) => a.minute_regulation - b.minute_regulation);
         const goal = goals[0];
         const scorer = GoalUtils.getScorerName(goal);
-        const teamName = LangUtils.getCountyName(year, t(`countries.${finalMatch.home_team_code}`));
-        const awayTeamName = LangUtils.getCountyName(year, t(`countries.${finalMatch.away_team_code}`));
+        const teamName = LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, finalMatch.home_team_code));
+        const awayTeamName = LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, finalMatch.away_team_code));
 
         // Step 1: Try to get other scorers from the SAME FINAL (same match)
         const wrongScorers = matchGoals

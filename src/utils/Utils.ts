@@ -10,7 +10,8 @@ export const Utils = {
   
   getRandomItem<T>(array: T[]): T {
     if (array.length === 0) throw new Error('Empty array in getRandomItem');
-    return array[Math.floor(Math.random() * array.length)];
+    const rand = new Date().getMilliseconds() * Math.random();
+    return array[Math.floor( rand % array.length)];
   },
 
   getRandomNumberInRange(min:number, max:number): number {
@@ -20,7 +21,9 @@ export const Utils = {
   shuffleArray<T>(array: T[]): T[] {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
+      const rand = new Date().getMilliseconds() * Math.random();
+      const j = Math.floor( rand % array.length);
+      //const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     return shuffled;

@@ -7,10 +7,12 @@ import { BestPlayerQuestion } from './BestPlayerQuestion';
 import { FirstGoalScorerFinalQuestion, NumberOfGoalsFinalQuestion } from './GoalScorerFinalQuestion';
 import type { QuizQuestion } from '../types/QuizQuestion';
 import type { Translator } from '../i18n/i18n';
+import { RunnerUpQuestion } from './RunnerUpQuestions';
 
 // Export the list of pure generator functions
 export const questionGenerators: Array<(t: Translator) => QuizQuestion> = [
     HostCountryQuestion.generateHostCountryQuestion,
+    RunnerUpQuestion.generateRunnerUpQuestion,
     TopScorerQuestion.generateTopScorerQuestion,
     FinalScoreQuestion.generateFinalScoreQuestion,
     FirstGoalScorerFinalQuestion.generateFirstGoalScorerFinalQuestion,

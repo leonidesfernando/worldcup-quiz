@@ -52,6 +52,7 @@
   },
   "questions": {
     "winner": "Welches Land gewann die FIFA-Weltmeisterschaft im Jahr {year}?",
+    "runnerUp": "Welches Land wurde im Jahr {year} Vizeweltmeister bei der FIFA-Weltmeisterschaft?",
     "finalScore": "Wie lautete der Spielstand nach der regulären Spielzeit im Finale der FIFA-Weltmeisterschaft {year}?",
     "host": "Welches Land war Gastgeber der Weltmeisterschaft im Jahr {year}?",
     "firstFinalGoalScorer": "Wer erzielte das erste Tor im Finale {team} x {awayTeam} im Jahr {year}?",

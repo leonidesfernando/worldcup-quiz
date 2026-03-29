@@ -12,6 +12,8 @@ export const HostCountryQuestion = {
   
   const host = hostService.getRandomHost();
   const year = Utils.getYearByTournamentId(host.tournament_id);
+  
+  //TODO: criar metodo para buscar todos os hosts dado o tournament_id, uma string e separando os nomes por virgula
 
   const uniqueWrongHosts = matchService.getOtherCountryCodes(host.team_code);
 
