@@ -52,7 +52,7 @@
   },
   "questions": {
     "winner": "Który kraj wygrał Mistrzostwa Świata FIFA w {year} roku?",
-    "runnerUp": "Który kraj był wicemistrzem Mistrzostw Świata FIFA w {rok}?",
+    "runnerUp": "Który kraj był wicemistrzem Mistrzostw Świata FIFA w {year}?",
     "finalScore": "Jaki był wynik po zakończeniu regulaminowego czasu gry w finale Mistrzostw Świata FIFA {year}?",
     "host": "Który kraj był gospodarzem Mistrzostw Świata w {year} roku?",
     "firstFinalGoalScorer": "Kto strzelił pierwszego gola w finale {team} x {awayTeam} w {year} roku?",
