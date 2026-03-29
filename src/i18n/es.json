@@ -28,6 +28,10 @@
       "miss": "¡Falló el tiro!"
     },
     "results": {
+      "champion": "¡Bien hecho! ¡Eres el campeón!",
+      "secondPosition": "¡Lo hiciste genial! Casi alcanzas la gloria.",
+      "thirdPosition": "Estás entre los mejores. ¡Siéntete orgulloso de ello!",
+      "keepGoing": "No siempre ganaremos. Concéntrate en la siguiente ronda: ¡puedes hacerlo mejor!",
       "title": "¡Ronda completada!",
       "correct": "Correcto",
       "wrong": "Incorrecto",
@@ -35,6 +39,17 @@
       "playAgain": "Jugar de nuevo",
       "backToHome": "Volver a la página principal",
       "goal": "¡Meta!!"
+    },
+    "settings": {
+      "appearance": "Apariencia",
+      "darkMode": "Modo oscuro",
+      "title": "Ajustes",
+      "animations": "Animaciones",
+      "enableAnimations": "Habilitar animaciones",
+      "on": "Encendido",
+      "off": "Apagado",
+      "language": "Idioma",
+      "close": "Cerrar"
     },
     "questions": {
       "winner": "Qual país venceu a Copa do Mundo Masculina de {year}?",

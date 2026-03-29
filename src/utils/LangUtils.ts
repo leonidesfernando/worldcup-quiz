@@ -1,3 +1,4 @@
+import type { Translator } from './../i18n/i18n';
 export const LangUtils = {
     getCountyName(year: string, countryName: string): string {
         const yearNumber = Number.parseInt(year.trim(), 10);
@@ -14,5 +15,9 @@ export const LangUtils = {
                 .trim();
         }
         return countryName;
+    },
+
+    getCountryNameByi18n(t: Translator, code: string): string {
+        return t(`countries.${code}`);
     }
 }

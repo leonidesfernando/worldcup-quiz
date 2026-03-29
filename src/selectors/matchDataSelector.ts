@@ -1,20 +1,21 @@
 import { matchData } from '../data/matches';
-import { isMensTournament, isStage, randomSort } from '../filters/filters';
+import { isMensTournament, isStage } from '../filters/filters';
+import { Utils } from '../utils/Utils';
 
+
+const mensMatches = matchData.matches.filter(m =>
+  isMensTournament(m.tournament_name)
+);
 
 export const matchesData = {
-     matches: matchData.matches
-            .filter(m => isMensTournament(m.tournament_name))
-            .sort(randomSort),
+  matches: Utils.shuffleArray(mensMatches),
 
-      finals: matchData.matches
-            .filter(m => isMensTournament(m.tournament_name))
-            .filter(m => isStage(m, 'final'))
-            .sort(randomSort),
+  finals: Utils.shuffleArray(
+    mensMatches.filter(m => isStage(m, 'final'))
+  ),
 
-     semiFinals: matchData.matches
-            .filter(m => isMensTournament(m.tournament_name))
-            .filter(m => isStage(m, 'semi-finals'))
-            .sort(randomSort),
-
-}
+  semiFinals: Utils.shuffleArray(
+    mensMatches.filter(m => isStage(m, 'semi-finals'))
+               .filter(m => isStage(m, 'semi-final'))
+  ),
+};

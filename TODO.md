@@ -9,6 +9,11 @@
 - players
 - substitutions
 
+### Personal ranking
+- store last 10 plays
+- sort the plays by top points
+
+
 ### Account
 
 ### Monetize
@@ -33,15 +38,15 @@
 - Polish
 - German
 - French
-- *Translate the country names*
-- Adjust West Germany and leave only Germany if the year great or equal to 1990
+- *Translate the country names* - Done
+- Adjust West Germany and leave only Germany if the year great or equal to 1990 - Done
 
 
 ### Annimation
 - logo - Done
 - correct answer - Done
 - incorrect answer - Done
-- round finished
+- round finished - Done
 
 ### Timer
 
@@ -53,3 +58,7 @@
 - Animatons
     - decrease text - Done
     - aligin text - Done
+- Improve Finish layout
+- Dark mode - Done
+- Enable/Disable animmations
+-

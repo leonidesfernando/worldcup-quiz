@@ -1,12 +1,11 @@
 import {Utils} from '../utils/Utils'
 import type { QuizQuestion } from '../types/QuizQuestion';
-//import { MatchesService } from '../service/MatchesService';
-import { HostService } from '../service/HostService';
 import { createMatchesService } from '../service/fatory/MatchesServiceFactory';
 import { LangUtils } from '../utils/LangUtils';
+import { createHostsService } from '../service/fatory/HostsServiceFactory';
 
 const matchService = createMatchesService();
-const hostService = new HostService();
+const hostService = createHostsService();
 export const HostCountryQuestion = {
 
  generateHostCountryQuestion(t: (key: string, params?: Record<string, any>) => string): QuizQuestion {
@@ -16,14 +15,10 @@ export const HostCountryQuestion = {
 
   const uniqueWrongHosts = matchService.getOtherCountryCodes(host.team_code);
 
-  if(uniqueWrongHosts.length < 3){
-    return HostCountryQuestion.generateHostCountryQuestion(t);
-  }
-
   const wrongHosts = Utils.shuffleArray(uniqueWrongHosts).slice(0, 3);
   const wrongHostsNames:string[] = [];
-  const correctHost = LangUtils.getCountyName(year, t(`countries.${host.team_code}`));
-  wrongHosts.forEach(w => wrongHostsNames.push(LangUtils.getCountyName(year, t(`countries.${w}`))));
+  const correctHost = LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, host.team_code));
+  wrongHosts.forEach(w => wrongHostsNames.push(LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, w))));
 
   const options = Utils.shuffleArray([correctHost,... wrongHostsNames]);
 

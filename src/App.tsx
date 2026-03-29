@@ -4,8 +4,10 @@ import QuizScreen from "./components/QuizScreen";
 import { useTranslation } from "./useTranslation";
 import Header from "./components/Header";
 import LanguageSelector from "./components/LanguageSelector";
+import Results from "./components/Results";
+import Settings from "./components/Settings";
 
-type Screen = "home" | "quiz" | "results";
+type Screen = "home" | "quiz" | "results" | "settings";
 
 interface RoundResult {
   correct: number;
@@ -33,16 +35,17 @@ function App() {
     setScreen("results");
   };
 
+  const openSettings = () => setScreen("settings");
+  const closeSettings = () => setScreen("home");
+
   return (
     <div id="root">
-      <Header />
+      <Header onSettingsClick={openSettings} />
 
       <main>
         {screen === "home" && (
           <div className="home-wrapper">
-            <div className="lang-dropdown-container">
-              <LanguageSelector />
-            </div>
+
 
             <div className="card">
               <h2 className="home-title">{t("home.ready")}</h2>
@@ -58,38 +61,17 @@ function App() {
         )}
 
         {screen === "quiz" && (
-          <QuizScreen totalQuestions={10} onFinish={handleRoundFinish} />
+          <QuizScreen totalQuestions={5} onFinish={handleRoundFinish} />
         )}
 
         {screen === "results" && roundResult && (
-          <div className="card">
-            <h2 className="home-title">{t("results.title")}</h2>
-
-            <div className="results-stats">
-              <p>
-                <strong>{t("results.correct")}:</strong> {roundResult.correct}
-              </p>
-              <p>
-                <strong>{t("results.wrong")}:</strong> {roundResult.wrong}
-              </p>
-              <p>
-                <strong>{t("results.points")}:</strong> {roundResult.correct} /{" "}
-                {roundResult.total}
-              </p>
-            </div>
-
-            <button onClick={startNewRound} className="start-btn">
-              {t("results.playAgain")}
-            </button>
-
-            <button
-              onClick={() => setScreen("home")}
-              className="back-to-home-btn"
-            >
-              {t("results.backToHome")}
-            </button>
-          </div>
+          <Results
+            result={roundResult}
+            onPlayAgain={startNewRound}
+            onBackToHome={() => setScreen("home")}
+          />
         )}
+        {screen === "settings" && <Settings onClose={closeSettings} />}
       </main>
 
       <footer>{t("app.builtBy")}</footer>

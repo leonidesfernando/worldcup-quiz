@@ -28,6 +28,10 @@
     "miss": "Errou o chute!"
   },
   "results": {
+    "champion": "Parabéns! Você é o campeão!",
+    "secondPosition": "Você foi ótimo! Quase alcançou a glória.",
+    "thirdPosition": "Você está entre os melhores. Tenha orgulho disso!",
+    "keepGoing": "Nem sempre vamos ganhar. Concentre-se na próxima rodada — você pode fazer melhor!",
     "title": "Rodada Complete!",
     "correct": "Correto",
     "wrong": "Errado",
@@ -35,6 +39,17 @@
     "playAgain": "Jogar novamente",
     "backToHome": "Voltar para o início",
     "goal": "GOOOL!"
+  },
+  "settings": {
+    "appearance": "Aparência",
+    "darkMode": "Modo oscuro",
+    "title": "Configurações",
+    "animations": "Animações",
+    "enableAnimations": "Habilitar animações",
+    "on": "Habilitado",
+    "off": "Desabilitado",
+    "language": "Idioma",
+    "close": "Fechar"
   },
   "questions": {
     "winner": "Qual país venceu a Copa do Mundo de {year}?",
