@@ -1,14 +1,13 @@
 {
   "app": {
     "title": "Quiz Copa do Mundo",
-    "subtitle": "1930 – 2022 • Offline • Sem anúncios",
-    "builtBy": "BO³ Tech - World Cup Quiz©",
+    "subtitle": "• 1930 – 2022 •",
+    "builtBy": "World Cup Quiz©",
     "dataFrom": "Dados de jfjelstul/worldcup"
   },
   "home": {
-    "emoji": "⚽",
     "ready": "Pronto para testar seu conhecimento?",
-    "description": "Perguntas aleatórias de todas as Copas do Mundo.<br />100% offline após o primeiro carregamento.",
+    "description": "Perguntas aleatórias de todas as Copas do Mundo.",
     "startButton": "Iniciar Quiz Agora",
     "selectLanguage": "Selecione o idioma"
   },

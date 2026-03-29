@@ -73,7 +73,7 @@ function App() {
         {screen === "settings" && <Settings onClose={closeSettings} />}
       </main>
 
-      <footer>{t("app.builtBy")}</footer>
+      <footer>{t("app.builtBy")} {t("app.subtitle")}</footer>
     </div>
   );
 }

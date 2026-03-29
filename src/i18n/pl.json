@@ -1,61 +1,64 @@
 {
   "app": {
-    "title": "World Cup Quiz",
-    "subtitle": "1930 – 2022 • Offline • No ads",
-    "builtBy": "BO³ Tech - World Cup Quiz©",
-    "dataFrom": "Data from jfjelstul/worldcup"
+    "title": "Quiz Mistrzostw Świata",
+    "subtitle": "• 1930 – 2022 •",
+    "builtBy": "Quiz Mistrzostw Świata©",
+    "dataFrom": "Dane z jfjelstul/worldcup"
   },
   "home": {
-    "emoji": "⚽",
-    "ready": "Ready to test your knowledge?",
-    "description": "Random questions from all World Cups.<br />100% offline after first load.",
-    "startButton": "Start Quiz Now",
-    "selectLanguage": "Select language"
+    "ready": "Gotowy, by sprawdzić swoją wiedzę?",
+    "description": "Losowe pytania ze wszystkich Mistrzostw Świata.",
+    "startButton": "Rozpocznij quiz",
+    "selectLanguage": "Wybierz język"
   },
   "quiz": {
-    "back": "Back to Home",
-    "score": "Score: {count}",
-    "correct": "Correct!",
-    "wrong": "Wrong!",
-    "correctWas": "The correct answer was: ",
-    "next": "Next Question",
-    "draw": "Draw",
-    "notAwardedYet": "The prize had not yet been awarded.",
-    "unknownScorer": "Unknown scorer",
-    "noScorer": "No scorer",
-    "someoneElse": "Someone else",
-    "finish": "Finish Round",
-    "miss": "Missed the shot!"
+    "back": "Powrót do strony głównej",
+    "score": "Wynik: {count}",
+    "correct": "Poprawna odpowiedź!",
+    "wrong": "Błędna odpowiedź!",
+    "correctWas": "Poprawna odpowiedź to: ",
+    "next": "Następne pytanie",
+    "draw": "Remis",
+    "notAwardedYet": "Nagroda nie została jeszcze przyznana.",
+    "unknownScorer": "Nieznany strzelec",
+    "noScorer": "Brak strzelca",
+    "someoneElse": "Ktoś inny",
+    "finish": "Zakończ rundę",
+    "miss": "Niecelny strzał!"
   },
   "results": {
-    "title": "Round Complete!",
-    "correct": "Correct",
-    "wrong": "Wrong",
-    "points": "Points",
-    "playAgain": "Play Again",
-    "backToHome": "Back to Home",
-    "goal": "GOAL!"
+    "champion": "Brawo! Jesteś mistrzem!",
+    "secondPosition": "Świetna robota! Niewiele brakowało do zwycięstwa.",
+    "thirdPosition": "Jesteś wśród najlepszych. Bądź z tego dumny!",
+    "keepGoing": "<strong>Nie zawsze się wygrywa</strong>.<br/>Skup się na następnej rundzie.<br/>Możesz być lepszy!",
+    "title": "Runda zakończona!",
+    "correct": "Poprawne",
+    "wrong": "Błędne",
+    "points": "Punkty",
+    "playAgain": "Zagraj ponownie",
+    "backToHome": "Powrót do strony głównej",
+    "goal": "GOL!"
   },
   "settings": {
     "appearance": "Wygląd",
     "darkMode": "Tryb ciemny",
     "title": "Ustawienia",
-    "animations": "Animations",
+    "animations": "Animacje",
     "enableAnimations": "Włącz animacje",
-    "on": "Włącz",
-    "off": "Wyłącz",
+    "on": "Wł.",
+    "off": "Wył.",
     "language": "Język",
-    "close": "Zamknąć"
+    "close": "Zamknij"
   },
   "questions": {
-    "winner": "Which country won the FIFA World Cup in {year}?",
+    "winner": "Który kraj wygrał Mistrzostwa Świata FIFA w {year} roku?",
     "finalScore": "Jaki był wynik po zakończeniu regulaminowego czasu gry w finale Mistrzostw Świata FIFA {year}?",
-    "host": "Which country hosted the World Cup in {year}?",
-    "firstFinalGoalScorer": "Who scored the first goal for {team} in the {year} World Cup final?",
-    "totalFinalGoalsScored": "How many goals were scored in the {year} {team} vs. {awayTeam} final?",
-    "awardWinner": "Who won the {award} in {year}?",
-    "topScorer": "Who was the top goalscorer of the {year} World Cup?",
-    "bestPlayer": "Who was named the best player (Golden Ball) of the {year} World Cup?"
+    "host": "Który kraj był gospodarzem Mistrzostw Świata w {year} roku?",
+    "firstFinalGoalScorer": "Kto strzelił pierwszego gola w finale {team} x {awayTeam} w {year} roku?",
+    "totalFinalGoalsScored": "Ile goli padło w finale {team} x {awayTeam} w {year} roku?",
+    "awardWinner": "Kto zdobył nagrodę {award} w {year} roku?",
+    "topScorer": "Kto był królem strzelców Mistrzostw Świata {year}?",
+    "bestPlayer": "Kto został wybrany najlepszym zawodnikiem (Złota Piłka) Mistrzostw Świata {year}?"
   },
   "countries": {
     "DZA": "Algieria",
@@ -105,7 +108,7 @@
     "KWT": "Kuwejt",
     "MEX": "Meksyk",
     "MAR": "Maroko",
-    "NLD": "Niderlandy",
+    "NLD": "Holandia",
     "NZL": "Nowa Zelandia",
     "NGA": "Nigeria",
     "PRK": "Korea Północna",
@@ -117,7 +120,7 @@
     "POL": "Polska",
     "PRT": "Portugalia",
     "QAT": "Katar",
-    "IRL": "Republika Irlandii",
+    "IRL": "Irlandia",
     "ROU": "Rumunia",
     "RUS": "Rosja",
     "SAU": "Arabia Saudyjska",
@@ -143,7 +146,7 @@
     "USA": "Stany Zjednoczone",
     "URY": "Urugwaj",
     "WAL": "Walia",
-    "DEU": "Niemcy Zachodnie",
+    "DEU": "RFN",
     "YUG": "Jugosławia",
     "COD": "Zair"
   }

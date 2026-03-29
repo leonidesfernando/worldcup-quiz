@@ -2,13 +2,12 @@
   "app": {
     "title": "World Cup Quiz",
     "subtitle": "• 1930 – 2022 •",
-    "builtBy": "BO³ Tech - World Cup Quiz©",
+    "builtBy": "World Cup Quiz©",
     "dataFrom": "Data from jfjelstul/worldcup"
   },
   "home": {
-    "emoji": "⚽",
     "ready": "Ready to test your knowledge?",
-    "description": "Random questions from all World Cups.<br />100% offline after first load.",
+    "description": "Random questions from all World Cups.",
     "startButton": "Start Quiz Now",
     "selectLanguage": "Select language"
   },

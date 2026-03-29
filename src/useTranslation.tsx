@@ -1,17 +1,22 @@
 // src/i18n/useTranslation.ts
 import { useState, useEffect, createContext, useContext } from 'react';
 
-type Language = 'en' | 'pt-BR' | 'es' | 'pl';
+type Language = 'de' | 'en' | 'es' | 'fr' | 'pl' | 'pt-BR';
 
-interface Translations {
-  [key: string]: any;
-}
+import en from './i18n/en.json';
+import ptBR from './i18n/pt-BR.json';
+import es from './i18n/es.json';
+import pl from './i18n/pl.json';
+import fr from './i18n/fr.json';
+import deDE from './i18n/de.json'; 
 
-const translations: Record<Language, Translations> = {
-  en: (await import('./i18n/en.json')).default,
-  'pt-BR': (await import('./i18n/pt-BR.json')).default,
-  es: (await import('./i18n/es.json')).default,
-  pl: (await import('./i18n/pl.json')).default,
+const translations: Record<Language, any> = {
+  'de': deDE,
+  en: en,
+  'pt-BR': ptBR,
+  es: es,
+  pl: pl,
+  fr: fr,
 };
 
 const TranslationContext = createContext<{
@@ -24,10 +29,12 @@ const TranslationContext = createContext<{
   setLanguage: () => {},
 });
 
-export function TranslationProvider({ children }: { children: React.ReactNode }) {
+export function TranslationProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const [lang, setLang] = useState<Language>(() => {
-    const saved = localStorage.getItem('lang') as Language;
-    return saved && ['en', 'pt-BR', 'es', 'pl'].includes(saved) ? saved : 'en';
+    const saved = localStorage.getItem('lang') as Language | null;
+    return saved && ['de', 'en', 'pt-BR', 'es', 'pl', 'fr'].includes(saved) 
+      ? saved 
+      : 'en';
   });
 
   useEffect(() => {
@@ -38,15 +45,16 @@ export function TranslationProvider({ children }: { children: React.ReactNode })
   const t = (key: string, params: Record<string, any> = {}) => {
     const keys = key.split('.');
     let value = translations[lang];
+
     for (const k of keys) {
       value = value?.[k];
-      if (!value) return key; // fallback to key
+      if (value === undefined || value === null) return key; // fallback
     }
 
     if (typeof value !== 'string') return key;
 
-    // Simple interpolation: {count} → params.count
-    return (String(value)).replace(/{([^}]+)}/g, (_, p) => params[p] ?? `{${p}}`);
+    // Simple interpolation
+    return String(value).replace(/{([^}]+)}/g, (_, p) => params[p] ?? `{${p}}`);
   };
 
   return (

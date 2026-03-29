@@ -3,8 +3,10 @@ import Select from 'react-select';
 import { useTranslation } from "../useTranslation";
 
 const languageOptions = [
+  { value: 'de', label: 'Deutsch', flag: 'DE' },
   { value: 'en', label: 'English', flag: 'US' },
   { value: 'es', label: 'Español', flag: 'ES' },
+  { value: 'fr', label: 'Français', flag: 'FR' },
   { value: 'pl', label: 'Polski', flag: 'PL' },
   { value: 'pt-BR', label: 'Português (BR)', flag: 'BR' },
 ];
