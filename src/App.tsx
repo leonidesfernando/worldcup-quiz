@@ -1,10 +1,11 @@
 // src/App.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import QuizScreen from "./components/QuizScreen";
 import { useTranslation } from "./useTranslation";
 import Header from "./components/Header";
 import Results from "./components/Results";
 import Settings from "./components/Settings";
+import { AdMobService } from "./service/AdMobService";
 
 type Screen = "home" | "quiz" | "results" | "settings";
 
@@ -14,11 +15,38 @@ interface RoundResult {
   total: number;
 }
 
+
+
 function App() {
   const [screen, setScreen] = useState<Screen>("home");
   const [roundResult, setRoundResult] = useState<RoundResult | null>(null);
 
   const { t } = useTranslation();
+
+// show banner on the bottom all the time, for all pages
+  /*  useEffect(() => {
+    AdMobService.showBanner();
+    return () => {
+      AdMobService.hideBanner();
+    };
+  }, []);*/
+
+/*  
+useEffect(() => {
+  // Show banner only when on Home screen
+  if (screen === "home") {
+    AdMobService.showBanner();
+  } else {
+    AdMobService.hideBanner();
+  }
+
+  // Cleanup: hide banner when App component unmounts
+  return () => {
+    AdMobService.hideBanner();
+  };
+}, [screen]);   // Re-run whenever screen changes
+*/
+
 
   const startNewRound = () => {
     setRoundResult(null);

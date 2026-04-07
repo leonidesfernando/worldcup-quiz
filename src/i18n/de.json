@@ -51,6 +51,10 @@
     "close": "Schließen"
   },
   "questions": {
+    "totalPlayerMatches": "Wie viele Spiele der Weltmeisterschaft bestritt {playerName} für {countryName}?",
+    "goldenGlove": "Wer war der beste Torwart (Golden Glove) bei der Weltmeisterschaft {year}?",
+    "bestYoungPlayer": "Wer war der beste Nachwuchsspieler bei der Weltmeisterschaft {year}?",
+    "silverBall": "Wer war der Silberne Ballträger bei der Weltmeisterschaft im Jahr {year}?",
     "winner": "Welches Land gewann die FIFA-Weltmeisterschaft im Jahr {year}?",
     "runnerUp": "Welches Land wurde im Jahr {year} Vizeweltmeister bei der FIFA-Weltmeisterschaft?",
     "finalScore": "Wie lautete der Spielstand nach der regulären Spielzeit im Finale der FIFA-Weltmeisterschaft {year}?",

@@ -3,7 +3,7 @@ import { Utils } from "../utils/Utils";
 import { GoalUtils } from '../utils/GoalUtils';
 import type { QuizQuestion } from '../types/QuizQuestion';
 import { WinnerQuestion } from './WinnerQuestion';
-import { createMatchesService } from '../service/fatory/MatchesServiceFactory';
+import { createMatchesService } from '../service/factory/MatchesServiceFactory';
 
 const matchesService = createMatchesService();
 export const TopScorerQuestion = {
@@ -12,6 +12,10 @@ export const TopScorerQuestion = {
 
         const goalsByYearAndPlayer: Record<string, Record<string, number>> = {};
 
+        /*const matches = matchesService.getMatches();
+        const randomMatch = Utils.getRandomItem(matches);
+        const yyear = Utils.getYearByTournamentId(randomMatch.tournament_id);*/
+
         matchesService.getMatches().forEach(match => {
             const year = Utils.getYearByTournamentId(match.tournament_id);
             const matchGoals = goalsByMatchId.get(String(match.match_id)) || [];
@@ -19,15 +23,14 @@ export const TopScorerQuestion = {
             matchGoals.forEach(goal => {
                 const player = GoalUtils.getScorerName(goal);
                 if (player != '' && !goal.own_goal) {
-                    if (!goalsByYearAndPlayer[year]) goalsByYearAndPlayer[year] = {};
+                    if (!goalsByYearAndPlayer[year]) 
+                        goalsByYearAndPlayer[year] = {};
                     goalsByYearAndPlayer[year][player] = (goalsByYearAndPlayer[year][player] || 0) + 1;
                 }
             });
         });
 
         const years = Object.keys(goalsByYearAndPlayer);
-        console.log('Valid years with scorers:', years.length);
-
         if (years.length === 0) {
             console.warn('No years with scorers found - falling back');
             return WinnerQuestion.generateWinnerQuestion(t);
@@ -47,15 +50,23 @@ export const TopScorerQuestion = {
             .filter(([, goals]) => goals === maxGoals)
             .map(([player]) => player);
 
-        const correctAnswer = topScorers[0]; // pick first if tie
+        //const correctAnswer = topScorers[0]; // pick first if tie
+        const correctAnswer = topScorers.join(', ');
 
         // Wrong answers: other players + "None" (always included for trickery)
-        const otherPlayers = Object.keys(scorers).filter(p => p !== correctAnswer);
+        //const otherPlayers = Object.keys(scorers).filter(p => p !== correctAnswer);
+        const otherPlayers = Object.keys(scorers).filter(p => !topScorers.includes(p));
+        //TODO: adicionar opcao errada com mais de um nome, mais de um jogador
         const uniqueWrong = Array.from(new Set(otherPlayers));
 
-        if (uniqueWrong.length < 3) {
+        /*if (uniqueWrong.length < 3) {
             return WinnerQuestion.generateWinnerQuestion(t);
-        }
+        }*/
+
+        for(let i = 0; i < 2; i++){
+            uniqueWrong.push(`${Utils.getRandomItem(uniqueWrong)}, ${Utils.getRandomItem(uniqueWrong)}`,
+            `${Utils.getRandomItem(uniqueWrong)}, ${Utils.getRandomItem(uniqueWrong)}, ${Utils.getRandomItem(uniqueWrong)}`);
+        }    
 
         const wrongPlayers = Utils.shuffleArray(uniqueWrong).slice(0, 3);
         const options = Utils.shuffleArray([correctAnswer, ...wrongPlayers]);

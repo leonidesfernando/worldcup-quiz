@@ -1,4 +1,4 @@
-// src/lib/__tests__/setup/hostQuestion.mocks.ts
+// src/__tests__/setup/hostQuestion.mocks.ts
 import { vi } from 'vitest';
 
 // Exported spies (controlled in tests/setup)
@@ -8,16 +8,27 @@ export const mockGetYearByTournamentId = vi.fn();
 export const mockGetCountryName = vi.fn();
 export const mockGetCountryNameByI18n = vi.fn();
 export const mockGetYear = vi.fn();
+export const mockGetHostsByTournamentId = vi.fn<() => string[]>();
+
 
 // HostService mock
 vi.mock('../../service/HostService', () => ({
   HostService: class {
     getRandomHost = mockGetRandomHost;
+    getHostsByTournamentId = mockGetHostsByTournamentId;
   },
 }));
 
+
+vi.mock('../../service/factory/HostsServiceFactory', () => ({
+  createHostsService: () => ({
+    getRandomHost: mockGetRandomHost,
+    getHostsByTournamentId: mockGetHostsByTournamentId,
+  }),
+}));
+
 // MatchesServiceFactory mock
-vi.mock('../../service/fatory/MatchesServiceFactory', () => ({
+vi.mock('../../service/factory/MatchesServiceFactory', () => ({
   createMatchesService: () => ({
     getOtherCountryCodes: mockGetOtherCountryCodes,
   }),

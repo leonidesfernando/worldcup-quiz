@@ -51,6 +51,10 @@
     "close": "Cerrar"
   },
   "questions": {
+    "totalPlayerMatches": "¿Cuántos partidos de la Copa del Mundo jugó {playerName} representando a {countryName}?",
+    "goldenGlove": "¿Quién fue el mejor portero (Guante de Oro) en la Copa del Mundo de {year}?",
+    "bestYoungPlayer": "¿Quién fue el mejor jugador joven en el {year} Mundial?",
+    "silverBall": "¿Quién fue el jugador de pelota de plata en el {year} Mundial?",
     "winner": "¿Qué país ganó la Copa Mundial de la FIFA en {year}?",
     "runnerUp": "¿Qué país quedó subcampeón en la Copa Mundial de la FIFA en {year}?",
     "finalScore": "¿Cuál fue el marcador al final del tiempo reglamentario en la final de la Copa Mundial de la FIFA {year}?",

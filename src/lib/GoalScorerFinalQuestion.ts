@@ -7,7 +7,7 @@ import { WorldCupService } from '../service/worldCupService';
 //import { MatchesService } from '../service/MatchesService';
 import type { Match } from '../types/worldcup';
 import { LangUtils } from '../utils/LangUtils';
-import { createMatchesService } from '../service/fatory/MatchesServiceFactory';
+import { createMatchesService } from '../service/factory/MatchesServiceFactory';
 
 const worldCupService = new WorldCupService();
 const matchesService = createMatchesService();

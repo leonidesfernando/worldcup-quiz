@@ -11,10 +11,10 @@ export default function Settings({ onClose }: Readonly<Props>) {
   const { t } = useTranslation();
   const { isDarkMode, toggleDarkMode } = useSettings();
 
-  const toggleAnimations = () => {
+  /*const toggleAnimations = () => {
     // TODO: We'll connect this to a global settings context later
     alert(t("settings.comingSoon") || "Animations toggle coming soon!");
-  };
+  };*/
 
   return (
     <div className="settings-screen">
@@ -30,6 +30,7 @@ export default function Settings({ onClose }: Readonly<Props>) {
         </div>
 
         {/* Animations Section */}
+        {/*
         <div className="settings-section">
           <h4 className="section-title">{t("settings.animations")}</h4>
           <div className="settings-toggle-row">
@@ -38,7 +39,7 @@ export default function Settings({ onClose }: Readonly<Props>) {
               {t("settings.on")} / {t("settings.off")}
             </button>
           </div>
-        </div>
+        </div> */}
 
         {/* Dark Mode Toggle */}
         <div className="settings-section">

@@ -9,15 +9,17 @@ import { FirstGoalScorerFinalQuestion, NumberOfGoalsFinalQuestion } from './Goal
 */
 import type { Translator } from '../i18n/i18n';
 import type { QuizQuestion } from '../types/QuizQuestion';
+import { Utils } from '../utils/Utils';
 
 export function generateRandomQuestion(
   t: Translator,
   generators: Array<(t: Translator) => QuizQuestion>,  // ← remove typeof here — it's causing cycle
-  getRandomIndex: (max: number) => number = (max) => Math.floor(Math.random() * max)
+  //getRandomIndex: (max: number) => number = (max) => Math.floor(Math.random() * max)
 ): QuizQuestion {
   for (let attempt = 0; attempt < 10; attempt++) {
-    const index = getRandomIndex(generators.length);
-    const generator = generators[index];
+    //const index = getRandomIndex(generators.length);
+    //const generator = generators[index];
+    const generator = Utils.getRandomItem(generators);
 
     try {
       return generator(t);

@@ -8,6 +8,11 @@ import worldCupTrophy from "../assets/world-cup-trophy.png";
 import silverMedal from "../assets/silver-medal.png";
 import bronzeMedal from "../assets/bronze-medal.png";
 import SafeHtmlFormatter from "./SafeHtmlFormatter";
+import { useEffect, useState } from "react";
+import { AdMobService } from "../service/AdMobService";
+//import { shareScore } from "../hooks/shareScore";
+import shareIcon from "../assets/share.png";
+import { useShareScore } from '../hooks/useShareScore';
 
 interface RoundResult {
   correct: number;
@@ -29,8 +34,72 @@ export default function Results({
   const { t } = useTranslation();
   const percentage = Math.round((result.correct / result.total) * 100);
 
+  // State for bonus and reward offer
+  const [bonusPoints, setBonusPoints] = useState(0);
+  const [showRewardOffer, setShowRewardOffer] = useState(false);
+  const { shareScore } = useShareScore();
+
+  const finalScore = result.correct + bonusPoints;
+  const hasTrophy = percentage >= 70;
+
+// Preload rewarded ad
+  useEffect(() => {
+    AdMobService.loadRewarded();
+  }, []);
+
   // Trigger confetti rain needed
   useConfetti(percentage);
+
+// ====================== SMART REWARD TIMING ======================
+  useEffect(() => {
+    let delay = 0;
+
+    if (percentage === 100) {
+      delay = 2200;                    // Wait for big celebration
+    } else if (percentage >= 80) {
+      delay = 1400;                    // Spring animation duration ≈ 1.2–1.5s
+    } else if (percentage >= 70) {
+      delay = 900;                     // Rotate animation is fast (~0.6s)
+    } else {
+      delay = 600;                     // Show almost immediately for low scores
+    }
+
+    const timer = setTimeout(() => {
+      setShowRewardOffer(true);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [percentage]);
+
+  const handleWatchAdForBonus = () => {
+    AdMobService.showRewarded(() => {
+      setBonusPoints(50);
+      setShowRewardOffer(false); // hide offer after watching
+    });
+  };
+
+
+  const handlePlayAgain = async () => {
+    await AdMobService.showRewarded(() => {
+      // Optional: give bonus even on Play Again
+      // setBonusPoints(50);
+    });
+    onPlayAgain();
+  };
+
+const handleBackToHome = async () => {
+  await AdMobService.showRewarded(() => {
+    // Optional bonus on Back to Home
+  });
+  onBackToHome();
+};
+
+const handleShareScore = async () => {
+  const resultsCard = document.querySelector('.results-card') as HTMLElement;
+  if (!resultsCard) return;
+
+  await shareScore(resultsCard, finalScore, result.total, percentage);
+};
 
   // Trophy / Medal logic
   let trophyImage = null;
@@ -85,6 +154,7 @@ export default function Results({
     <div className="results-screen">
       <div className="results-card">
         {/* Trophy Section with Animation */}
+        {hasTrophy && (
         <motion.div
           className={`trophy-section ${trophyClass}`}
           initial="initial"
@@ -101,8 +171,10 @@ export default function Results({
               transition={{ delay: 0.3, duration: 0.6 }}
             />
           )}
-          <h2 className="results-title">{t("results.title")}</h2>
+          
         </motion.div>
+        )}
+        <h2 className="results-title">{t("results.title")}</h2>
 
         {/* Motivational Message */}
         <SafeHtmlFormatter html={message} className="results-message" />
@@ -136,14 +208,30 @@ export default function Results({
           </div>
         </div>
 
+        {/* Reward Offer - appears automatically after animation */}
+        {/* showRewardOffer && bonusPoints === 0 && (
+          <div className="reward-offer">
+            <p>Want more points?</p>
+            <button onClick={handleWatchAdForBonus} className="reward-btn">
+              🎥 Watch short ad → Get +50 Bonus Points
+            </button>
+          </div>
+        ) */}
+
         {/* Action Buttons */}
         <div className="results-footer">
-          <button onClick={onPlayAgain} className="primary-btn">
+          <button onClick={handlePlayAgain} className="primary-btn">
             {t("results.playAgain")}
           </button>
 
-          <button onClick={onBackToHome} className="secondary-btn">
+          <button onClick={handleBackToHome} className="secondary-btn">
             {t("results.backToHome")}
+          </button>
+
+          {/* Share Button */}
+          <button onClick={handleShareScore} className="share-btn">
+            <img src={shareIcon}  className="btn-share" />
+             Share My Score
           </button>
         </div>
       </div>

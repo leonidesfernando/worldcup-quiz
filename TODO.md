@@ -58,7 +58,9 @@
 - Animatons
     - decrease text - Done
     - aligin text - Done
-- Improve Finish layout
+- Improve Finish layout - Done
 - Dark mode - Done
 - Enable/Disable animmations
--
+- Ajust Results layout page the statitcs section and buttons are so tight - done
+- Show category on question
+- Show difficulty on question

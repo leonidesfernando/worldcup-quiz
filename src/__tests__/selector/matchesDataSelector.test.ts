@@ -1,5 +1,4 @@
 import { describe, it, expect } from 'vitest';
-
 import { matchesData } from '../../selectors/matchDataSelector';
 
 describe('matchesData integrity', () => {

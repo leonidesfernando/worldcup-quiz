@@ -9,6 +9,8 @@ export const createHostQuestionMocks = () => {
 
   const mockWrongCountryCodes = ['BRA', 'GER', 'FRA', 'ARG'];
 
+  const mockHosts = ['RUS'];
+
   const mockCountryMap: Record<string, string> = {
     RUS: 'Russia',
     BRA: 'Brazil',
@@ -21,10 +23,12 @@ export const createHostQuestionMocks = () => {
   vi.mock('../../service/HostService', () => ({
     HostService: class {
       getRandomHost = vi.fn().mockReturnValue(mockRandomHost);
+      getHostsByTournamentId = vi.fn(() => { return mockHosts})
     },
   }));
+  
 
-  vi.mock('../../service/fatory/MatchesServiceFactory', () => ({
+  vi.mock('../../service/factory/MatchesServiceFactory', () => ({
     createMatchesService: vi.fn().mockReturnValue({
       getOtherCountryCodes: vi.fn().mockReturnValue(mockWrongCountryCodes),
     }),

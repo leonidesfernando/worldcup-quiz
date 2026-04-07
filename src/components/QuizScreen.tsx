@@ -32,7 +32,7 @@ export default function QuizScreen({ totalQuestions, onFinish }: Props) {
     if (initialized.current) return;
     initialized.current = true;
 
-    console.log(`Generating exactly ${totalQuestions} questions`);
+    //console.log(`Generating exactly ${totalQuestions} questions`);
 
     const generated = Array.from(
       { length: totalQuestions },
@@ -83,9 +83,18 @@ export default function QuizScreen({ totalQuestions, onFinish }: Props) {
         </div>
       </div>
 
-      <div className="progress">
-        Question {currentIndex + 1} of {totalQuestions}
-      </div>
+      {/* Progress + Category + Difficulty Badges */}
+<div className="question-header">
+  <div className="progress">
+    Q{currentIndex + 1}/{totalQuestions}
+  </div>
+  <div className="badges">
+    <span className="badge category-badge">{currentQuestion.category}</span>
+    <span className={`badge difficulty-badge ${currentQuestion.difficulty?.toLowerCase()}`}>
+      {currentQuestion.difficulty}
+    </span>
+  </div>
+</div>
 
       <h2 className="question-text">{currentQuestion.question}</h2>
 

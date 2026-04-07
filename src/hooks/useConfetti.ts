@@ -7,7 +7,7 @@ export function useConfetti(percentage: number) {
   useEffect(() => {
     if (percentage === 100) {
       // Golden confetti rain for Champion (continuous falling effect)
-      const duration = 3000;
+      const duration = 2000;
       const end = Date.now() + duration;
 
       const frame = () => {

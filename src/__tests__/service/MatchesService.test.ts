@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { createMatchesService } from '../../service/fatory/MatchesServiceFactory';
+import { createMatchesService } from '../../service/factory/MatchesServiceFactory';
 
 describe('MatchesService', () => {
   const service = createMatchesService();

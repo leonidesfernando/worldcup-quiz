@@ -1,70 +1,84 @@
+import type { Translator } from "../i18n/i18n";
 import { WorldCupService } from "../service/worldCupService";
 import type { QuizQuestion } from "../types/QuizQuestion";
-import type { PlayerApparences } from "../types/worldcup";
+import type { AwardWinners, PlayerApparences } from "../types/worldcup";
 import { Constants } from "../utils/Constants";
 import { Utils } from "../utils/Utils";
 
 const worldCupService = new WorldCupService();
 
 export const BestPlayerQuestion = {
-    generateBestPlayerQuestion(t: (key: string, params?: Record<string, any>) => string): QuizQuestion {
+    generateBestPlayerQuestion(t: Translator): QuizQuestion {
+        return generateAwardQuestion(t, 1978, 'questions.bestPlayer', 'golden ball');
+    },
 
-        // Filter for Golden Ball / Best Player awards
-        const goldenBallAwards = worldCupService.getAwards().filter(
-            a => a.award_name?.toLowerCase().includes('golden ball') ||
-                a.award_name?.toLowerCase().includes('best player')
-        );
+    generateGoldenGlovePlayerQuestion(t: Translator): QuizQuestion {
+        return generateAwardQuestion(t, 1994, 'questions.goldenGlove', 'golden glove', 'GK');
+    },
 
-        const notAwarded = t('quiz.notAwardedYet'); // "Not awarded yet"
+    generateBestYoungPlayerQuestion(t: Translator): QuizQuestion {
+        return generateAwardQuestion(t, 1978, 'questions.bestYoungPlayer', 'best young player');
+    },
 
-        // Years where Golden Ball was awarded
-        const awardedYears = Array.from(
-            new Set(
-                goldenBallAwards.map(a => a.tournament_name.replace(Constants.WORLD_CUP_REGEX, ''))
-            )
-        );
-
-        let year: string;
-        let correctAnswer: string;
-
-        year = Utils.getRandomItem(awardedYears);
-        if (Number(year) >= 1982) {
-            const award = goldenBallAwards.find(a => a.tournament_name.includes(year))!;
-            correctAnswer = Utils.getFullPlayerName(award?.given_name, award.family_name);
-        } else {
-            // Random year (including pre-1982)
-            const allYears = worldCupService.getTournaments().map(t => String(t.year));
-            year = Utils.getRandomItem(allYears);
-            correctAnswer = notAwarded;
-        }
-
-        const sameYearsPlayer = worldCupService.getPlayers().filter((p: PlayerApparences) => p.tournament_name.includes(year));
-        const otherPlayers = sameYearsPlayer
-            .map(a => Utils.getFullPlayerName(a.given_name, a.family_name))
-            .filter(p => p != correctAnswer);
-
-
-        let wrongCandidates = [Utils.getRandomItem(otherPlayers), Utils.getRandomItem(otherPlayers)];
-        if ((Math.random() % 2) == 0) {
-            wrongCandidates.push(Utils.getRandomItem(otherPlayers));
-        } else {
-            wrongCandidates.push(notAwarded);
-        }
-
-        // For pre-1982 (correct = notAwarded), don't repeat it as wrong
-        if (correctAnswer === notAwarded) {
-            wrongCandidates = wrongCandidates.filter(c => c !== notAwarded);
-        }
-
-        const uniqueWrong = Array.from(new Set(wrongCandidates)).slice(0, 3);
-        const options = Utils.shuffleArray([correctAnswer, ...Utils.addWrongOptions(uniqueWrong, t)]);
-
-        return {
-            question: t('questions.bestPlayer', { year }),
-            options,
-            correctAnswerIndex: options.indexOf(correctAnswer),
-            difficulty: correctAnswer === notAwarded ? 'easy' : 'medium',
-            category: 'Awards',
-        };
+    generateSilverBallPlayerQuestion(t: Translator): QuizQuestion {
+        return generateAwardQuestion(t, 1978, 'questions.silverBall', 'silver ball');
     }
+}
+
+function getAwardsWinners(award: string): AwardWinners[] {
+    return worldCupService.getAwards().filter(
+        a => a.award_name?.toLowerCase().includes(award)
+    );
+}
+
+function generateAwardQuestion(t: Translator, fristYearAwardGranted: number, i18nCodeQuestion: string, award: string, position?: string): QuizQuestion {
+    const awardsWinners = getAwardsWinners(award);
+
+    const notAwarded = t('quiz.notAwardedYet'); // "Not awarded yet"
+
+    // Years where Golden Ball was awarded
+    const awardedYears = Utils.shuffleArray(Array.from(
+        new Set(
+            awardsWinners.map(a => a.tournament_name.replace(Constants.WORLD_CUP_REGEX, ''))
+        )
+    ));
+
+    const year = Utils.getRandomItem(awardedYears);
+    //console.log('year: ', year)
+    let correctAnswer: string;
+
+
+    if (Number(year) >= fristYearAwardGranted) {
+        const award = awardsWinners.find(a => a.tournament_name.includes(year))!;
+        correctAnswer = Utils.getFullPlayerName(award?.given_name, award.family_name);
+    } else {
+        correctAnswer = notAwarded;
+    }
+
+    const sameYearsPlayer = worldCupService.getPlayers()
+        .filter((p: PlayerApparences) => p.tournament_name.includes(year))
+        .filter((p: PlayerApparences) => Utils.isNotEmptyOrNull(position) ? p.position_code === position : true);
+    const otherPlayers = sameYearsPlayer
+        .map(a => Utils.getFullPlayerName(a.given_name, a.family_name))
+        .filter(p => p != correctAnswer);
+
+
+    const wrongCandidates = new Set<string>();
+    while (wrongCandidates.size < 4) {
+        wrongCandidates.add(Utils.getRandomItem(otherPlayers));
+    }
+
+    if (correctAnswer !== notAwarded && (new Date().getMilliseconds() % 2) == 0) {
+        wrongCandidates.add(notAwarded);
+    }
+
+    const uniqueWrong = Utils.shuffleArray(Array.from(wrongCandidates)).slice(0, 3);
+    const options = Utils.shuffleArray([correctAnswer, ...uniqueWrong]);
+    return {
+        question: t(i18nCodeQuestion, { year }),
+        options,
+        correctAnswerIndex: options.indexOf(correctAnswer),
+        difficulty: correctAnswer === notAwarded ? 'easy' : 'medium',
+        category: 'Awards',
+    };
 }

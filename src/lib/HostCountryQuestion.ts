@@ -1,8 +1,8 @@
 import { Utils } from '../utils/Utils'
 import type { QuizQuestion } from '../types/QuizQuestion';
-import { createMatchesService } from '../service/fatory/MatchesServiceFactory';
+import { createMatchesService } from '../service/factory/MatchesServiceFactory';
 import { LangUtils } from '../utils/LangUtils';
-import { createHostsService } from '../service/fatory/HostsServiceFactory';
+import { createHostsService } from '../service/factory/HostsServiceFactory';
 
 const matchService = createMatchesService();
 const hostService = createHostsService();
@@ -15,7 +15,7 @@ export const HostCountryQuestion = {
 
     const correctHosts: string[] = hostService.getHostsByTournamentId(host.tournament_id);
 
-    const uniqueWrongHosts = new Set();
+    const uniqueWrongHosts = new Set<string>();
     correctHosts.forEach(h => {
       matchService.getOtherCountryCodes(h).forEach(ohter => {
         uniqueWrongHosts.add(ohter);

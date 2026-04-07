@@ -51,6 +51,10 @@
     "close": "Fermer"
   },
   "questions": {
+    "totalPlayerMatches": "Combien de matchs de la Coupe du Monde {playerName} a-t-il disputés avec {countryName} ?",
+    "goldenGlove": "Qui a été le meilleur gardien (Gant d'Or) lors de la Coupe du Monde {year} ?",
+    "bestYoungPlayer": "Qui était le meilleur jeune joueur de la Coupe du monde de l'année {year} ?",
+    "silverBall": "Qui était le joueur ayant remporté le ballon d'argent lors de la Coupe du monde de l'année {year} ?",
     "winner": "Quel pays a remporté la Coupe du Monde de la FIFA en {year} ?",
     "runnerUp": "Quel pays a terminé deuxième de la Coupe du Monde de la FIFA en {year} ?",
     "finalScore": "Quel était le score à la fin du temps réglementaire lors de la finale de la Coupe du Monde de la FIFA {year} ?",

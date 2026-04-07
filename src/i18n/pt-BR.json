@@ -51,6 +51,10 @@
     "close": "Fechar"
   },
   "questions": {
+    "totalPlayerMatches": "Quantas partidas {playerName} disputou por/pela {countryName} em torneios da Copa do Mundo?",
+    "goldenGlove": "Quem foi o melhor goleiro(Golden Glove) na Copa do Mundo de {year}?",
+    "bestYoungPlayer": "Quem foi o melhor jovem jogador(Best Young Player) na Copa do Mundo de {year}?",
+    "silverBall": "Quem foi o segundo melhor jogador(Silver Ball) na Copa do Mundo de {year}?",
     "winner": "Qual país venceu a Copa do Mundo de {year}?",
     "runnerUp": "Qual país foi vice-campeão  da Copa do Mundo da FIFA em {year}?",
     "finalScore": "Qual foi o placar no fim do tempo regulamentar na final da Copa do Mundo de  {year}?",

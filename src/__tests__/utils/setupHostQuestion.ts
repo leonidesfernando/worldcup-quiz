@@ -1,9 +1,11 @@
+//src/__tests__/utils/setupHostsQuestions.ts
 import {
   mockGetRandomHost,
   mockGetOtherCountryCodes,
   mockGetYear,
   mockGetCountryName,
   mockGetCountryNameByI18n,
+  mockGetHostsByTournamentId
 } from '../setup/hostQuestion.mocks';
 
 import { createHostFixture } from '../fixtures/hostQuestion.fixture';
@@ -16,16 +18,18 @@ export const setupHostQuestion = (options?: {
   wrongCodes?: string[];
 }) => {
   const locale = options?.locale ?? 'en';
-
+  const hostCode = options?.hostCode ?? 'BRA';
+  const hosts = [hostCode];
   const host = createHostFixture({
-    team_code: options?.hostCode ?? 'RUS',
+    team_code: options?.hostCode ?? 'BRA',
   });
 
   const wrongCodes = options?.wrongCodes ?? ['BRA', 'GER', 'FRA', 'ARG'];
 
   mockGetRandomHost.mockReturnValue(host);
   mockGetOtherCountryCodes.mockReturnValue(wrongCodes);
-  mockGetYear.mockReturnValue('2018');
+  mockGetHostsByTournamentId.mockReturnValue(hosts);
+  mockGetYear.mockReturnValue('2014');
 
   mockGetCountryNameByI18n.mockImplementation((_, code: string) => `countries.${code}`);
 

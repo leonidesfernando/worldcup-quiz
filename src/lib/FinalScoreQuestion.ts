@@ -1,4 +1,4 @@
-    import { createMatchesService } from "../service/fatory/MatchesServiceFactory";
+    import { createMatchesService } from "../service/factory/MatchesServiceFactory";
     import type { QuizQuestion } from "../types/QuizQuestion";
     import { LangUtils } from "../utils/LangUtils";
     import { Utils } from "../utils/Utils";

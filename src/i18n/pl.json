@@ -51,6 +51,10 @@
     "close": "Zamknij"
   },
   "questions": {
+    "totalPlayerMatches": "Ile meczów Mistrzostw Świata rozegrał {playerName} reprezentując {countryName}?",
+    "goldenGlove": "Kto był najlepszym bramkarzem (Złota Rękawica) na Mistrzostwach Świata w {year}?",
+    "bestYoungPlayer": "Kto był najlepszym młodym zawodnikiem na Mistrzostwach Świata w {year}?",
+    "silverBall": "Kto zdobył srebrną piłkę na Mistrzostwach Świata w {year}?",
     "winner": "Który kraj wygrał Mistrzostwa Świata FIFA w {year} roku?",
     "runnerUp": "Który kraj był wicemistrzem Mistrzostw Świata FIFA w {year}?",
     "finalScore": "Jaki był wynik po zakończeniu regulaminowego czasu gry w finale Mistrzostw Świata FIFA {year}?",
