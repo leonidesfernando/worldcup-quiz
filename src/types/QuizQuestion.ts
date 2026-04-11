@@ -3,6 +3,7 @@ export interface QuizQuestion {
   question: string;
   options: string[];
   correctAnswerIndex: number;
-  difficulty?: 'easy' | 'medium' | 'hard';
+  difficultyClass?: 'easy' | 'medium' | 'hard';
+  difficulty: string;
   category?: string;
 }

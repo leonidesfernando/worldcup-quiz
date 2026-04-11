@@ -26,7 +26,18 @@
     "someoneElse": "Someone else",
     "finish": "Finish Round",
     "miss": "Missed the shot!",
-    "question": "Question: "
+    "question": "Question: ",
+    "categoryAwards": "Awards",
+    "categoryFinals": "Finals",
+    "categoryGoalScorers": "Goal Scorers",
+    "categoryHosts": "Hosts",
+    "categoryMatchesPlayed": "Matches Played",
+    "categoryRunnerUp": "Runner-up",
+    "categoryTopScorer": "Top Scorers",
+    "categoryWinners": "Winners",
+    "difficultyEasy" : "Easy",
+    "difficultyMedium" : "Medium",
+    "difficultyHard" : "Hard"
   },
   "results": {
     "champion": "Well done! You are the champion!",

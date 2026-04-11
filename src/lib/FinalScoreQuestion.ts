@@ -59,8 +59,9 @@
                 question: t('questions.finalScore', { year }),
                 options: shuffledOptions,
                 correctAnswerIndex: correctIndex,
-                difficulty: 'medium',
-                category: 'Finals',
+                difficulty: t('quiz.difficultyMedium'),//'medium',
+                difficultyClass: 'medium',
+                category: t('quiz.categoryFinals')//'Finals',
             };
         }
     }

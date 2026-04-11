@@ -26,7 +26,18 @@
     "someoneElse": "Ktoś inny",
     "finish": "Zakończ rundę",
     "miss": "Niecelny strzał!",
-    "question": "Pytanie: "
+    "question": "Pytanie: ",
+    "categoryAwards": "Nagrody",
+    "categoryFinals": "Finały",
+    "categoryGoalScorers": "Strzelcy bramek",
+    "categoryHosts": "Gospodarze",
+    "categoryMatchesPlayed": "Rozegrane mecze",
+    "categoryRunnerUp": "Wicemistrzowie",
+    "categoryTopScorer": "Najlepsi strzelcy",
+    "categoryWinners": "Zwycięzcy",
+    "difficultyEasy": "Łatwy",
+    "difficultyMedium": "Średni",
+    "difficultyHard": "Trudny"
   },
   "results": {
     "champion": "Brawo! Jesteś mistrzem!",

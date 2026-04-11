@@ -26,7 +26,18 @@
     "someoneElse": "Quelqu’un d’autre",
     "finish": "Terminer la manche",
     "miss": "Tir manqué !",
-    "question": "Question: "
+    "question": "Question: ",
+    "categoryAwards": "Récompenses",
+    "categoryFinals": "Finales",
+    "categoryGoalScorers": "Buteurs",
+    "categoryHosts": "Pays hôtes",
+    "categoryMatchesPlayed": "Matchs joués",
+    "categoryRunnerUp": "Finalistes",
+    "categoryTopScorer": "Meilleurs buteurs",
+    "categoryWinners": "Vainqueurs",
+    "difficultyEasy": "Facile",
+    "difficultyMedium": "Moyen",
+    "difficultyHard": "Difficile"
   },
   "results": {
     "champion": "Bravo ! Vous êtes le champion !",

@@ -106,8 +106,9 @@ export const FirstGoalScorerFinalQuestion = {
             }),
             options,
             correctAnswerIndex: options.indexOf(scorer),
-            difficulty: 'hard', // now really challenging
-            category: 'Goal Scorers',
+            difficulty: t('quiz.difficultyHard'),//'hard', // now really challenging
+            difficultyClass: 'hard',
+            category: t('quiz.categoryGoalScorers')//'Goal Scorers',
         };
     }
 }

@@ -26,7 +26,18 @@
     "finish": "Terminar ronda",
     "miss": "¡Disparo fallado!",
     "question": "Pergunta: ",
-    "tryApp": "¡Prueba la aplicación!"
+    "tryApp": "¡Prueba la aplicación!",
+    "categoryAwards": "Premios",
+    "categoryFinals": "Finales",
+    "categoryGoalScorers": "Goleadores",
+    "categoryHosts": "Países anfitriones",
+    "categoryMatchesPlayed": "Partidos jugados",
+    "categoryRunnerUp": "Subcampeones",
+    "categoryTopScorer": "Máximos goleadores",
+    "categoryWinners": "Ganadores",
+    "difficultyEasy": "Fácil",
+    "difficultyMedium": "Medio",
+    "difficultyHard": "Difícil"
   },
   "results": {
     "champion": "¡Bien hecho! ¡Eres el campeón!",

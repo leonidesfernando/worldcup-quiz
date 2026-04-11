@@ -43,13 +43,13 @@ export const RunnerUpQuestion = {
 
         // All options
         const options = Utils.shuffleArray([correctAnswer, inCorrectAnswer, ...wrongAnswers]);
-
         return {
             question: t('questions.runnerUp', { year }),
             options,
             correctAnswerIndex: options.indexOf(correctAnswer),
-            difficulty: 'hard',
-            category: 'Runner-up',
+            difficulty: t('quiz.difficultyMedium'),//'hard',
+            difficultyClass: 'hard',
+            category: t('quiz.categoryRunnerUp')//'Runner-up',
         };
     }
 }

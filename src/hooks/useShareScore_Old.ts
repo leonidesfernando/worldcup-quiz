@@ -16,15 +16,26 @@ function canvasToBlob(canvas: HTMLCanvasElement, quality = 0.95): Promise<Blob> 
   );
 }
 
-function buildShareText(finalScore: number, total: number, percentage: number, t:Translator): string {
+/*function buildShareText2Old(finalScore: number, total: number, percentage: number): string {
 
+  return percentage === 100
+    ? `I'm the World Cup Quiz Champion! I scored ${finalScore}/${total} 🔥`
+    : `I scored ${finalScore}/${total} (${percentage}%) on World Cup Quiz! 🔥\n\nCan you beat my score? Try the app!`;
+}*/
+
+  function buildShareText(
+    finalScore: number,
+    total: number,
+    percentage: number,
+    t: Translator
+  ): string {
     let positionMesage = "";
     if (percentage === 100) {
       positionMesage = t("share.champion") + "🏆 " + t("share.myScore", {finalScore, total}) +" 🔥";
     } else if (percentage >= 80) {
-      positionMesage = t("share.runnerUp") + "🥈 " + t("share.myScoreAndPercentage", {finalScore, total, percentage}) +" 🔥";
+      positionMesage = t("share.runnerUp") + "🥈 " + t("share.myScoreAndPercentage", {finalScore, total}) +" 🔥";
     } else if (percentage >= 70) {
-      positionMesage = t("share.thirdPlace") + "🥉 " + t("share.myScoreAndPercentage", {finalScore, total, percentage}) +" 🔥";
+      positionMesage = t("share.thirdPlace") + "🥉 " + t("share.myScoreAndPercentage", {finalScore, total}) +" 🔥";
     }else{
       positionMesage = t("share.myScore", {finalScore, total}) +" 🔥";
     }
@@ -33,9 +44,11 @@ function buildShareText(finalScore: number, total: number, percentage: number, t
     const beatScore = t("share.beatScore");
     console.log('buildShareText:', `${positionMesage} \n\n${beatScore} ${tryApp}`);
     return `${positionMesage} \n\n${beatScore} ${tryApp}`;
-}
+  }
+
 
 export function useShareScore() {
+
   const shareScore = useCallback(
     async (
       resultsCardElement: HTMLElement,
@@ -47,11 +60,28 @@ export function useShareScore() {
       try {
         const isDark = document.documentElement.classList.contains('dark');
 
+        /*const canvas = await html2canvas(resultsCardElement, {
+          scale: 2,
+          backgroundColor: isDark ? '#1e2937' : '#ffffff',
+          logging: false,
+          useCORS: true,
+        });*/
+
+// Force a clean, safe background and disable problematic features
         const canvas = await html2canvas(resultsCardElement, {
           scale: 2,
           backgroundColor: isDark ? '#1e2937' : '#ffffff',
           logging: false,
           useCORS: true,
+          allowTaint: true,
+          // These options help avoid color parsing errors
+          ignoreElements: (element) => 
+            element.tagName === 'STYLE' || 
+            element.classList.contains('lawn-layer'), // skip complex backgrounds if needed
+          onclone: (_document, element) => {
+            // Force Tailwind colors to safe values during capture
+            element.style.setProperty('--tw-bg-opacity', '1', 'important');
+          },
         });
 
         const blob = await canvasToBlob(canvas);
@@ -79,10 +109,10 @@ export function useShareScore() {
         // Step 3: share image only in `files`, text separately — mixing both in
         // the same payload causes WhatsApp to drop the image
         await Share.share({
-          title: t('share.quizScore'),//'My World Cup Quiz Score',
-          text: buildShareText(finalScore, total, percentage, t),
+          title: 'My World Cup Quiz Score',
+          text:  buildShareText(finalScore, total, percentage, t),//'I am the best',
           files: [uri],
-          dialogTitle: t('share.dialogueTitle')//'Share your score',
+          dialogTitle: 'Share your score',
         });
       } catch (error) {
         console.error('Share failed:', error);

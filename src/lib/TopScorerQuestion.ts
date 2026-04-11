@@ -75,8 +75,9 @@ export const TopScorerQuestion = {
             question: t('questions.topScorer', { year }),
             options,
             correctAnswerIndex: options.indexOf(correctAnswer),
-            difficulty: 'medium',
-            category: 'Goal Scorers',
+            difficulty: t('quiz.difficultyMedium'),//'medium',
+            difficultyClass: 'medium',
+            category: t('quiz.categoryTopScorer')//'Goal Scorers',
         };
     }
 }

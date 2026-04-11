@@ -92,7 +92,7 @@ export default function QuizScreen({ totalQuestions, onFinish }: Props) {
             {currentQuestion.category}
           </span>
           <span
-            className={`badge difficulty-badge ${currentQuestion.difficulty?.toLowerCase()}`}
+            className={`badge difficulty-badge ${currentQuestion.difficultyClass?.toLowerCase()}`}
           >
             {currentQuestion.difficulty}
           </span>

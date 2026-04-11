@@ -26,7 +26,18 @@
     "someoneElse": "Jemand anderes",
     "finish": "Runde beenden",
     "miss": "Schuss verfehlt!",
-    "question": "Frage: "
+    "question": "Frage: ",
+    "categoryAwards": "Auszeichnungen",
+    "categoryFinals": "Finalspiele",
+    "categoryGoalScorers": "Torschützen",
+    "categoryHosts": "Gastgeber",
+    "categoryMatchesPlayed": "Gespielte Spiele",
+    "categoryRunnerUp": "Zweitplatzierte",
+    "categoryTopScorer": "Top-Torschützen",
+    "categoryWinners": "Sieger",
+    "difficultyEasy": "Einfach",
+    "difficultyMedium": "Mittel",
+    "difficultyHard": "Schwierig"
   },
   "results": {
     "champion": "Gut gemacht! Du bist der Champion!",

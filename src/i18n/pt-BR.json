@@ -26,7 +26,18 @@
     "someoneElse": "Outro jogador",
     "finish": "Finalizar Rodada",
     "miss": "Errou o chute!",
-    "question": "Pergunta: "
+    "question": "Pergunta: ",
+    "categoryAwards": "Prêmios",
+    "categoryFinals": "Finais",
+    "categoryGoalScorers": "Artilheiros",
+    "categoryHosts": "Países-sede",
+    "categoryMatchesPlayed": "Partidas disputadas",
+    "categoryRunnerUp": "Vice-campeões",
+    "categoryTopScorer": "Artilheiros",
+    "categoryWinners": "Campeões",
+    "difficultyEasy": "Fácil",
+    "difficultyMedium": "Médio",
+    "difficultyHard": "Difícil"
   },
   "results": {
     "champion": "Parabéns! Você é o campeão!",

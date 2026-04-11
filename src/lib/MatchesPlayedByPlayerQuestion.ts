@@ -46,8 +46,9 @@ export const MatchesPlayedByPlayerQuestion = {
             question: t('questions.totalPlayerMatches', { playerName, countryName }),
             options,
             correctAnswerIndex: options.indexOf(correctNumber.toString()),
-            difficulty: 'hard',
-            category: 'Player Appearence',
+            difficulty: t('quiz.difficultyHard'),//'hard',
+            difficultyClass: 'hard',
+            category: t('quiz.categoryMatchesPlayed')//'Matches Played',
         };
     }
 }

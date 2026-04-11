@@ -38,8 +38,9 @@ export const HostCountryQuestion = {
       question: t('questions.host', { year }),
       options,
       correctAnswerIndex: options.indexOf(correctHost),
-      difficulty: 'easy',
-      category: 'Hosts',
+      difficulty: t('quiz.difficultyEasy'),//'easy',
+      difficultyClass: 'easy',
+      category: t('quiz.categoryHosts')//'Hosts',
     };
   }
 
