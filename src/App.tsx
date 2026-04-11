@@ -1,11 +1,12 @@
 // src/App.tsx
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
+import { useState } from "react";
 import QuizScreen from "./components/QuizScreen";
 import { useTranslation } from "./useTranslation";
 import Header from "./components/Header";
 import Results from "./components/Results";
 import Settings from "./components/Settings";
-import { AdMobService } from "./service/AdMobService";
+//import { AdMobService } from "./service/AdMobService";
 
 type Screen = "home" | "quiz" | "results" | "settings";
 
@@ -101,7 +102,7 @@ useEffect(() => {
         {screen === "settings" && <Settings onClose={closeSettings} />}
       </main>
 
-      <footer>{t("app.builtBy")} {t("app.subtitle")}</footer>
+      <footer>{t("app.builtBy")}</footer>
     </div>
   );
 }

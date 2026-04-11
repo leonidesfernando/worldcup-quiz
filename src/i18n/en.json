@@ -3,11 +3,12 @@
     "title": "World Cup Quiz",
     "subtitle": "• 1930 – 2022 •",
     "builtBy": "World Cup Quiz©",
-    "dataFrom": "Data from jfjelstul/worldcup"
+    "dataFrom": "Data from jfjelstul/worldcup",
+    "tryApp": "Try the app!"
   },
   "home": {
     "ready": "Ready to test your knowledge?",
-    "description": "Random questions from all World Cups.",
+    "description": "Questions from all World Cups.",
     "startButton": "Start Quiz Now",
     "selectLanguage": "Select language"
   },
@@ -24,7 +25,8 @@
     "noScorer": "No scorer",
     "someoneElse": "Someone else",
     "finish": "Finish Round",
-    "miss": "Missed the shot!"
+    "miss": "Missed the shot!",
+    "question": "Question: "
   },
   "results": {
     "champion": "Well done! You are the champion!",
@@ -37,7 +39,18 @@
     "points": "Points",
     "playAgain": "Play Again",
     "backToHome": "Back to Home",
-    "goal": "GOAL!"
+    "goal": "GOAL!",
+    "shareScore": "Share My Score"
+  },
+  "share": {
+    "quizScore": "My World Cup Quiz Score",
+    "beatScore": "Can you beat my score?",
+    "myScoreAndPercentage": "I scored {finalScore}/{total} ({percentage}%) on World Cup Quiz!",
+    "champion": "I'm the World Cup Quiz Champion!",
+    "runnerUp": "I'm the World Cup Quiz Runner-up!",
+    "thirdPlace": "I'm the World Cup Quiz Third place!",
+    "myScore": "I scored {finalScore}/{total}",
+    "dialogueTitle": "Share your score"
   },
   "settings": {
     "appearance": "Appearance",

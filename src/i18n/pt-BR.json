@@ -3,11 +3,12 @@
     "title": "Quiz Copa do Mundo",
     "subtitle": "• 1930 – 2022 •",
     "builtBy": "World Cup Quiz©",
-    "dataFrom": "Dados de jfjelstul/worldcup"
+    "dataFrom": "Dados de jfjelstul/worldcup",
+    "tryApp": "Experimente o aplicativo!"
   },
   "home": {
     "ready": "Pronto para testar seu conhecimento?",
-    "description": "Perguntas aleatórias de todas as Copas do Mundo.",
+    "description": "Perguntas de todas as Copas do Mundo.",
     "startButton": "Iniciar Quiz Agora",
     "selectLanguage": "Selecione o idioma"
   },
@@ -24,20 +25,32 @@
     "noScorer": "Sem marcador",
     "someoneElse": "Outro jogador",
     "finish": "Finalizar Rodada",
-    "miss": "Errou o chute!"
+    "miss": "Errou o chute!",
+    "question": "Pergunta: "
   },
   "results": {
     "champion": "Parabéns! Você é o campeão!",
     "secondPosition": "Você foi ótimo! Quase alcançou a glória.",
     "thirdPosition": "Você está entre os melhores. Tenha orgulho disso!",
     "keepGoing": "<strong>Nem sempre vamos ganhar</strong>.<br/>Concentre-se na próxima rodada.<br>Você pode fazer melhor!",
-    "title": "Rodada Complete!",
+    "title": "Rodada Completa!",
     "correct": "Correto",
     "wrong": "Errado",
     "points": "Pontos",
     "playAgain": "Jogar novamente",
     "backToHome": "Voltar para o início",
-    "goal": "GOOOL!"
+    "goal": "GOOOL!",
+    "shareScore": "Compartilhar pontuação"
+  },
+  "share": {
+    "quizScore": "Minha pontuação no Quiz da Copa do Mundo",
+    "beatScore": "Você consegue bater minha pontuação?",
+    "myScoreAndPercentage": "Eu marquei {finalScore}/{total} ({percentage}%) no Quiz da Copa do Mundo!",
+    "champion": "Eu sou o campeão do Quiz da Copa do Mundo!",
+    "runnerUp": "Eu sou o vice-campeão do Quiz da Copa do Mundo!",
+    "thirdPlace": "Eu fiquei em terceiro lugar no Quiz da Copa do Mundo!",
+    "myScore": "Eu marquei {finalScore}/{total}",
+    "dialogueTitle": "Compartilhe sua pontuação"
   },
   "settings": {
     "appearance": "Aparência",

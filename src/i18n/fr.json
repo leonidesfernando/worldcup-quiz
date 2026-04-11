@@ -3,11 +3,12 @@
     "title": "Quiz de la Coupe du Monde",
     "subtitle": "• 1930 – 2022 •",
     "builtBy": "Quiz Coupe du Monde©",
-    "dataFrom": "Données de jfjelstul/worldcup"
+    "dataFrom": "Données de jfjelstul/worldcup",
+    "tryApp": "Essayez l'application !"
   },
   "home": {
     "ready": "Prêt à tester vos connaissances ?",
-    "description": "Questions aléatoires de toutes les Coupes du Monde.",
+    "description": "Questions issues de toutes les Coupes du Monde.",
     "startButton": "Commencer le quiz",
     "selectLanguage": "Choisir la langue"
   },
@@ -24,7 +25,8 @@
     "noScorer": "Aucun buteur",
     "someoneElse": "Quelqu’un d’autre",
     "finish": "Terminer la manche",
-    "miss": "Tir manqué !"
+    "miss": "Tir manqué !",
+    "question": "Question: "
   },
   "results": {
     "champion": "Bravo ! Vous êtes le champion !",
@@ -37,7 +39,18 @@
     "points": "Points",
     "playAgain": "Rejouer",
     "backToHome": "Retour à l’accueil",
-    "goal": "BUT !"
+    "goal": "BUT !",
+    "shareScore": "Partager mon score"
+  },
+  "share": {
+    "quizScore": "Mon score au quiz de la Coupe du Monde",
+    "beatScore": "Peux-tu battre mon score ?",
+    "myScoreAndPercentage": "J’ai obtenu {finalScore}/{total} ({percentage}%) au quiz de la Coupe du Monde !",
+    "champion": "Je suis le champion du quiz de la Coupe du Monde !",
+    "runnerUp": "Je suis le finaliste du quiz de la Coupe du Monde !",
+    "thirdPlace": "J’ai obtenu la troisième place au quiz de la Coupe du Monde !",
+    "myScore": "J’ai obtenu {finalScore}/{total}",
+    "dialogueTitle": "Partage ton score"
   },
   "settings": {
     "appearance": "Apparence",

@@ -4,6 +4,7 @@ import { Directory, Filesystem } from '@capacitor/filesystem';
 import { Share } from '@capacitor/share';
 import html2canvas from 'html2canvas';
 import write_blob from 'capacitor-blob-writer';
+import type { Translator } from '../i18n/i18n';
 
 function canvasToBlob(canvas: HTMLCanvasElement, quality = 0.95): Promise<Blob> {
   return new Promise((resolve, reject) =>
@@ -28,6 +29,7 @@ export function useShareScore() {
       finalScore: number,
       total: number,
       percentage: number,
+      t: Translator
     ) => {
       try {
         const isDark = document.documentElement.classList.contains('dark');
@@ -64,10 +66,10 @@ export function useShareScore() {
         // Step 3: share image only in `files`, text separately — mixing both in
         // the same payload causes WhatsApp to drop the image
         await Share.share({
-          title: 'My World Cup Quiz Score',
+          title: t('share.quizScore'),//'My World Cup Quiz Score',
           text: buildShareText(finalScore, total, percentage),
           files: [uri],
-          dialogTitle: 'Share your score',
+          dialogTitle: t('share.dialogueTitle')//'Share your score',
         });
       } catch (error) {
         console.error('Share failed:', error);

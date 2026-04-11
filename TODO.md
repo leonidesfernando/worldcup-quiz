@@ -16,10 +16,11 @@
 
 ### Account
 
-### Monetize
+### Monetize 
+ - DONE
 
 ### Generate questions
- - Runner-up
+ - Runner-up - done
  - How many goals a player scored in a tourment
  - How many world cups a player participate
  - How many goals a team scored so far
@@ -35,9 +36,9 @@
  - impossible
 
 ### Languages
-- Polish
-- German
-- French
+- Polish - done
+- German - done
+- French - done
 - *Translate the country names* - Done
 - Adjust West Germany and leave only Germany if the year great or equal to 1990 - Done
 
@@ -64,3 +65,4 @@
 - Ajust Results layout page the statitcs section and buttons are so tight - done
 - Show category on question
 - Show difficulty on question
+- Adjust share text to get from i18n

@@ -3,11 +3,12 @@
     "title": "WM-Quiz",
     "subtitle": "• 1930 – 2022 •",
     "builtBy": "WM-Quiz©",
-    "dataFrom": "Daten von jfjelstul/worldcup"
+    "dataFrom": "Daten von jfjelstul/worldcup",
+    "tryApp": "Probieren Sie die App aus!"
   },
   "home": {
     "ready": "Bereit, dein Wissen zu testen?",
-    "description": "Zufällige Fragen aus allen Weltmeisterschaften.",
+    "description": "Fragen aus allen Weltmeisterschaften.",
     "startButton": "Quiz starten",
     "selectLanguage": "Sprache auswählen"
   },
@@ -24,7 +25,8 @@
     "noScorer": "Kein Torschütze",
     "someoneElse": "Jemand anderes",
     "finish": "Runde beenden",
-    "miss": "Schuss verfehlt!"
+    "miss": "Schuss verfehlt!",
+    "question": "Frage: "
   },
   "results": {
     "champion": "Gut gemacht! Du bist der Champion!",
@@ -37,7 +39,18 @@
     "points": "Punkte",
     "playAgain": "Nochmal spielen",
     "backToHome": "Zurück zur Startseite",
-    "goal": "TOR!"
+    "goal": "TOR!",
+    "shareScore": "Meine Punktzahl teilen"
+  },
+  "share": {
+    "quizScore": "Mein Ergebnis im Weltmeisterschafts-Quiz",
+    "beatScore": "Kannst du mein Ergebnis schlagen?",
+    "myScoreAndPercentage": "Ich habe {finalScore}/{total} ({percentage}%) im Weltmeisterschafts-Quiz erreicht!",
+    "champion": "Ich bin der Champion des Weltmeisterschafts-Quiz!",
+    "runnerUp": "Ich bin der Zweitplatzierte im Weltmeisterschafts-Quiz!",
+    "thirdPlace": "Ich habe den dritten Platz im Weltmeisterschafts-Quiz erreicht!",
+    "myScore": "Ich habe {finalScore}/{total} erreicht",
+    "dialogueTitle": "Teile dein Ergebnis"
   },
   "settings": {
     "appearance": "Erscheinungsbild",

@@ -7,7 +7,7 @@
   },
   "home": {
     "ready": "¿Listo para poner a prueba tus conocimientos?",
-    "description": "Preguntas aleatorias de todos los Mundiales.",
+    "description": "Preguntas de todos los Mundiales.",
     "startButton": "Comenzar quiz",
     "selectLanguage": "Seleccionar idioma"
   },
@@ -24,7 +24,9 @@
     "noScorer": "Sin goleador",
     "someoneElse": "Alguien más",
     "finish": "Terminar ronda",
-    "miss": "¡Disparo fallado!"
+    "miss": "¡Disparo fallado!",
+    "question": "Pergunta: ",
+    "tryApp": "¡Prueba la aplicación!"
   },
   "results": {
     "champion": "¡Bien hecho! ¡Eres el campeón!",
@@ -37,7 +39,8 @@
     "points": "Puntos",
     "playAgain": "Jugar de nuevo",
     "backToHome": "Volver al inicio",
-    "goal": "¡GOL!"
+    "goal": "¡GOL!",
+    "shareScore": "Comparte mi puntuación"
   },
   "settings": {
     "appearance": "Apariencia",
@@ -49,6 +52,16 @@
     "off": "Apagado",
     "language": "Idioma",
     "close": "Cerrar"
+  },
+  "share": {
+    "quizScore": "Mi puntuación del Quiz de la Copa del Mundo",
+    "beatScore": "¿Puedes superar mi puntuación?",
+    "myScoreAndPercentage": "Obtuve {finalScore}/{total} ({percentage}%) en el Quiz de la Copa del Mundo",
+    "champion": "¡Soy el campeón del Quiz de la Copa del Mundo!",
+    "runnerUp": "¡Soy el subcampeón del Quiz de la Copa del Mundo!",
+    "thirdPlace": "¡Soy el tercer lugar del Quiz de la Copa del Mundo!",
+    "myScore": "Obtuve {finalScore}/{total}",
+    "dialogueTitle": "Comparte tu puntuación"
   },
   "questions": {
     "totalPlayerMatches": "¿Cuántos partidos de la Copa del Mundo jugó {playerName} representando a {countryName}?",

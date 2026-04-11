@@ -3,11 +3,12 @@
     "title": "Quiz Mistrzostw Świata",
     "subtitle": "• 1930 – 2022 •",
     "builtBy": "Quiz Mistrzostw Świata©",
-    "dataFrom": "Dane z jfjelstul/worldcup"
+    "dataFrom": "Dane z jfjelstul/worldcup",
+    "tryApp": "Wypróbuj aplikację!"
   },
   "home": {
     "ready": "Gotowy, by sprawdzić swoją wiedzę?",
-    "description": "Losowe pytania ze wszystkich Mistrzostw Świata.",
+    "description": "Pytania ze wszystkich Mistrzostw Świata.",
     "startButton": "Rozpocznij quiz",
     "selectLanguage": "Wybierz język"
   },
@@ -24,7 +25,8 @@
     "noScorer": "Brak strzelca",
     "someoneElse": "Ktoś inny",
     "finish": "Zakończ rundę",
-    "miss": "Niecelny strzał!"
+    "miss": "Niecelny strzał!",
+    "question": "Pytanie: "
   },
   "results": {
     "champion": "Brawo! Jesteś mistrzem!",
@@ -37,7 +39,18 @@
     "points": "Punkty",
     "playAgain": "Zagraj ponownie",
     "backToHome": "Powrót do strony głównej",
-    "goal": "GOL!"
+    "goal": "GOL!",
+    "shareScore": "Udostępnij mój wynik"
+  },
+  "share": {
+    "quizScore": "Mój wynik w quizie o Mistrzostwach Świata",
+    "beatScore": "Czy potrafisz pobić mój wynik?",
+    "myScoreAndPercentage": "Zdobyłem {finalScore}/{total} ({percentage}%) w quizie o Mistrzostwach Świata!",
+    "champion": "Jestem mistrzem quizu o Mistrzostwach Świata!",
+    "runnerUp": "Jestem wicemistrzem quizu o Mistrzostwach Świata!",
+    "thirdPlace": "Zająłem trzecie miejsce w quizie o Mistrzostwach Świata!",
+    "myScore": "Zdobyłem {finalScore}/{total}",
+    "dialogueTitle": "Udostępnij swój wynik"
   },
   "settings": {
     "appearance": "Wygląd",

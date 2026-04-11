@@ -35,8 +35,9 @@ export default function Results({
   const percentage = Math.round((result.correct / result.total) * 100);
 
   // State for bonus and reward offer
-  const [bonusPoints, setBonusPoints] = useState(0);
-  const [showRewardOffer, setShowRewardOffer] = useState(false);
+  //const [bonusPoints, setBonusPoints] = useState(0);
+  const [bonusPoints] = useState(0);
+  //const [showRewardOffer, setShowRewardOffer] = useState(false);
   const { shareScore } = useShareScore();
 
   const finalScore = result.correct + bonusPoints;
@@ -51,7 +52,7 @@ export default function Results({
   useConfetti(percentage);
 
 // ====================== SMART REWARD TIMING ======================
-  useEffect(() => {
+  /*useEffect(() => {
     let delay = 0;
 
     if (percentage === 100) {
@@ -69,14 +70,14 @@ export default function Results({
     }, delay);
 
     return () => clearTimeout(timer);
-  }, [percentage]);
+  }, [percentage]);*/
 
-  const handleWatchAdForBonus = () => {
+  /*const handleWatchAdForBonus = () => {
     AdMobService.showRewarded(() => {
       setBonusPoints(50);
       setShowRewardOffer(false); // hide offer after watching
     });
-  };
+  };*/
 
 
   const handlePlayAgain = async () => {
@@ -98,7 +99,7 @@ const handleShareScore = async () => {
   const resultsCard = document.querySelector('.results-card') as HTMLElement;
   if (!resultsCard) return;
 
-  await shareScore(resultsCard, finalScore, result.total, percentage);
+  await shareScore(resultsCard, finalScore, result.total, percentage, t);
 };
 
   // Trophy / Medal logic
@@ -171,14 +172,12 @@ const handleShareScore = async () => {
               transition={{ delay: 0.3, duration: 0.6 }}
             />
           )}
-          
         </motion.div>
         )}
         <h2 className="results-title">{t("results.title")}</h2>
 
         {/* Motivational Message */}
         <SafeHtmlFormatter html={message} className="results-message" />
-
 
         {/* Big Score Circle */}
         <div className="results-score-circle">
@@ -230,8 +229,8 @@ const handleShareScore = async () => {
 
           {/* Share Button */}
           <button onClick={handleShareScore} className="share-btn">
-            <img src={shareIcon}  className="btn-share" />
-             Share My Score
+            <img src={shareIcon} />
+             {t('results.shareScore')}
           </button>
         </div>
       </div>

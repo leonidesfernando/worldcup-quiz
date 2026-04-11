@@ -1,11 +1,11 @@
 // src/components/QuizScreen.tsx
-import { useState, useEffect, useRef } from 'react';
-import { generateRandomQuestion } from '../lib/questionGenerator';
-import { questionGenerators } from '../lib/questionGeneratorsList';
-import { useTranslation } from '../useTranslation';
-import type { QuizQuestion } from '../types/QuizQuestion';
-import GoalAnimation from './GoalAnimation';
-import MissAnimation from './MissAnimation';
+import { useState, useEffect, useRef } from "react";
+import { generateRandomQuestion } from "../lib/questionGenerator";
+import { questionGenerators } from "../lib/questionGeneratorsList";
+import { useTranslation } from "../useTranslation";
+import type { QuizQuestion } from "../types/QuizQuestion";
+import GoalAnimation from "./GoalAnimation";
+import MissAnimation from "./MissAnimation";
 
 interface Props {
   totalQuestions: number;
@@ -34,9 +34,8 @@ export default function QuizScreen({ totalQuestions, onFinish }: Props) {
 
     //console.log(`Generating exactly ${totalQuestions} questions`);
 
-    const generated = Array.from(
-      { length: totalQuestions },
-      () => generateRandomQuestion(t, questionGenerators)
+    const generated = Array.from({ length: totalQuestions }, () =>
+      generateRandomQuestion(t, questionGenerators),
     );
 
     setQuestions(generated);
@@ -51,13 +50,13 @@ export default function QuizScreen({ totalQuestions, onFinish }: Props) {
     setAnswered(true);
 
     if (index === currentQuestion.correctAnswerIndex) {
-      setCorrectCount(prev => prev + 1);
+      setCorrectCount((prev) => prev + 1);
     }
   };
 
   const goToNext = () => {
     if (currentIndex < questions.length - 1) {
-      setCurrentIndex(prev => prev + 1);
+      setCurrentIndex((prev) => prev + 1);
       setAnswered(false);
       setSelectedIndex(null);
     } else {
@@ -76,7 +75,7 @@ export default function QuizScreen({ totalQuestions, onFinish }: Props) {
     <div className="quiz-card">
       <div className="quiz-header">
         <button onClick={() => window.location.reload()} className="back-btn">
-          &larr; {t('quiz.back')}
+          &larr; {t("quiz.back")}
         </button>
         <div className="score-display">
           {correctCount} / {totalQuestions}
@@ -84,17 +83,21 @@ export default function QuizScreen({ totalQuestions, onFinish }: Props) {
       </div>
 
       {/* Progress + Category + Difficulty Badges */}
-<div className="question-header">
-  <div className="progress">
-    Q{currentIndex + 1}/{totalQuestions}
-  </div>
-  <div className="badges">
-    <span className="badge category-badge">{currentQuestion.category}</span>
-    <span className={`badge difficulty-badge ${currentQuestion.difficulty?.toLowerCase()}`}>
-      {currentQuestion.difficulty}
-    </span>
-  </div>
-</div>
+      <div className="question-header">
+        <div className="progress">
+          {t("quiz.question")} {currentIndex + 1}/{totalQuestions}
+        </div>
+        <div className="badges">
+          <span className="badge category-badge">
+            {currentQuestion.category}
+          </span>
+          <span
+            className={`badge difficulty-badge ${currentQuestion.difficulty?.toLowerCase()}`}
+          >
+            {currentQuestion.difficulty}
+          </span>
+        </div>
+      </div>
 
       <h2 className="question-text">{currentQuestion.question}</h2>
 
@@ -124,21 +127,28 @@ export default function QuizScreen({ totalQuestions, onFinish }: Props) {
 
       {answered && (
         <div className="feedback-box">
-          <p className={`feedback-title ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`}>
-            {isCorrect ? t('quiz.correct') : t('quiz.wrong')}
+          <p
+            className={`feedback-title ${isCorrect ? "feedback-correct" : "feedback-wrong"}`}
+          >
+            {isCorrect ? t("quiz.correct") : t("quiz.wrong")}
           </p>
 
           {/* Show animation only when correct */}
           {isCorrect && (
-            <GoalAnimation onComplete={() => console.log('Goal animation finished')} />
+            <GoalAnimation
+              onComplete={() => console.log("Goal animation finished")}
+            />
           )}
 
           {/* Incorrect animation - NEW */}
-          {!isCorrect && <MissAnimation onComplete={() => console.log('Miss done')} />}
-
+          {!isCorrect && (
+            <MissAnimation onComplete={() => console.log("Miss done")} />
+          )}
 
           <button onClick={goToNext} className="next-btn">
-            {currentIndex < questions.length - 1 ? t('quiz.next') : t('quiz.finish')}
+            {currentIndex < questions.length - 1
+              ? t("quiz.next")
+              : t("quiz.finish")}
           </button>
         </div>
       )}
