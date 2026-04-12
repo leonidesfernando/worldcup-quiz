@@ -84,10 +84,24 @@ export function useShareScore() {
           files: [uri],
           dialogTitle: t('share.dialogueTitle')//'Share your score',
         });
-      } catch (error) {
+      } catch (error: any) {
+
+        // IMPORTANT: Ignore user cancellation (most common case)
+        if (
+          error.message?.includes('cancel') ||
+          error.message?.includes('dismiss') ||
+          error.code === 'CANCELLED' ||
+          error.name === 'CanceledError' ||
+          String(error).toLowerCase().includes('cancel')
+        ) {
+          console.log('User canceled share dialog - ignoring');
+          return;   // Silent exit - no alert
+        }
+
         console.error('Share failed:', error);
         const fallbackText = `I scored ${finalScore}/${total} on World Cup Quiz! Can you beat me?`;
         await navigator.clipboard.writeText(fallbackText);
+        
         alert("Couldn't open share sheet.\nScore copied to clipboard. You can paste it manually.");
       }
     },

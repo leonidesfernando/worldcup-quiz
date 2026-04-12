@@ -1,7 +1,8 @@
 // src/components/Results.tsx
 import { useTranslation } from "../useTranslation";
 import { motion } from "framer-motion";
-import { useConfetti } from "../hooks/useConfetti";
+//import { useConfetti } from "../hooks/useConfetti";
+import ConfettiEffect from "../hooks/useConfetti";
 import correctIcon from "../assets/correct.png";
 import incorrectIcon from "../assets/incorrect.png";
 import worldCupTrophy from "../assets/world-cup-trophy.png";
@@ -43,13 +44,15 @@ export default function Results({
   const finalScore = result.correct + bonusPoints;
   const hasTrophy = percentage >= 70;
 
+  // Trigger confetti rain needed
+  //useConfetti(percentage);
+  
+
 // Preload rewarded ad
   useEffect(() => {
     AdMobService.loadRewarded();
   }, []);
 
-  // Trigger confetti rain needed
-  useConfetti(percentage);
 
 // ====================== SMART REWARD TIMING ======================
   /*useEffect(() => {
@@ -149,10 +152,17 @@ const handleShareScore = async () => {
     trophyImage = null;
     trophyClass = "no-trophy";
     message = t("results.keepGoing");
+
+    animationVariant = {
+      initial: { scale: 1, rotate: 0, y: 0 },  // Default safe state
+      animate: { scale: 1, rotate: 0, y: 0, transition: { duration: 0 } }
+    };
   }
 
   return (
     <div className="results-screen">
+      {/* Confetti Effect - placed outside the card so it covers the whole screen */}
+      <ConfettiEffect percentage={percentage} />
       <div className="results-card">
         {/* Trophy Section with Animation */}
         {hasTrophy && (
