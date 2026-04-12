@@ -474,9 +474,9 @@ footer {
 
 /* Logo styling - centered, slightly raised above grass */
 .app-logo {
-    max-width: 150px;
-    width: 50vw;
-    max-height: 140px;
+    max-width: 130px;
+    width: 44vw;
+    max-height: 120px;
     height: auto;
     display: block;
     margin: -1rem auto 0;
@@ -1021,14 +1021,14 @@ footer {
 
 .settings-btn {
     position: absolute;
-    top: 1.25rem;
+    top: 1.1rem;
     right: 1.25rem;
     background: rgba(255, 255, 255, 0.25);
     border: none;
     color: white;
-    font-size: 1.6rem;
-    width: 48px;
-    height: 48px;
+    font-size: 1.3rem;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     display: flex;
     align-items: center;
