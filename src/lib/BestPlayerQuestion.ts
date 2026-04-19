@@ -44,19 +44,19 @@ function generateAwardQuestion(t: Translator, fristYearAwardGranted: number, i18
     ));
 
     const year = Utils.getRandomItem(awardedYears);
-    //console.log('year: ', year)
     let correctAnswer: string;
 
-
+    let yearSearch = year;
     if (Number(year) >= fristYearAwardGranted) {
         const award = awardsWinners.find(a => a.tournament_name.includes(year))!;
         correctAnswer = Utils.getFullPlayerName(award?.given_name, award.family_name);
     } else {
         correctAnswer = notAwarded;
+        yearSearch = fristYearAwardGranted.toString();
     }
 
     const sameYearsPlayer = worldCupService.getPlayers()
-        .filter((p: PlayerApparences) => p.tournament_name.includes(year))
+        .filter((p: PlayerApparences) => p.tournament_name.includes(yearSearch))
         .filter((p: PlayerApparences) => Utils.isNotEmptyOrNull(position) ? p.position_code === position : true);
     const otherPlayers = sameYearsPlayer
         .map(a => Utils.getFullPlayerName(a.given_name, a.family_name))

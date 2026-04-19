@@ -9,7 +9,7 @@ describe('FinalScoreQuestion', () => {
         const question = FinalScoreQuestion.generateFinalScoreQuestion(mockT);
 
         // Extract scores from options and validate format if needed
-        expect(question.category).toBe('Finals');
+        expect(question.category).toBe('quiz.categoryFinals');
     });
 
     it('should never include non-finals in 100 runs', () => {
@@ -17,7 +17,7 @@ describe('FinalScoreQuestion', () => {
             const question = FinalScoreQuestion.generateFinalScoreQuestion(mockT);
 
             // You can enhance this if you expose internals
-            expect(question.category).toBe('Finals');
+            expect(question.category).toBe('quiz.categoryFinals');
         }
     });
 });

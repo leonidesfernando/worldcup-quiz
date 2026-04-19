@@ -1,6 +1,7 @@
 // src/data/worldcup.ts
-import { Constants } from './../utils/Constants';
-import data from '../../public/data/worldcup.json' assert { type: 'json' };
+import { Constants } from '../utils/Constants';
+//import data from '../../../public/data/worldcup.json' assert { type: 'json' };
+import data from './db/worldcup.json' with { type: 'json'};
 
 import type { Match, Goal, Tournament, AwardWinners, PlayerApparences } from '../types/worldcup';
 

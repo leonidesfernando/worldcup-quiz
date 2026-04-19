@@ -1,5 +1,6 @@
 import { createPlayerAppearanceService } from "../service/factory/PlayerAppearanceServiceFactory";
 import type { QuizQuestion } from "../types/QuizQuestion";
+import { GoalUtils } from "../utils/GoalUtils";
 import { LangUtils } from "../utils/LangUtils";
 import { PlayerAppearanceUtils } from "../utils/PlayerAppearanceUtil";
 import { Utils } from "../utils/Utils";
@@ -30,15 +31,17 @@ export const MatchesPlayedByPlayerQuestion = {
             countryName = LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, correctPlayerAppearance.team_code));
         }
 
-        const wrongNumbers = new Set<number>();
-        wrongNumbers.add(Utils.randomNumber(correctNumber, 1, 30));
+        /*const wrongNumbers = new Set<number>();
+        const max = correctNumber + (correctNumber * 0.2);
+        wrongNumbers.add(Utils.randomNumber(correctNumber, 1, max));
 
         while (wrongNumbers.size < 3) {
-            wrongNumbers.add(Utils.randomNumber(correctNumber, 1, 30));
+            wrongNumbers.add(Utils.randomNumber(correctNumber, 1, max));
             wrongNumbers.add(Utils.randomNumber(correctNumber, 1, correctNumber+1))
         }
 
-        const optionsNumber = Utils.shuffleArray([correctNumber, ...Array.from(wrongNumbers)]);
+        const optionsNumber = Utils.shuffleArray([correctNumber, ...Array.from(wrongNumbers).slice(0, 3)]);*/
+        const optionsNumber = Utils.shuffleArray([correctNumber, ...GoalUtils.generateWrongGoalNumbers(correctNumber).slice(0, 3)]);
         const options = optionsNumber.map(n => n.toString());
         
 

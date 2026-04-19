@@ -63,6 +63,7 @@ useEffect(() => {
     setScreen("results");
   };
 
+  const goBackHome = () => setScreen("home");
   const openSettings = () => setScreen("settings");
   const closeSettings = () => setScreen("home");
 
@@ -89,7 +90,7 @@ useEffect(() => {
         )}
 
         {screen === "quiz" && (
-          <QuizScreen totalQuestions={3} onFinish={handleRoundFinish} />
+          <QuizScreen totalQuestions={10} onFinish={handleRoundFinish} onBack={goBackHome} />
         )}
 
         {screen === "results" && roundResult && (

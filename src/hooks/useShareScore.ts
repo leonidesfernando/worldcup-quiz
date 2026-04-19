@@ -20,19 +20,20 @@ function buildShareText(finalScore: number, total: number, percentage: number, t
 
     let positionMesage = "";
     if (percentage === 100) {
-      positionMesage = t("share.champion") + "🏆 " + t("share.myScore", {finalScore, total}) +" 🔥";
+      positionMesage = t("share.champion") + "🏆 ";
     } else if (percentage >= 80) {
-      positionMesage = t("share.runnerUp") + "🥈 " + t("share.myScoreAndPercentage", {finalScore, total, percentage}) +" 🔥";
+      positionMesage = t("share.runnerUp") + "🥈 ";
     } else if (percentage >= 70) {
-      positionMesage = t("share.thirdPlace") + "🥉 " + t("share.myScoreAndPercentage", {finalScore, total, percentage}) +" 🔥";
+      positionMesage = t("share.thirdPlace") + "🥉 ";
     }else{
       positionMesage = t("share.myScore", {finalScore, total}) +" 🔥";
     }
 
+    positionMesage += t("share.myScoreAndPercentage", {finalScore, total, percentage}) +" 🔥";
     const tryApp = t("app.tryApp");
     const beatScore = t("share.beatScore");
-    console.log('buildShareText:', `${positionMesage} \n\n${beatScore} ${tryApp}`);
-    return `${positionMesage} \n\n${beatScore} ${tryApp}`;
+    //console.log('buildShareText:', `${positionMesage} \n\n${beatScore}\n${tryApp}`);
+    return `${positionMesage} \n\n${beatScore}\n${tryApp}`;
 }
 
 export function useShareScore() {

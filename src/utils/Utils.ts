@@ -11,8 +11,26 @@ export const Utils = {
   getRandomItem<T>(array: T[]): T {
     if (array.length === 0) throw new Error('Empty array in getRandomItem');
     //console.log('now miliseconds: ', new Date().getMilliseconds())
-    const rand = new Date().getMilliseconds() * this.getRandomNumberInRange(1, 10);
+    //let rand = new Date().getMilliseconds() * this.getRandomNumberInRange(1, 10);
     //console.log('rand: ', rand)
+
+    //const rand = (new Date().getMilliseconds() * Math.random() / 1000) * 10;
+    const rand = Math.random() * array.length;
+    const index = Math.floor(rand % array.length);
+    //console.log('index: ', index)
+    //console.log('array size: ', array.length)
+    return array[index];
+  },
+
+
+    getRandomItem__2<T>(array: T[]): T {
+    if (array.length === 0) throw new Error('Empty array in getRandomItem');
+    //console.log('now miliseconds: ', new Date().getMilliseconds())
+    //let rand = new Date().getMilliseconds() * this.getRandomNumberInRange(1, 10);
+    //console.log('rand: ', rand)
+
+    const rand = (new Date().getMilliseconds() * Math.random() / 1000) * 10;
+    
     const index = Math.floor(rand % array.length);
     //console.log('index: ', index)
     //console.log('array size: ', array.length)
@@ -58,16 +76,26 @@ export const Utils = {
     return num;
   },
 
-  shuffleArray<T>(array: T[]): T[] {
+  shuffleArray___2<T>(array: T[]): T[] {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
-      const rand = new Date().getMilliseconds() * Math.random();
+      //const rand = new Date().getMilliseconds() * Math.random();
+      const rand = (new Date().getMilliseconds() * Math.random() / 1000) * 10;
       const j = Math.floor(rand % array.length);
       //const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     return shuffled;
   },
+
+shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+},
   addWrongOptions(uniqueWrong: string[], t: (key: string, params?: Record<string, any>) => string): string[] {
     const wrongOptions = [t('quiz.unknownScorer'), t('quiz.noScorer'), t('quiz.someoneElse')];
     return [...uniqueWrong, ...wrongOptions].slice(0, 3);

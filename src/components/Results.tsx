@@ -1,7 +1,6 @@
 // src/components/Results.tsx
 import { useTranslation } from "../useTranslation";
 import { motion } from "framer-motion";
-//import { useConfetti } from "../hooks/useConfetti";
 import ConfettiEffect from "../hooks/useConfetti";
 import correctIcon from "../assets/correct.png";
 import incorrectIcon from "../assets/incorrect.png";
@@ -11,10 +10,9 @@ import bronzeMedal from "../assets/bronze-medal.png";
 import SafeHtmlFormatter from "./SafeHtmlFormatter";
 import { useEffect, useState } from "react";
 import { AdMobService } from "../service/AdMobService";
-//import { shareScore } from "../hooks/shareScore";
 import shareIcon from "../assets/share.png";
 import { useShareScore } from '../hooks/useShareScore';
-
+import {Utils} from '../utils/Utils';
 interface RoundResult {
   correct: number;
   wrong: number;
@@ -111,10 +109,14 @@ const handleShareScore = async () => {
   let message = "";
   let animationVariant = {};
 
+  //numver of messages for top3
+  const indexes = [1,2,3,4];
+  let index = Utils.getRandomItem(Utils.shuffleArray(indexes));
+
   if (percentage === 100) {
     trophyImage = worldCupTrophy;
     trophyClass = "gold";
-    message = t("results.champion");
+    message = t(`results.champion${index}`);
     animationVariant = {
       initial: { scale: 0.6, rotate: -15, y: 50 },
       animate: {
@@ -127,7 +129,7 @@ const handleShareScore = async () => {
   } else if (percentage >= 80) {
     trophyImage = silverMedal;
     trophyClass = "silver";
-    message = t("results.secondPosition");
+    message = t(`results.secondPosition${index}`);
     animationVariant = {
       initial: { scale: 0.7, y: 40 },
       animate: {
@@ -139,7 +141,7 @@ const handleShareScore = async () => {
   } else if (percentage >= 70) {
     trophyImage = bronzeMedal;
     trophyClass = "bronze";
-    message = t("results.thirdPosition");
+    message = t(`results.thirdPosition${index}`);
     animationVariant = {
       initial: { scale: 0.8, rotate: 10 },
       animate: {
@@ -151,7 +153,9 @@ const handleShareScore = async () => {
   } else {
     trophyImage = null;
     trophyClass = "no-trophy";
-    message = t("results.keepGoing");
+    indexes.push(5, 6);
+    index = Utils.getRandomItem(Utils.shuffleArray(indexes));
+    message = t(`results.keepGoing${index}`);
 
     animationVariant = {
       initial: { scale: 1, rotate: 0, y: 0 },  // Default safe state

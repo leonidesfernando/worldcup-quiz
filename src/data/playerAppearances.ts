@@ -1,4 +1,4 @@
-import rawData from '../../public/data/player_appearances.json' assert { type: 'json' };
+import rawData from './db/player_appearances.json' with { type: 'json'};
 import type { PlayerAppearance } from '../types/playerAppearance';
 
 type PlayerAppearancesJson = {

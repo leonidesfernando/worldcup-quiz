@@ -568,7 +568,7 @@ footer {
     top: 40%;
     left: 15%;
     transform: translate(-50%, -50%);
-    font-size: clamp(2rem, 10vw, 5rem);
+    font-size: clamp(3rem, 10vw, 7rem);
     transform: translate(-50%, -50%);
     font-weight: 900;
     color: #22c55e;
@@ -619,7 +619,7 @@ footer {
     top: 45%;
     left: 20%;
     transform: translate(-50%, -50%);
-    font-size: 3.5rem;
+    font-size: clamp(3rem, 10vw, 7rem);
     font-weight: 900;
     color: #ef4444;
     text-shadow:
@@ -1413,6 +1413,162 @@ footer {
 }
 
 /* ================= END Share Performance button ==============*/
+
+/* ==================== SKELETON LOADER ==================== */
+@keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position:  200% center; }
+}
+
+.skeleton-block {
+    border-radius: 0.75rem;
+    background: linear-gradient(
+        90deg,
+        #e2e8f0 25%,
+        #f1f5f9 50%,
+        #e2e8f0 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.4s ease infinite;
+}
+
+.dark .skeleton-block {
+    background: linear-gradient(
+        90deg,
+        #1e2d4a 25%,
+        #263a5e 50%,
+        #1e2d4a 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.4s ease infinite;
+}
+
+.skeleton-option {
+    height: 52px;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.quiz-skeleton .quiz-header {
+    margin-bottom: 1.25rem;
+}
+/* ==================== END SKELETON LOADER ==================== */
+
+/* ==================== BACK CONFIRMATION DIALOG ==================== */
+
+.confirm-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: confirm-overlay-in 0.18s ease;
+}
+
+@keyframes confirm-overlay-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.confirm-dialog {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2rem 1.75rem 1.5rem;
+    width: 100%;
+    max-width: 340px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+    animation: confirm-dialog-in 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-align: center;
+}
+
+@keyframes confirm-dialog-in {
+    from { opacity: 0; transform: scale(0.88) translateY(12px); }
+    to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+.confirm-dialog__title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 0.6rem;
+}
+
+.confirm-dialog__message {
+    font-size: 0.975rem;
+    color: #475569;
+    line-height: 1.5;
+    margin-bottom: 1.75rem;
+}
+
+.confirm-dialog__actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.confirm-dialog__btn {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+/* Cancel — secondary style, keep playing */
+.confirm-dialog__btn--cancel {
+    background: #e8edf7;
+    color: #3b4f8c;
+}
+
+.confirm-dialog__btn--cancel:hover {
+    background: #d6e0f5;
+    transform: translateY(-1px);
+}
+
+/* Confirm — destructive red, leave the quiz */
+.confirm-dialog__btn--confirm {
+    background: #ef4444;
+    color: white;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.confirm-dialog__btn--confirm:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* ── Dark mode ── */
+.dark .confirm-dialog {
+    background: #1a2540;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+.dark .confirm-dialog__title {
+    color: #f1f5f9;
+}
+
+.dark .confirm-dialog__message {
+    color: #94a3b8;
+}
+
+.dark .confirm-dialog__btn--cancel {
+    background: #1e2d4a;
+    color: #93b4f8;
+}
+
+.dark .confirm-dialog__btn--cancel:hover {
+    background: #263a5e;
+}
+
+/* ==================== END BACK CONFIRMATION DIALOG ==================== */
 
 @media (max-width: 480px) {
     .quiz-header {

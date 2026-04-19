@@ -30,9 +30,9 @@
  - Which team the player play for
  
  ### Categorize questions
- - easy
- - medium
- - difficult
+ - easy - done
+ - medium - done
+ - difficult - done
  - impossible
 
 ### Languages
@@ -55,7 +55,7 @@
 
 ### Adjust Android layout
 - decrease header(logo, etc.) - Done
-- On Quiz, dar um padding or marging(as perguntas e opções estão muito apertadas)
+- On Quiz, dar um padding or marging(as perguntas e opções estão muito apertadas) - Done
 - Animatons
     - decrease text - Done
     - aligin text - Done
@@ -63,6 +63,9 @@
 - Dark mode - Done
 - Enable/Disable animmations
 - Ajust Results layout page the statitcs section and buttons are so tight - done
-- Show category on question
-- Show difficulty on question
-- Adjust share text to get from i18n
+- Show category on question - Done
+- Show difficulty on question - done
+- Adjust share text to get from i18n - done
+- Adjust to load faster - done
+- Ajust back button - Done
+- Try to improve the random questions

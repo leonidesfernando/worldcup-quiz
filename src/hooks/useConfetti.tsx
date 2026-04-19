@@ -7,7 +7,7 @@ interface Props {
   isActive?: boolean;
 }
 
-export default function ConfettiEffect({ percentage, isActive = true }: Props) {
+export default function ConfettiEffect({ percentage, isActive = true }: Readonly<Props>) {
   const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
@@ -16,14 +16,14 @@ export default function ConfettiEffect({ percentage, isActive = true }: Props) {
     if (percentage === 100) {
       setShowConfetti(true);
       // Stop after 3 seconds for champion effect
-      const timer = setTimeout(() => setShowConfetti(false), 3000);
+      const timer = setTimeout(() => setShowConfetti(false), 3500);
       return () => clearTimeout(timer);
     } 
-    else if (percentage >= 80) {
+    /*else if (percentage >= 80) {
       setShowConfetti(true);
       const timer = setTimeout(() => setShowConfetti(false), 1500);
       return () => clearTimeout(timer);
-    }
+    }*/
   }, [percentage, isActive]);
 
   if (!showConfetti) return null;
@@ -32,7 +32,8 @@ export default function ConfettiEffect({ percentage, isActive = true }: Props) {
     <Confetti
       width={window.innerWidth}
       height={window.innerHeight}
-      numberOfPieces={percentage === 100 ? 300 : 150}
+      //numberOfPieces={percentage === 100 ? 350 : 150}
+      numberOfPieces={350}
       recycle={false}
       colors={
         percentage === 100 

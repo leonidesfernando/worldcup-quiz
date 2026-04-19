@@ -3,7 +3,8 @@
     "title": "Quiz del Mundial",
     "subtitle": "• 1930 – 2022 •",
     "builtBy": "Quiz del Mundial©",
-    "dataFrom": "Datos de jfjelstul/worldcup"
+    "dataFrom": "Datos de jfjelstul/worldcup",
+    "tryApp": "¡Prueba la aplicación!"
   },
   "home": {
     "ready": "¿Listo para poner a prueba tus conocimientos?",
@@ -26,24 +27,42 @@
     "finish": "Terminar ronda",
     "miss": "¡Disparo fallado!",
     "question": "Pergunta: ",
-    "tryApp": "¡Prueba la aplicación!",
     "categoryAwards": "Premios",
     "categoryFinals": "Finales",
     "categoryGoalScorers": "Goleadores",
     "categoryHosts": "Países anfitriones",
     "categoryMatchesPlayed": "Partidos jugados",
+    "categoryGoals": "Goles",
     "categoryRunnerUp": "Subcampeones",
     "categoryTopScorer": "Máximos goleadores",
     "categoryWinners": "Ganadores",
     "difficultyEasy": "Fácil",
     "difficultyMedium": "Medio",
-    "difficultyHard": "Difícil"
+    "difficultyHard": "Difícil",
+    "backConfirmTitle": "¿Salir del quiz?",
+    "backConfirmMessage": "Tu progreso se perderá y el quiz se reiniciará.",
+    "backConfirmCancel": "Seguir jugando",
+    "backConfirmLeave": "Salir"
   },
   "results": {
-    "champion": "¡Bien hecho! ¡Eres el campeón!",
-    "secondPosition": "¡Lo hiciste genial! Estuviste muy cerca de la gloria.",
-    "thirdPosition": "Estás entre los mejores. ¡Siéntete orgulloso!",
-    "keepGoing": "<strong>No siempre se gana</strong>.<br/>Concéntrate en la siguiente ronda.<br/>¡Puedes hacerlo mejor!",
+    "champion1": "¡Bien hecho!<br/><strong>¡Eres el campeón!</strong><br/>¡Has alcanzado la gloria!",
+    "champion2": "¡Increíble!<br/><strong>¡Has alcanzado el estatus legendario de la Copa del Mundo!</strong>",
+    "champion3": "¡Sobresaliente!<br/><strong>¡Un verdadero GOAT del conocimiento de la Copa del Mundo!</strong>",
+    "champion4": "¡Puntuación perfecta!<br/><strong>¡Conoces la Copa del Mundo al detalle!</strong>",
+    "secondPosition1": "¡Lo hiciste muy bien!<br/>Casi alcanzas la gloria.",
+    "secondPosition2": "¡Esfuerzo fantástico!<br/>¡Te quedaste a un paso de la gloria!",
+    "secondPosition3": "¡Tan cerca!<br/>¡Una actuación brillante, a nada del primer lugar!",
+    "secondPosition4": "¡Excelente trabajo!<br/>¡Estás entre la élite de los expertos de la Copa del Mundo!",
+    "thirdPosition1": "Estás entre los mejores.<br/>¡Siéntete orgulloso!",
+    "thirdPosition2": "¡Gran trabajo!<br/>¡Estás entre los mejores aficionados de la Copa del Mundo!",
+    "thirdPosition3": "¡Bien jugado!<br/>¡Una actuación sólida digna de un verdadero competidor!",
+    "thirdPosition4": "¡Buen trabajo!<br/>¡Un resultado del que estar orgulloso entre los aficionados de la Copa del Mundo!",
+    "keepGoing1": "<strong>No siempre se gana</strong>.<br/>Concéntrate en la próxima ronda.<br/>¡Puedes hacerlo mejor!",
+    "keepGoing2": "No fue tu mejor partido, ¡pero todo campeón empieza con una remontada!",
+    "keepGoing3": "¡Sigue adelante!<br/>¡La próxima ronda es tu oportunidad para brillar!",
+    "keepGoing4": "<strong>¡No te rindas!</strong><br/>¡Los grandes jugadores aprenden y vuelven más fuertes!",
+    "keepGoing5": "Cada partido es práctica.<br/>¡Mejoras con cada intento!",
+    "keepGoing6": "<strong>¡Sacúdete!</strong><br/>¡Tienes lo necesario para volver con fuerza!",
     "title": "¡Ronda completada!",
     "correct": "Correctas",
     "wrong": "Incorrectas",
@@ -71,7 +90,6 @@
     "champion": "¡Soy el campeón del Quiz de la Copa del Mundo!",
     "runnerUp": "¡Soy el subcampeón del Quiz de la Copa del Mundo!",
     "thirdPlace": "¡Soy el tercer lugar del Quiz de la Copa del Mundo!",
-    "myScore": "Obtuve {finalScore}/{total}",
     "dialogueTitle": "Comparte tu puntuación"
   },
   "questions": {
@@ -87,7 +105,10 @@
     "totalFinalGoalsScored": "¿Cuántos goles se marcaron en la final {team} x {awayTeam} en {year}?",
     "awardWinner": "¿Quién ganó el premio {award} en {year}?",
     "topScorer": "¿Quién fue el máximo goleador del Mundial {year}?",
-    "bestPlayer": "¿Quién fue nombrado mejor jugador (Balón de Oro) del Mundial {year}?"
+    "bestPlayer": "¿Quién fue nombrado mejor jugador (Balón de Oro) del Mundial {year}?",
+    "ballName": "¿Cómo se llamaba el balón utilizado en la Copa del Mundo de {year}?",
+    "totalGoalsScoredByPlayer": "¿Cuántos goles marcó {playerName} con la selección de {countryName} en todas las Copas del Mundo?",
+    "totalGoalsScoredByPlayerWorldCup": "¿Cuántos goles marcó {playerName} con la selección de {countryName} en la Copa del Mundo de {year}?"
   },
   "countries": {
     "DZA": "Argelia",

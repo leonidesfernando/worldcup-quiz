@@ -3,6 +3,7 @@
 import { mensData } from "../selectors/dataSelectors";
 import { Utils } from "../utils/Utils";
 import { randomSort } from '../filters/filters';
+import type { Goal } from "../types/worldcup";
 
 export class WorldCupService {
   getRandomTournament() {
@@ -25,8 +26,8 @@ export class WorldCupService {
                 //.sort(() => Math.random() - 0.5);
   }*/
 
-  getGoals() {
-    return mensData.goals;
+  getGoals(): Goal[]{
+    return Utils.shuffleArray(mensData.goals);
   }
 
   getTournaments(){

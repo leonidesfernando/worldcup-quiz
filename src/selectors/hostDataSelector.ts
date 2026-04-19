@@ -1,4 +1,4 @@
-import { hostData } from './../data/hosts';
+import { hostData } from '../data/hosts';
 import { isMensTournament, randomSort } from '../filters/filters';
 
 

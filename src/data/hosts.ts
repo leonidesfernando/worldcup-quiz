@@ -1,4 +1,4 @@
-import data from '../../public/data/hosts_countries.json' assert { type: 'json' };
+import data from './db/hosts_countries.json' with  {type: 'json'};
 import type { Hosts } from '../types/worldcup';
 
 
