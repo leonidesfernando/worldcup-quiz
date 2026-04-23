@@ -2,7 +2,7 @@
 layout: default
 title: Privacy Policy
 permalink: /worldcup-quiz/
----
+--- 
 
 # Privacy Policy - World Cup Quiz
 
