@@ -18,14 +18,14 @@
             const correctAwayTeamName = LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, correctMatch.away_team_code));
             const correctAnswer = `${correctHomeTeamName} ${correctMatch.home_team_score} - ${correctMatch.away_team_score} ${correctAwayTeamName}`;
 
-            const options = selectedFinals
+            const options = Utils.shuffleArray(selectedFinals
                     .filter(m => m.match_id != correctMatch.match_id)
                     .map(m => {
                             const homeTeamName = LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, m.home_team_code));
                             const awayTeamName = LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, m.away_team_code));
                             return `${homeTeamName} ${m.home_team_score} - ${m.away_team_score} ${awayTeamName}`;
                     }
-            );
+            )).slice(0, 2);
 
             // get incorrect score for home and away team
             let incorrectHomeTeamScore = Number(correctMatch.home_team_score);

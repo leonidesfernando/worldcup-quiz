@@ -3,7 +3,7 @@ import { Utils } from "./Utils";
 
 export const GoalUtils = {
     getScorerName(goal: Goal): string {
-        return Utils.getFullPlayerName(goal?.given_name, goal?.family_name);
+        return Utils.getFullName(goal?.given_name, goal?.family_name);
     },
 
     /**

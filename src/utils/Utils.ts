@@ -1,5 +1,5 @@
 export const Utils = {
-  getFullPlayerName(name: string, lastName: string): string {
+  getFullName(name: string, lastName: string): string {
     const player = name?.trim();
     if (player != "not applicable") {
       return player + " " + lastName?.trim();

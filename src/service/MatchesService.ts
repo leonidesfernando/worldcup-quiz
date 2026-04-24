@@ -24,10 +24,6 @@ export class MatchesService {
     return this.matches.filter(m => isStage(m, 'semi-finals') ||  isStage(m, 'semi-final'));
   }
 
-  /*getFinalByTournamentId(tournamentId:string): Match {
-    return this.getFinals().filter(f => f.tournament_id === tournamentId)[0]
-  }*/
-
   getRandomMatch(): Match {
     return Utils.getRandomItem(this.getMatches());
   }

@@ -35,6 +35,7 @@
     "categoryGoals": "Gols",
     "categoryRunnerUp": "Vice-campeões",
     "categoryTopScorer": "Artilheiros",
+    "categoryManagers": "Técnicos",
     "categoryWinners": "Campeões",
     "difficultyEasy": "Fácil",
     "difficultyMedium": "Médio",
@@ -108,7 +109,9 @@
     "bestPlayer": "Quem foi o nomeado o melhor jogador (Golden Ball) na Copa de {year}?",
     "ballName": "Qual o nome da bola usada na Copa de {year}?",
     "totalGoalsScoredByPlayer": "Quantos gols {playerName} marcou por/pela {countryName} em todas suas participações em Copas do Mundo?",
-    "totalGoalsScoredByPlayerWorldCup": "Quantos gols o jogador {playerName} marcou por/pela {countryName} na Copa do Mundo de {year}?"
+    "totalGoalsScoredByPlayerWorldCup": "Quantos gols o jogador {playerName} marcou por/pela {countryName} na Copa do Mundo de {year}?",
+    "managerOfTeam": "Quem foi o treinador de(o) {teamName} na Copa do Mundo de {year}?",
+    "managerOfTeamInFinal": "Quem foi o treinador de(o) {teamName} na final da Copa do Mundo de {year}?"
   },
   "countries": {
     "DZA": "Argélia",

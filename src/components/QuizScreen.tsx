@@ -6,6 +6,7 @@ import { useTranslation } from "../useTranslation";
 import type { QuizQuestion } from "../types/QuizQuestion";
 import GoalAnimation from "./GoalAnimation";
 import MissAnimation from "./MissAnimation";
+import { Utils } from "../utils/Utils";
 
 interface Props {
   totalQuestions: number;
@@ -66,7 +67,7 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) 
 
     const generated = generateUniqueQuestions(
       totalQuestions,
-      () => generateRandomQuestion(t, questionGenerators),
+      () => generateRandomQuestion(t, Utils.shuffleArray(questionGenerators)),
     );
 
     setQuestions(generated);

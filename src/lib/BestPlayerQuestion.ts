@@ -49,7 +49,7 @@ function generateAwardQuestion(t: Translator, fristYearAwardGranted: number, i18
     let yearSearch = year;
     if (Number(year) >= fristYearAwardGranted) {
         const award = awardsWinners.find(a => a.tournament_name.includes(year))!;
-        correctAnswer = Utils.getFullPlayerName(award?.given_name, award.family_name);
+        correctAnswer = Utils.getFullName(award?.given_name, award.family_name);
     } else {
         correctAnswer = notAwarded;
         yearSearch = fristYearAwardGranted.toString();
@@ -59,7 +59,7 @@ function generateAwardQuestion(t: Translator, fristYearAwardGranted: number, i18
         .filter((p: PlayerApparences) => p.tournament_name.includes(yearSearch))
         .filter((p: PlayerApparences) => Utils.isNotEmptyOrNull(position) ? p.position_code === position : true);
     const otherPlayers = sameYearsPlayer
-        .map(a => Utils.getFullPlayerName(a.given_name, a.family_name))
+        .map(a => Utils.getFullName(a.given_name, a.family_name))
         .filter(p => p != correctAnswer);
 
 

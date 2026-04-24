@@ -17,9 +17,6 @@ export const RunnerUpQuestion = {
         const countryWinnerCode = MatchUtils.getWinnerCountryCode(finalMatch);
         const runnerUpCode = MatchUtils.getLoserMatchByCountyCode(finalMatch);
 
-//LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, correctMatch.home_team_code));
-
-        //const winnerCountryCode = t(`countries.${countryWinnerCode}`);
         const winnerCountryCode = LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, countryWinnerCode));
         const runnerUpCountryCode = LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, runnerUpCode));
         const correctAnswer: string = LangUtils.getCountyName(year + '', runnerUpCountryCode);

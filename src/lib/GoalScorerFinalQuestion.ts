@@ -24,12 +24,13 @@ export const NumberOfGoalsFinalQuestion = {
         const finalMatch = Utils.getRandomItem(finals);
         const year = getYear(finalMatch);
         const numberOfGoals = finalMatch.home_team_score + finalMatch.away_team_score;
-        const wrongValues = [];
-        while (wrongValues.length < 5) {
-            const value = Math.floor(Math.random() * 11);
-            if (value != numberOfGoals) {
-                wrongValues.push(value);
-            }
+        const wrongValues = new Set<number>();
+        let i = 0;
+        while (i < 6) {
+            i++;
+            wrongValues.add(Utils.randomNumber(numberOfGoals, 0, numberOfGoals+1));
+            if(numberOfGoals -1 <= 0)
+                wrongValues.add(Utils.randomNumber(numberOfGoals, 0, numberOfGoals+6+i));
         }
 
         const uniqueWrong = Array.from(new Set(wrongValues)).slice(0, 3);

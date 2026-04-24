@@ -36,6 +36,7 @@
     "categoryRunnerUp": "Wicemistrzowie",
     "categoryTopScorer": "Najlepsi strzelcy",
     "categoryWinners": "Zwycięzcy",
+    "categoryManagers": "Trenerzy",
     "difficultyEasy": "Łatwy",
     "difficultyMedium": "Średni",
     "difficultyHard": "Trudny",
@@ -108,7 +109,9 @@
     "bestPlayer": "Kto został wybrany najlepszym zawodnikiem (Złota Piłka) Mistrzostw Świata {year}?",
     "ballName": "Jak nazywała się piłka używana na Mistrzostwach Świata w {year} roku?",
     "totalGoalsScoredByPlayer": "Ile goli strzelił {playerName} dla reprezentacji {countryName} na wszystkich Mistrzostwach Świata?",
-    "totalGoalsScoredByPlayerWorldCup": "Ile goli strzelił {playerName} dla reprezentacji {countryName} na Mistrzostwach Świata {year}?"
+    "totalGoalsScoredByPlayerWorldCup": "Ile goli strzelił {playerName} dla reprezentacji {countryName} na Mistrzostwach Świata {year}?",
+    "managerOfTeam": "Kto był trenerem {teamName} na Mistrzostwach Świata {year}?",
+    "managerOfTeamInFinal": "Kto był trenerem {teamName} w finale Mistrzostw Świata {year}?"
   },
   "countries": {
     "DZA": "Algieria",
