@@ -80,6 +80,6 @@ function generateAwardQuestion(t: Translator, fristYearAwardGranted: number, i18
         correctAnswerIndex: options.indexOf(correctAnswer),
         difficulty: correctAnswer === notAwarded ? t('quiz.difficultyEasy') : t('quiz.difficultyMedium'),
         difficultyClass: correctAnswer === notAwarded ? 'easy' : 'medium',
-        category: t('quiz.categoryAwards')//'Awards',
+        category: t('quiz.categoryAwards')
     };
 }

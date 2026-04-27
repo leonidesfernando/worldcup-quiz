@@ -94,6 +94,10 @@
     "dialogueTitle": "Comparte tu puntuación"
   },
   "questions": {
+    "final": "final",
+    "semiFinal": "semifinal",
+    "estadiumName": "¿Cuál es el nombre del estadio del {stageName} {countries}de la Copa del Mundo {year}?",
+    "refereeName": "¿Cuál es el nombre del árbitro del {stageName} {countries}de la Copa del Mundo {year}?",
     "totalPlayerMatches": "¿Cuántos partidos de la Copa del Mundo disputó {playerName} con {countryName}?",
     "goldenGlove": "¿Quién fue el mejor portero (Guante de Oro) en el Mundial de {year}?",
     "bestYoungPlayer": "¿Quién fue el mejor jugador joven del Mundial de {year}?",

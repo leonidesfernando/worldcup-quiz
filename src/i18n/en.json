@@ -94,6 +94,10 @@
     "close": "Close"
   },
   "questions": {
+    "final": "final",
+    "semiFinal": "semi-final",
+    "estadiumName": "What is the name of the stadium for the {stageName} {countries}of the {year} World Cup?",
+    "refereeName": "What is the name of the referee of the {stageName} {countries}of the {year} World Cup?",
     "totalPlayerMatches": "How many World Cup matches has {playerName} played for {countryName}?",
     "goldenGlove": "Who was the best goalkeeper (Golden Glove) at the {year} World Cup?",
     "bestYoungPlayer": "Who was the best young player at the {year} World Cup?",

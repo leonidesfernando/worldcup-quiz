@@ -50,7 +50,8 @@
                 }
                 incorrectAnswer = `${correctHomeTeamName} ${Utils.getRandomNumberInRange(initialIncorrectHomeScore, incorrectHomeTeamScore)} - ${Utils.getRandomNumberInRange(initialIncorrectAwayScore, incorrectAwayteamScore)} ${correctAwayTeamName}`;
             }
-            options.push(correctAnswer, incorrectAnswer);
+            options.push(correctAnswer);
+            options.push(incorrectAnswer);
 
             // Shuffle so correct can be anywhere
             const shuffledOptions = Utils.shuffleArray(options);
@@ -59,9 +60,9 @@
                 question: t('questions.finalScore', { year }),
                 options: shuffledOptions,
                 correctAnswerIndex: correctIndex,
-                difficulty: t('quiz.difficultyMedium'),//'medium',
+                difficulty: t('quiz.difficultyMedium'),
                 difficultyClass: 'medium',
-                category: t('quiz.categoryFinals')//'Finals',
+                category: t('quiz.categoryFinals')
             };
         }
     }

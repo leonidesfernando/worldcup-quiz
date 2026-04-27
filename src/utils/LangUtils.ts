@@ -1,20 +1,14 @@
 import type { Translator } from './../i18n/i18n';
+import { Constants } from './Constants';
 export const LangUtils = {
     getCountyName(year: string, countryName: string): string {
         const yearNumber = Number.parseInt(year.trim(), 10);
 
-        if (yearNumber > 1990) {
-            return countryName
-                .replaceAll("Westdeutschland", "Deutschland")
-                .replaceAll("West", "")
-                .replaceAll("Oriental", "")
-                .replaceAll("Zachodnie", "")
-                .replaceAll("de l'Ouest", "")
-                .replaceAll("Occidental", "")
-                .replaceAll("Ocidental", "")
-                .trim();
+        if (yearNumber <= 1990) {
+            return countryName;
         }
-        return countryName;
+        const normalized = countryName.trim();
+        return Constants.countriesMap[normalized] ?? normalized;
     },
 
     getCountryNameByi18n(t: Translator, code: string): string {

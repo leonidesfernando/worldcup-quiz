@@ -94,6 +94,10 @@
     "close": "Zamknij"
   },
   "questions": {
+    "final": "finał",
+    "semiFinal": "półfinał",
+    "estadiumName": "Jaka jest nazwa stadionu {stageName} {countries}Mistrzostw Świata {year}?",
+    "refereeName": "Jak nazywa się sędzia {stageName} {countries}Mistrzostw Świata {year}?",
     "totalPlayerMatches": "Ile meczów Mistrzostw Świata rozegrał {playerName} reprezentując {countryName}?",
     "goldenGlove": "Kto był najlepszym bramkarzem (Złota Rękawica) na Mistrzostwach Świata w {year}?",
     "bestYoungPlayer": "Kto był najlepszym młodym zawodnikiem na Mistrzostwach Świata w {year}?",

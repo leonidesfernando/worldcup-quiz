@@ -12,6 +12,8 @@ import { MatchesPlayedByPlayerQuestion } from './MatchesPlayedByPlayerQuestion';
 import { BallNameQuestion } from './BallNameQuestion';
 import { GoalsScoredQuestion } from './GoalsScoredQuestion';
 import { ManagerQuestion } from './ManagerQuestion';
+import { StadiumNameQuestion } from './StadiumNameQuestion';
+import { RefereeAppearanceQuestion } from './RefereeAppearanceQuestion';
 
 // Export the list of pure generator functions
 export const questionGenerators: Array<(t: Translator) => QuizQuestion> =
@@ -30,4 +32,6 @@ export const questionGenerators: Array<(t: Translator) => QuizQuestion> =
     BallNameQuestion.generateBallNameQuestion,
     GoalsScoredQuestion.generateTotalGoalsScoredByPlayer,
     GoalsScoredQuestion.generateTotalGoalScoredByPlayerInAppearance,
-    ManagerQuestion.generateManagerOfTeamInWorldCup,] as const;
+    ManagerQuestion.generateManagerOfTeamInWorldCup,
+    StadiumNameQuestion.generateStadiumNameQuestion,
+    RefereeAppearanceQuestion.generateRefereeAppearanceQuestion] as const;

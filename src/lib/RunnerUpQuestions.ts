@@ -44,9 +44,9 @@ export const RunnerUpQuestion = {
             question: t('questions.runnerUp', { year }),
             options,
             correctAnswerIndex: options.indexOf(correctAnswer),
-            difficulty: t('quiz.difficultyMedium'),//'hard',
+            difficulty: t('quiz.difficultyMedium'),
             difficultyClass: 'hard',
-            category: t('quiz.categoryRunnerUp')//'Runner-up',
+            category: t('quiz.categoryRunnerUp')
         };
     }
 }

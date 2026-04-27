@@ -94,6 +94,10 @@
     "close": "Fechar"
   },
   "questions": {
+    "final": "final",
+    "semiFinal": "semi final",
+    "refereeName": "Qual o nome do árbitro da {stageName} {countries}da Copa do Mundo de {year}?",
+    "estadiumName": "Qual o nome do estádio da {stageName} {countries}da Copa do Mundo de {year}?",
     "totalPlayerMatches": "Quantas partidas {playerName} disputou por/pela {countryName} em torneios da Copa do Mundo?",
     "goldenGlove": "Quem foi o melhor goleiro(Golden Glove) na Copa do Mundo de {year}?",
     "bestYoungPlayer": "Quem foi o melhor jovem jogador(Best Young Player) na Copa do Mundo de {year}?",
@@ -108,8 +112,8 @@
     "topScorer": "Quem foi o artilheiro da Copa de {year}?",
     "bestPlayer": "Quem foi o nomeado o melhor jogador (Golden Ball) na Copa de {year}?",
     "ballName": "Qual o nome da bola usada na Copa de {year}?",
-    "totalGoalsScoredByPlayer": "Quantos gols {playerName} marcou por/pela {countryName} em todas suas participações em Copas do Mundo?",
-    "totalGoalsScoredByPlayerWorldCup": "Quantos gols o jogador {playerName} marcou por/pela {countryName} na Copa do Mundo de {year}?",
+    "totalGoalsScoredByPlayer": "Quantos gols {playerName} marcou pelo(a) {countryName} em todas suas participações em Copas do Mundo?",
+    "totalGoalsScoredByPlayerWorldCup": "Quantos gols o jogador {playerName} marcou pelo(a) {countryName} na Copa do Mundo de {year}?",
     "managerOfTeam": "Quem foi o treinador de(o) {teamName} na Copa do Mundo de {year}?",
     "managerOfTeamInFinal": "Quem foi o treinador de(o) {teamName} na final da Copa do Mundo de {year}?"
   },

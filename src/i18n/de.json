@@ -94,6 +94,10 @@
     "close": "Schließen"
   },
   "questions": {
+    "final": "Finale",
+    "semiFinal": "Halbfinale",
+    "estadiumName": "Wie heißt das Stadion des {stageName} {countries}der Weltmeisterschaft {year}?",
+    "refereeName": "Wie heißt der Schiedsrichter des {stageName} {countries}der Weltmeisterschaft {year}?",
     "totalPlayerMatches": "Wie viele WM-Spiele hat {playerName} für {countryName} bestritten?",
     "goldenGlove": "Wer war der beste Torhüter (Goldener Handschuh) bei der WM {year}?",
     "bestYoungPlayer": "Wer war der beste Nachwuchsspieler bei der WM {year}?",

@@ -14,18 +14,6 @@ export class WorldCupService {
     return mensData.tournaments.filter(t => t.tournament_id === tournamentId)[0];
   }
 
-  
-  /*getMatches() {
-    return mensData.matches;
-  }
-
-  getFinals() {
-    return mensData.matches
-                .filter(m => m.stage_name?.toLowerCase() === 'final')
-                .sort(randomSort)
-                //.sort(() => Math.random() - 0.5);
-  }*/
-
   getGoals(): Goal[]{
     return Utils.shuffleArray(mensData.goals);
   }

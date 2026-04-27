@@ -47,9 +47,9 @@ export const WinnerQuestion = {
             question: t('questions.winner', { year }),
             options,
             correctAnswerIndex: options.indexOf(correctAnswer),
-            difficulty: correctAnswer === t('quiz.draw') ? t('quiz.difficultyHard') : t('quiz.difficultyEasy'),//'hard' : 'easy', // draws are harder
+            difficulty: correctAnswer === t('quiz.draw') ? t('quiz.difficultyHard') : t('quiz.difficultyEasy'),
             difficultyClass: correctAnswer === t('quiz.draw') ? 'hard' : 'easy',
-            category: t('quiz.categoryWinners')//'Winners',
+            category: t('quiz.categoryWinners')
         };
     }
 }

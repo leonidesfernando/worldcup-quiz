@@ -12,10 +12,6 @@ export const TopScorerQuestion = {
 
         const goalsByYearAndPlayer: Record<string, Record<string, number>> = {};
 
-        /*const matches = matchesService.getMatches();
-        const randomMatch = Utils.getRandomItem(matches);
-        const yyear = Utils.getYearByTournamentId(randomMatch.tournament_id);*/
-
         matchesService.getMatches().forEach(match => {
             const year = Utils.getYearByTournamentId(match.tournament_id);
             const matchGoals = goalsByMatchId.get(String(match.match_id)) || [];
@@ -59,10 +55,6 @@ export const TopScorerQuestion = {
         //TODO: adicionar opcao errada com mais de um nome, mais de um jogador
         const uniqueWrong = Array.from(new Set(otherPlayers));
 
-        /*if (uniqueWrong.length < 3) {
-            return WinnerQuestion.generateWinnerQuestion(t);
-        }*/
-
         for(let i = 0; i < 2; i++){
             uniqueWrong.push(`${Utils.getRandomItem(uniqueWrong)}, ${Utils.getRandomItem(uniqueWrong)}`,
             `${Utils.getRandomItem(uniqueWrong)}, ${Utils.getRandomItem(uniqueWrong)}, ${Utils.getRandomItem(uniqueWrong)}`);
@@ -75,9 +67,9 @@ export const TopScorerQuestion = {
             question: t('questions.topScorer', { year }),
             options,
             correctAnswerIndex: options.indexOf(correctAnswer),
-            difficulty: t('quiz.difficultyMedium'),//'medium',
+            difficulty: t('quiz.difficultyMedium'),
             difficultyClass: 'medium',
-            category: t('quiz.categoryTopScorer')//'Goal Scorers',
+            category: t('quiz.categoryTopScorer')
         };
     }
 }

@@ -31,27 +31,16 @@ export const MatchesPlayedByPlayerQuestion = {
             countryName = LangUtils.getCountyName(year, LangUtils.getCountryNameByi18n(t, correctPlayerAppearance.team_code));
         }
 
-        /*const wrongNumbers = new Set<number>();
-        const max = correctNumber + (correctNumber * 0.2);
-        wrongNumbers.add(Utils.randomNumber(correctNumber, 1, max));
-
-        while (wrongNumbers.size < 3) {
-            wrongNumbers.add(Utils.randomNumber(correctNumber, 1, max));
-            wrongNumbers.add(Utils.randomNumber(correctNumber, 1, correctNumber+1))
-        }
-
-        const optionsNumber = Utils.shuffleArray([correctNumber, ...Array.from(wrongNumbers).slice(0, 3)]);*/
         const optionsNumber = Utils.shuffleArray([correctNumber, ...GoalUtils.generateWrongGoalNumbers(correctNumber).slice(0, 3)]);
         const options = optionsNumber.map(n => n.toString());
         
-
         return {
             question: t('questions.totalPlayerMatches', { playerName, countryName }),
             options,
             correctAnswerIndex: options.indexOf(correctNumber.toString()),
-            difficulty: t('quiz.difficultyHard'),//'hard',
+            difficulty: t('quiz.difficultyHard'),
             difficultyClass: 'hard',
-            category: t('quiz.categoryMatchesPlayed')//'Matches Played',
+            category: t('quiz.categoryMatchesPlayed')
         };
     }
 }

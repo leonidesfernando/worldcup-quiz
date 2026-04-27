@@ -6,7 +6,6 @@ import { Utils } from '../utils/Utils';
 export function generateRandomQuestion(
   t: Translator,
   generators: Array<(t: Translator) => QuizQuestion>,  // ← remove typeof here — it's causing cycle
-  //getRandomIndex: (max: number) => number = (max) => Math.floor(Math.random() * max)
 ): QuizQuestion {
   for (let attempt = 0; attempt < 10; attempt++) {
     const generator = Utils.getRandomItem(generators);

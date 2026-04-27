@@ -24,8 +24,20 @@ export class MatchesService {
     return this.matches.filter(m => isStage(m, 'semi-finals') ||  isStage(m, 'semi-final'));
   }
 
+  getByTournamentId(tournamentId: string): Match[] {
+    return this.matches.filter(m => m.tournament_id === tournamentId);
+  }
+
   getRandomMatch(): Match {
     return Utils.getRandomItem(this.getMatches());
+  }
+
+  getByMatchId(matchId: string): Match {
+    const match = this.matches.find(m => m.match_id === matchId);
+    if(match){
+      return match;
+    }
+    throw new Error(`Match with match id ${matchId} not found`);
   }
 
   getOtherCountryCodes(countryCode: string){

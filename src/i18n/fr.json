@@ -94,6 +94,10 @@
     "close": "Fermer"
   },
   "questions": {
+    "final": "finale",
+    "semiFinal": "demi-finale",
+    "estadiumName": "Quel est le nom du stade du {stageName} {countries}de la Coupe du monde {year} ?",
+    "refereeName": "Quel est le nom de l’arbitre du {stageName} {countries}de la Coupe du monde {year} ?",
     "totalPlayerMatches": "Combien de matchs de Coupe du Monde {playerN ame} a-t-il disputés avec {countryName} ?",
     "goldenGlove": "Qui était le meilleur gardien (Gant d'Or) lors de la Coupe du Monde {year} ?",
     "bestYoungPlayer": "Qui était le meilleur jeune joueur de la Coupe du Monde {year} ?",

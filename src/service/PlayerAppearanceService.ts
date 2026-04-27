@@ -21,17 +21,4 @@ export class PlayerAppearanceService {
             );
   }
 
-  /*
-  getRandomPlayersAppearanceExcludingThis(playerApparence: PlayerAppearance): PlayerAppearance[] {
-    return this.playerAppearances.filter(p => p != playerApparence);
-  }*/
-
-  /*getPlayersAppearanceByName(familyName:string, givenName:string) : PlayerAppearance[]{
-    return this.playerAppearances
-            .filter(
-                p => p.family_name === familyName && 
-                (Utils.isNotEmptyOrNull(givenName) ? p.given_name === givenName : true)
-            );
-  }*/
-
  }
