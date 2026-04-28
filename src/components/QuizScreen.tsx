@@ -3,10 +3,15 @@ import { useState, useEffect, useRef } from "react";
 import { generateRandomQuestion } from "../lib/questionGenerator";
 import { questionGenerators } from "../lib/questionGeneratorsList";
 import { useTranslation } from "../useTranslation";
+import { useSettings } from "../components/SettingsContext";
+import { useTimer } from "../hooks/useTimer";
 import type { QuizQuestion } from "../types/QuizQuestion";
 import GoalAnimation from "./GoalAnimation";
 import MissAnimation from "./MissAnimation";
+import TimeUpScreen from "./TimeUpScreen";
 import { Utils } from "../utils/Utils";
+
+const TIMER_DURATION_SECONDS = 120; // 2 minutes
 
 interface Props {
   totalQuestions: number;
@@ -19,15 +24,12 @@ function generateUniqueQuestions(
   generator: () => QuizQuestion,
   maxAttempts = total * 10,
 ): QuizQuestion[] {
-
   const questionsByKey = new Map<string, QuizQuestion>();
   let attempts = 0;
 
   while (questionsByKey.size < total && attempts < maxAttempts) {
     attempts++;
-
     const q = generator();
-
     if (!questionsByKey.has(q.question)) {
       questionsByKey.set(q.question, q);
     }
@@ -42,8 +44,16 @@ function generateUniqueQuestions(
   return Array.from(questionsByKey.values());
 }
 
+// Format seconds as M:SS (e.g. 90 → "1:30")
+function formatTime(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}:${s.toString().padStart(2, "0")}`;
+}
+
 export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) {
   const { t } = useTranslation();
+  const { isTimerEnabled } = useSettings();
 
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -51,19 +61,14 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) 
   const [answered, setAnswered] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [showBackConfirm, setShowBackConfirm] = useState(false);
+  const [isTimeUp, setIsTimeUp] = useState(false);
 
-  // ────────────────────────────────────────────────
-  // Prevent double generation in StrictMode (React 18+)
-  // ────────────────────────────────────────────────
+  // ── Question generation ───────────────────────────
   const initialized = useRef(false);
 
   useEffect(() => {
     if (initialized.current) return;
     initialized.current = true;
-
-    /*const generated = Array.from({ length: totalQuestions }, () =>
-      generateRandomQuestion(t, questionGenerators),
-    );*/
 
     const generated = generateUniqueQuestions(
       totalQuestions,
@@ -72,6 +77,23 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) 
 
     setQuestions(generated);
   }, [totalQuestions]); // ← t is omitted on purpose
+
+  // ── Timer ─────────────────────────────────────────
+  // Only starts counting once questions are loaded
+  const questionsReady = questions.length > 0;
+
+  const { secondsLeft, percentLeft, pause, resume } = useTimer({
+    durationSeconds: TIMER_DURATION_SECONDS,
+    enabled: isTimerEnabled && questionsReady,
+    onExpire: () => setIsTimeUp(true),
+  });
+
+  // Pause timer while back-confirm modal is open
+  useEffect(() => {
+    if (!isTimerEnabled) return;
+    if (showBackConfirm) pause();
+    else resume();
+  }, [showBackConfirm, isTimerEnabled, pause, resume]);
 
   const currentQuestion = questions[currentIndex];
 
@@ -94,34 +116,38 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) 
     }
   };
 
-  const handleBackClick = () => {
-    setShowBackConfirm(true);
-  };
+  const handleBackClick   = () => setShowBackConfirm(true);
+  const handleConfirmBack = () => onBack();
+  const handleCancelBack  = () => setShowBackConfirm(false);
 
-  const handleConfirmBack = () => {
-    onBack();
-  };
-
-  const handleCancelBack = () => {
-    setShowBackConfirm(false);
-  };
+  // ── Time-up screen ────────────────────────────────
+  if (isTimeUp) {
+    return (
+      <TimeUpScreen
+        correctCount={correctCount}
+        totalQuestions={totalQuestions}
+        onFinish={() => onFinish(correctCount, totalQuestions)}
+        onBack={onBack}
+      />
+    );
+  }
 
   // ── Skeleton ──────────────────────────────────────
   if (!currentQuestion) {
     return (
       <div className="quiz-card quiz-skeleton">
         <div className="quiz-header">
-          <div className="skeleton-block" style={{ width: '60px', height: '20px' }} />
-          <div className="skeleton-block" style={{ width: '40px', height: '20px' }} />
+          <div className="skeleton-block" style={{ width: "60px", height: "20px" }} />
+          <div className="skeleton-block" style={{ width: "40px", height: "20px" }} />
         </div>
         <div className="question-header">
-          <div className="skeleton-block" style={{ width: '80px', height: '18px' }} />
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <div className="skeleton-block" style={{ width: '60px', height: '22px', borderRadius: '9999px' }} />
-            <div className="skeleton-block" style={{ width: '50px', height: '22px', borderRadius: '9999px' }} />
+          <div className="skeleton-block" style={{ width: "80px", height: "18px" }} />
+          <div style={{ display: "flex", gap: "0.5rem" }}>
+            <div className="skeleton-block" style={{ width: "60px", height: "22px", borderRadius: "9999px" }} />
+            <div className="skeleton-block" style={{ width: "50px", height: "22px", borderRadius: "9999px" }} />
           </div>
         </div>
-        <div className="skeleton-block" style={{ width: '100%', height: '56px', marginBottom: '2rem' }} />
+        <div className="skeleton-block" style={{ width: "100%", height: "56px", marginBottom: "2rem" }} />
         <div className="options-list">
           {Array.from({ length: 4 }).map((_, i) => (
             <div key={i} className="skeleton-block skeleton-option" />
@@ -132,6 +158,7 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) 
   }
 
   const isCorrect = selectedIndex === currentQuestion.correctAnswerIndex;
+  const isUrgent  = isTimerEnabled && secondsLeft <= 30;
 
   return (
     <>
@@ -170,6 +197,26 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) 
 
       {/* ── Quiz card ────────────────────────────── */}
       <div className="quiz-card">
+
+        {/* Timer — only rendered when enabled */}
+        {isTimerEnabled && (
+          <div
+            className="quiz-timer"
+            aria-label={`${secondsLeft} seconds remaining`}
+            aria-live="polite"
+          >
+            <div className="quiz-timer__track">
+              <div
+                className={`quiz-timer__bar${isUrgent ? " quiz-timer__bar--urgent" : ""}`}
+                style={{ width: `${percentLeft}%` }}
+              />
+            </div>
+            <span className={`quiz-timer__label${isUrgent ? " quiz-timer__label--urgent" : ""}`}>
+              ⏱ {formatTime(secondsLeft)}
+            </span>
+          </div>
+        )}
+
         <div className="quiz-header">
           <button onClick={handleBackClick} className="back-btn">
             &larr; {t("quiz.back")}
@@ -200,13 +247,13 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) 
 
         <div className="options-list">
           {currentQuestion.options.map((option, index) => {
-            const isSelected = index === selectedIndex;
+            const isSelected     = index === selectedIndex;
             const isCorrectAnswer = index === currentQuestion.correctAnswerIndex;
 
             let className = "option-btn";
             if (answered) {
-              if (isCorrectAnswer) className += " correct";
-              else if (isSelected) className += " wrong";
+              if (isCorrectAnswer)  className += " correct";
+              else if (isSelected)  className += " wrong";
             }
 
             return (

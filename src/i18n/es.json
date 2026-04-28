@@ -43,7 +43,11 @@
     "backConfirmTitle": "¿Salir del quiz?",
     "backConfirmMessage": "Tu progreso se perderá y el quiz se reiniciará.",
     "backConfirmCancel": "Seguir jugando",
-    "backConfirmLeave": "Salir"
+    "backConfirmLeave": "Salir",
+    "timeUp": "¡Se acabó el tiempo!",
+    "timeUpMessage": "Tu tiempo se ha agotado. Así lo hiciste:",
+    "timeUpSeeResults": "Ver resultados",
+    "timeUpBackHome": "Volver al inicio"
   },
   "results": {
     "champion1": "¡Bien hecho!<br/><strong>¡Eres el campeón!</strong><br/>¡Has alcanzado la gloria!",
@@ -82,7 +86,10 @@
     "on": "Encendido",
     "off": "Apagado",
     "language": "Idioma",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "gameplay": "Desafío contrarreloj",
+    "timer": "Temporizador de ronda",
+    "timerHint": "2 minutos para completar la ronda"
   },
   "share": {
     "quizScore": "Mi puntuación del Quiz de la Copa del Mundo",

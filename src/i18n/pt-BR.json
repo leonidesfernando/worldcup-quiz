@@ -43,7 +43,11 @@
     "backConfirmTitle": "Sair do quiz?",
     "backConfirmMessage": "Seu progresso será perdido e o quiz será reiniciado.",
     "backConfirmCancel": "Continuar jogando",
-    "backConfirmLeave": "Sair"
+    "backConfirmLeave": "Sair",
+    "timeUp": "O tempo acabou!",
+    "timeUpMessage": "Seu tempo acabou. Veja como você se saiu:",
+    "timeUpSeeResults": "Ver resultados",
+    "timeUpBackHome": "Voltar para o início"
   },
   "results": {
     "champion1": "Muito bem!<br/><strong>Você é o campeão!</strong><br/>Você alcançou a glória!",
@@ -91,7 +95,10 @@
     "on": "Habilitado",
     "off": "Desabilitado",
     "language": "Idioma",
-    "close": "Fechar"
+    "close": "Fechar",
+    "gameplay": "Desafio contra o tempo",
+    "timer": "Tempo da rodada",
+    "timerHint": "2 minutos para completar a rodada"
   },
   "questions": {
     "final": "final",

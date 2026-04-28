@@ -43,7 +43,11 @@
     "backConfirmTitle": "Quiz verlassen?",
     "backConfirmMessage": "Dein Fortschritt geht verloren und das Quiz wird neu gestartet.",
     "backConfirmCancel": "Weiterspielen",
-    "backConfirmLeave": "Verlassen"
+    "backConfirmLeave": "Verlassen",
+    "timeUp": "Zeit abgelaufen!",
+    "timeUpMessage": "Die Zeit ist abgelaufen. So hast du abgeschnitten:",
+    "timeUpSeeResults": "Ergebnisse ansehen",
+    "timeUpBackHome": "Zurück zur Startseite"
   },
   "results": {
     "champion1": "Gut gemacht!<br/><strong>Du bist der Champion!</strong><br/>Du hast Ruhm erlangt!",
@@ -91,7 +95,10 @@
     "on": "Ein",
     "off": "Aus",
     "language": "Sprache",
-    "close": "Schließen"
+    "close": "Schließen",
+    "gameplay": "Zeit-Herausforderung",
+    "timer": "Runden-Timer",
+    "timerHint": "2 Minuten, um die Runde abzuschließen"
   },
   "questions": {
     "final": "Finale",

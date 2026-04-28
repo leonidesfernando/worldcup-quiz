@@ -43,7 +43,11 @@
     "backConfirmTitle": "Leave the quiz?",
     "backConfirmMessage": "Your progress will be lost and the quiz will restart.",
     "backConfirmCancel": "Keep playing",
-    "backConfirmLeave": "Leave"
+    "backConfirmLeave": "Leave",
+    "timeUp": "Time's Up!",
+    "timeUpMessage": "Your time ran out. Here's how you did:",
+    "timeUpSeeResults": "See Results",
+    "timeUpBackHome": "Back to Home"
   },
   "results": {
     "champion1": "Well done!<br/><strong>You are the champion!</strong><br/>You achieved glory!",
@@ -91,7 +95,10 @@
     "on": "On",
     "off": "Off",
     "language": "Language",
-    "close": "Close"
+    "close": "Close",
+    "gameplay": "Time Challenge",
+    "timer": "Round Timer",
+    "timerHint": "2 minutes to complete the round"
   },
   "questions": {
     "final": "final",

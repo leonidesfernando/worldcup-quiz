@@ -8,7 +8,7 @@ describe('MatchesService', () => {
     const finals = service.getFinals();
 
     const invalid = finals.filter(
-      m => m.stage_name !== 'final'
+      m =>  (m.stage_name !== 'final')
     );
 
     expect(invalid).toHaveLength(0);

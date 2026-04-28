@@ -4,6 +4,8 @@ import { createContext, useContext, useState, useEffect, type ReactNode } from '
 interface SettingsContextType {
   isDarkMode: boolean;
   toggleDarkMode: () => void;
+  isTimerEnabled: boolean;
+  toggleTimer: () => void;
 }
 
 const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
@@ -14,6 +16,11 @@ export function SettingsProvider({ children }: Readonly<{ children: ReactNode }>
     const saved = localStorage.getItem('darkMode');
     if (saved !== null) return saved === 'true';
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  const [isTimerEnabled, setIsTimerEnabled] = useState(() => {
+    // Timer is OFF by default — opt-in feature
+    return localStorage.getItem('timerEnabled') === 'true';
   });
 
   useEffect(() => {
@@ -28,8 +35,14 @@ export function SettingsProvider({ children }: Readonly<{ children: ReactNode }>
 
   const toggleDarkMode = () => setIsDarkMode(prev => !prev);
 
+  useEffect(() => {
+    localStorage.setItem('timerEnabled', String(isTimerEnabled));
+  }, [isTimerEnabled]);
+
+  const toggleTimer = () => setIsTimerEnabled(prev => !prev);
+
   return (
-    <SettingsContext.Provider value={{ isDarkMode, toggleDarkMode }}>
+    <SettingsContext.Provider value={{ isDarkMode, toggleDarkMode, isTimerEnabled, toggleTimer }}>
       {children}
     </SettingsContext.Provider>
   );

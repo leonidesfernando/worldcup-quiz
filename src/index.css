@@ -1570,6 +1570,231 @@ footer {
 
 /* ==================== END BACK CONFIRMATION DIALOG ==================== */
 
+/* ==================== QUIZ TIMER ==================== */
+
+.quiz-timer {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+}
+
+.quiz-timer__track {
+    flex: 1;
+    height: 7px;
+    background: #e2e8f0;
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.quiz-timer__bar {
+    height: 100%;
+    border-radius: 9999px;
+    background: #2563eb;
+    transition: width 1s linear, background 0.5s ease;
+}
+
+.quiz-timer__bar--urgent {
+    background: #ef4444;
+    animation: timer-pulse 0.8s ease-in-out infinite;
+}
+
+@keyframes timer-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.6; }
+}
+
+.quiz-timer__label {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #475569;
+    min-width: 36px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    transition: color 0.4s;
+}
+
+.quiz-timer__label--urgent {
+    color: #ef4444;
+    animation: timer-pulse 0.8s ease-in-out infinite;
+}
+
+/* Dark mode */
+.dark .quiz-timer__track {
+    background: #1e2d4a;
+}
+
+.dark .quiz-timer__bar {
+    background: #3b82f6;
+}
+
+.dark .quiz-timer__bar--urgent {
+    background: #ef4444;
+}
+
+.dark .quiz-timer__label {
+    color: #94a3b8;
+}
+
+.dark .quiz-timer__label--urgent {
+    color: #f87171;
+}
+
+/* ==================== END QUIZ TIMER ==================== */
+
+
+/* ==================== TIME-UP SCREEN ==================== */
+
+.timeup-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    min-height: 60vh;
+    gap: 0;
+}
+
+.timeup-icon {
+    font-size: clamp(4rem, 16vw, 6rem);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    filter: drop-shadow(0 4px 16px rgba(239, 68, 68, 0.35));
+}
+
+.timeup-title {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+    font-weight: 900;
+    color: #ef4444;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.02em;
+}
+
+.timeup-message {
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+    color: #64748b;
+    line-height: 1.55;
+    margin-bottom: 1.75rem;
+    max-width: 280px;
+}
+
+.timeup-score {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.2rem;
+    background: linear-gradient(135deg, #fbbf24, #b45309);
+    border-radius: 1.25rem;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 24px rgba(180, 83, 9, 0.3);
+}
+
+.timeup-score__number {
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+}
+
+.timeup-score__separator {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.timeup-score__total {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.timeup-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 320px;
+}
+
+.timeup-btn {
+    width: 100%;
+    padding: clamp(0.875rem, 3vw, 1.1rem);
+    border: none;
+    border-radius: 1rem;
+    font-size: clamp(0.975rem, 3.5vw, 1.1rem);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.timeup-btn--primary {
+    background: #2563eb;
+    color: white;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+}
+
+.timeup-btn--primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(37, 99, 235, 0.45);
+}
+
+.timeup-btn--secondary {
+    background: #e8edf7;
+    color: #3b4f8c;
+}
+
+.timeup-btn--secondary:hover {
+    background: #d6e0f5;
+    transform: translateY(-1px);
+}
+
+/* Dark mode */
+.dark .timeup-title {
+    color: #f87171;
+}
+
+.dark .timeup-message {
+    color: #94a3b8;
+}
+
+.dark .timeup-btn--primary {
+    background: #2563eb;
+}
+
+.dark .timeup-btn--secondary {
+    background: #1e2d4a;
+    color: #93b4f8;
+}
+
+.dark .timeup-btn--secondary:hover {
+    background: #263a5e;
+}
+
+/* Settings - timer toggle hint */
+.settings-toggle-label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.settings-toggle-hint {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 400;
+}
+
+.dark .settings-toggle-hint {
+    color: #94a3b8;
+}
+
+/* ==================== END TIME-UP SCREEN ==================== */
+
+
+
+
 @media (max-width: 480px) {
     .quiz-header {
         flex-direction: column;

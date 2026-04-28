@@ -9,12 +9,7 @@ interface Props {
 
 export default function Settings({ onClose }: Readonly<Props>) {
   const { t } = useTranslation();
-  const { isDarkMode, toggleDarkMode } = useSettings();
-
-  /*const toggleAnimations = () => {
-    // TODO: We'll connect this to a global settings context later
-    alert(t("settings.comingSoon") || "Animations toggle coming soon!");
-  };*/
+  const { isDarkMode, toggleDarkMode, isTimerEnabled, toggleTimer } = useSettings();
 
   return (
     <div className="settings-screen">
@@ -29,19 +24,7 @@ export default function Settings({ onClose }: Readonly<Props>) {
           </div>
         </div>
 
-        {/* Animations Section */}
-        {/*
-        <div className="settings-section">
-          <h4 className="section-title">{t("settings.animations")}</h4>
-          <div className="settings-toggle-row">
-            <span>{t("settings.enableAnimations")}</span>
-            <button onClick={toggleAnimations} className="toggle-btn">
-              {t("settings.on")} / {t("settings.off")}
-            </button>
-          </div>
-        </div> */}
-
-        {/* Dark Mode Toggle */}
+        {/* Appearance — Dark Mode */}
         <div className="settings-section">
           <h3 className="section-title">{t("settings.appearance")}</h3>
           <div className="settings-toggle-row">
@@ -49,13 +32,32 @@ export default function Settings({ onClose }: Readonly<Props>) {
             <button
               onClick={toggleDarkMode}
               className={`toggle-switch ${isDarkMode ? "active" : ""}`}
+              aria-pressed={isDarkMode}
+              aria-label={t("settings.darkMode")}
             >
               <span className="toggle-knob"></span>
             </button>
           </div>
         </div>
 
-        {/* Future settings can be added here easily */}
+        {/* Gameplay — Timer */}
+        <div className="settings-section">
+          <h3 className="section-title">{t("settings.gameplay")}</h3>
+          <div className="settings-toggle-row">
+            <div className="settings-toggle-label">
+              <span>{t("settings.timer")}</span>
+              <span className="settings-toggle-hint">{t("settings.timerHint")}</span>
+            </div>
+            <button
+              onClick={toggleTimer}
+              className={`toggle-switch ${isTimerEnabled ? "active" : ""}`}
+              aria-pressed={isTimerEnabled}
+              aria-label={t("settings.timer")}
+            >
+              <span className="toggle-knob"></span>
+            </button>
+          </div>
+        </div>
 
         <button onClick={onClose} className="close-settings-btn">
           {t("settings.close")}
