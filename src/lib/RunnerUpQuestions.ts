@@ -45,7 +45,7 @@ export const RunnerUpQuestion = {
             options,
             correctAnswerIndex: options.indexOf(correctAnswer),
             difficulty: t('quiz.difficultyMedium'),
-            difficultyClass: 'hard',
+            difficultyClass: 'medium',
             category: t('quiz.categoryRunnerUp')
         };
     }

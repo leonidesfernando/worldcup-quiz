@@ -33,7 +33,7 @@ export const ManagerQuestion = {
             question: t('questions.managerOfTeam', { teamName, year }),
             options,
             correctAnswerIndex: options.indexOf(correctManager),
-            difficulty: t('quiz.difficultyHard'),//'medium',
+            difficulty: t('quiz.difficultyHard'),
             difficultyClass: 'hard',
             category: t('quiz.categoryManagers'),
         };

@@ -1575,65 +1575,83 @@ footer {
 .quiz-timer {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 0.75rem;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0.75rem;
+    background: #f0f4ff;
+    border-radius: 0.875rem;
+    border: 1.5px solid #c7d2fe;
 }
 
 .quiz-timer__track {
     flex: 1;
-    height: 7px;
+    height: 12px;
     background: #e2e8f0;
     border-radius: 9999px;
     overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .quiz-timer__bar {
     height: 100%;
     border-radius: 9999px;
-    background: #2563eb;
-    transition: width 1s linear, background 0.5s ease;
+    /* Vibrant orange-amber — distinct from the blue back button and option borders */
+    background: linear-gradient(90deg, #f59e0b, #f97316);
+    box-shadow: 0 0 8px rgba(249, 115, 22, 0.5);
+    transition: width 1s linear, background 0.5s ease, box-shadow 0.5s ease;
 }
 
 .quiz-timer__bar--urgent {
-    background: #ef4444;
+    background: linear-gradient(90deg, #f81717, #9e1616);
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.925);
     animation: timer-pulse 0.8s ease-in-out infinite;
 }
 
 @keyframes timer-pulse {
     0%, 100% { opacity: 1; }
-    50%       { opacity: 0.6; }
+    50%       { opacity: 0.65; }
 }
 
 .quiz-timer__label {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: #475569;
-    min-width: 36px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #92400e;           /* amber-800 — matches bar colour, not blue */
+    min-width: 40px;
     text-align: right;
     font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
     transition: color 0.4s;
+    flex-shrink: 0;
 }
 
 .quiz-timer__label--urgent {
-    color: #ef4444;
+    color: #dc2626;
     animation: timer-pulse 0.8s ease-in-out infinite;
 }
 
-/* Dark mode */
-.dark .quiz-timer__track {
+/* ── Dark mode ── */
+.dark .quiz-timer {
     background: #1e2d4a;
+    border-color: #3b4f7c;
+}
+
+.dark .quiz-timer__track {
+    background: #0d1525;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .dark .quiz-timer__bar {
-    background: #3b82f6;
+    background: linear-gradient(90deg, #f59e0b, #f97316);
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.6);
 }
 
 .dark .quiz-timer__bar--urgent {
-    background: #ef4444;
+    background: linear-gradient(90deg, #ef4444, #dc2626);
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.7);
 }
 
 .dark .quiz-timer__label {
-    color: #94a3b8;
+    color: #fbbf24;           /* amber-400 — visible on dark bg */
 }
 
 .dark .quiz-timer__label--urgent {
