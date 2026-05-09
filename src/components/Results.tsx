@@ -13,6 +13,7 @@ import { AdMobService } from "../service/AdMobService";
 import shareIcon from "../assets/share.png";
 import { useShareScore } from '../hooks/useShareScore';
 import {Utils} from '../utils/Utils';
+import { HistoryService } from "../service/HistoryService";
 interface RoundResult {
   correct: number;
   wrong: number;
@@ -44,6 +45,12 @@ export default function Results({
 
   // Trigger confetti rain needed
   //useConfetti(percentage);
+
+  useEffect(() => {
+  if (result) {
+    HistoryService.saveResult(result.correct, result.total);
+  }
+}, [result]);
   
 
 // Preload rewarded ad

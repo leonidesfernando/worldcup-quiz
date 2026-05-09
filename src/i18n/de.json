@@ -103,6 +103,14 @@
     "showCorrectAnswer": "Richtige Antwort anzeigen",
     "showCorrectAnswerHint": "Die richtige Antwort im Fehlerfall anzeigen"
   },
+  "history": {
+    "title": "Verlauf",
+     "viewHistory": "Verlauf anzeigen",
+    "empty": "Noch keine vorherigen Runden.",
+    "clearAll": "Alles löschen",
+    "clearConfirm": "Gesamten Verlauf löschen?",
+    "dateFormat": "dd MMM yyyy - HH:mm"
+  },
   "questions": {
     "final": "Finale",
     "semiFinal": "Halbfinale",

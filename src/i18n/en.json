@@ -103,6 +103,14 @@
     "showCorrectAnswer": "Show correct answer",
     "showCorrectAnswerHint": "Show the correct answer in case of an error"
   },
+  "history": {
+    "title": "History",
+    "viewHistory": "View History",
+    "empty": "No previous rounds yet.",
+    "clearAll": "Clear All",
+    "clearConfirm": "Clear all history?",
+    "dateFormat": "dd MMM yyyy - HH:mm"
+  },
   "questions": {
     "final": "final",
     "semiFinal": "semi-final",

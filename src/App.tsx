@@ -6,9 +6,11 @@ import { useTranslation } from "./useTranslation";
 import Header from "./components/Header";
 import Results from "./components/Results";
 import Settings from "./components/Settings";
+import History from "./components/History";
+
 //import { AdMobService } from "./service/AdMobService";
 
-type Screen = "home" | "quiz" | "results" | "settings";
+type Screen = "home" | "quiz" | "results" | "settings" | "history";
 
 interface RoundResult {
   correct: number;
@@ -66,6 +68,7 @@ useEffect(() => {
   const goBackHome = () => setScreen("home");
   const openSettings = () => setScreen("settings");
   const closeSettings = () => setScreen("home");
+  const historyScreen = () => setScreen("history");
 
   return (
     <div id="root">
@@ -100,7 +103,9 @@ useEffect(() => {
             onBackToHome={() => setScreen("home")}
           />
         )}
-        {screen === "settings" && <Settings onClose={closeSettings} />}
+        {screen === "settings" && <Settings onClose={closeSettings} onOpenHistory={historyScreen} />}
+
+        {screen === "history" && <History onClose={goBackHome} />}
       </main>
 
       <footer>{t("app.builtBy")}</footer>

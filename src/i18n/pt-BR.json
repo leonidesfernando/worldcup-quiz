@@ -103,6 +103,14 @@
     "showCorrectAnswer": "Mostrar resposta",
     "showCorrectAnswerHint": "Mostrar a resposta correta em caso de erro"
   },
+  "history": {
+    "title": "Histórico",
+    "viewHistory": "Ver histórico",
+    "empty": "Nenhuma rodada anterior ainda.",
+    "clearAll": "Limpar Tudo",
+    "clearConfirm": "Limpar todo o histórico?",
+    "dateFormat": "dd MMM yyyy - HH:mm"
+  },
   "questions": {
     "final": "final",
     "semiFinal": "semi final",

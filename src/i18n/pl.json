@@ -103,6 +103,14 @@
     "showCorrectAnswer": "Pokaż poprawną odpowiedź",
     "showCorrectAnswerHint": "Pokaż poprawną odpowiedź w przypadku błędu"
   },
+  "history": {
+    "title": "Historia",
+    "viewHistory": "Zobacz historię",
+    "empty": "Nie ma jeszcze poprzednich rund.",
+    "clearAll": "Wyczyść wszystko",
+    "clearConfirm": "Wyczyścić całą historię?",
+    "dateFormat": "dd MMM yyyy - HH:mm"
+  },
   "questions": {
     "final": "finał",
     "semiFinal": "półfinał",

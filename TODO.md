@@ -4,6 +4,12 @@
 - history
 - placar global, mostrando em qual posicao eu estou, baseado na soma simples dos meus pontos
 - global ranking, showing my current position, based on a simple sum of my points
+- add histroy button on results page
+- move share button to the top of results page
+- adjust history page layout
+- store language on the history
+- add modal to confirm to remove one history
+- add a modal to confirm to remove all history 
 
 ### Segment data in small files
 - referees - done
@@ -51,6 +57,7 @@
 - correct answer - Done
 - incorrect answer - Done
 - round finished - Done
+- animation on History page
 
 ### Timer
  - Done

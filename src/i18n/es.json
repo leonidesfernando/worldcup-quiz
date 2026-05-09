@@ -103,6 +103,14 @@
     "dialogueTitle": "Comparte tu puntuación",
     "player": "¡Estoy jugando Quiz del Mundial!"
   },
+  "history": {
+    "title": "Historial",
+    "viewHistory": "Ver historial",
+    "empty": "Aún no hay rondas anteriores.",
+    "clearAll": "Borrar Todo",
+    "clearConfirm": "¿Borrar todo el historial?",
+    "dateFormat": "dd MMM yyyy - HH:mm"
+  },
   "questions": {
     "final": "final",
     "semiFinal": "semifinal",

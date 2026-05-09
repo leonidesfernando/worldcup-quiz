@@ -5,9 +5,10 @@ import { useSettings } from "../components/SettingsContext";
 
 interface Props {
   onClose: () => void;
+  onOpenHistory: () => void;
 }
 
-export default function Settings({ onClose }: Readonly<Props>) {
+export default function Settings({ onClose, onOpenHistory }: Readonly<Props>) {
   const { t } = useTranslation();
   const { isDarkMode, toggleDarkMode, isTimerEnabled, toggleTimer, showCorrectAnswer, toggleShowCorrectAnswer } = useSettings();
 
@@ -73,6 +74,14 @@ export default function Settings({ onClose }: Readonly<Props>) {
               <span className="toggle-knob"></span>
             </button>
           </div>
+        </div>
+
+        {/* History Section */}
+        <div className="settings-section">
+          <h3 className="section-title">{t("history.title")}</h3>
+          <button onClick={onOpenHistory} className="history-btn">
+            📜 {t("history.viewHistory")}
+          </button>
         </div>
 
         <button onClick={onClose} className="close-settings-btn">
