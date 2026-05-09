@@ -4,7 +4,7 @@
     "subtitle": "• 1930 – 2022 •",
     "builtBy": "WM-Quiz©",
     "dataFrom": "Daten von jfjelstul/worldcup",
-    "tryApp": "Probieren Sie die App aus!"
+    "tryApp": "Probieren Sie die App aus {appName}!"
   },
   "home": {
     "ready": "Bereit, dein Wissen zu testen?",
@@ -84,7 +84,8 @@
     "champion": "Ich bin der Champion des Weltmeisterschafts-Quiz!",
     "runnerUp": "Ich bin der Zweitplatzierte im Weltmeisterschafts-Quiz!",
     "thirdPlace": "Ich habe den dritten Platz im Weltmeisterschafts-Quiz erreicht!",
-    "dialogueTitle": "Teile dein Ergebnis"
+    "dialogueTitle": "Teile dein Ergebnis",
+    "player": "Ich spiele WM-Quiz!"
   },
   "settings": {
     "appearance": "Erscheinungsbild",
@@ -96,9 +97,11 @@
     "off": "Aus",
     "language": "Sprache",
     "close": "Schließen",
-    "gameplay": "Zeit-Herausforderung",
+    "gameplay": "Herausforderungsmodus",
     "timer": "Runden-Timer",
-    "timerHint": "2 Minuten, um die Runde abzuschließen"
+    "timerHint": "2 Minuten, um die Runde abzuschließen",
+    "showCorrectAnswer": "Richtige Antwort anzeigen",
+    "showCorrectAnswerHint": "Die richtige Antwort im Fehlerfall anzeigen"
   },
   "questions": {
     "final": "Finale",

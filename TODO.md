@@ -1,12 +1,15 @@
 # TODO
 
 ## Features 
+- history
+- placar global, mostrando em qual posicao eu estou, baseado na soma simples dos meus pontos
+- global ranking, showing my current position, based on a simple sum of my points
 
 ### Segment data in small files
-- referees
-- statdiums
-- matches
-- players
+- referees - done
+- statdiums - done
+- matches - done
+- players - done
 - substitutions
 
 ### Personal ranking
@@ -22,8 +25,8 @@
 ### Generate questions
  - Runner-up - done
  - How many goals a player scored in a tourment
- - How many world cups a player participate
- - How many goals a team scored so far
+ - How many world cups a player participate 
+ - How many goals a team scored so far - done
  - How many gols a team scored in a world cup 
  - Which team had the best attack
  - Which team had the best defense
@@ -50,6 +53,7 @@
 - round finished - Done
 
 ### Timer
+ - Done
 
 ### Generate script to build Android version
 

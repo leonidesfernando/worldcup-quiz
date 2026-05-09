@@ -1,7 +1,7 @@
 {
   "name": "worldcup-quiz",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "test": "vitest",
@@ -12,8 +12,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "android:build": "npm run build && npx cap copy android && cd android && gradlew assembleDebug && popd",
-    "android:release": "npm run build && npx cap copy android && cd android && gradlew assembleRelease && popd"
+    "android:build": "npm run build && npx cap sync android && cd android && gradlew assembleDebug && popd",
+    "android:release": "npm run build && npx cap sync android --release && cd android && gradlew assembleRelease && popd"
   },
   "dependencies": {
     "@capacitor-community/admob": "^8.0.0",

@@ -4,7 +4,7 @@
     "subtitle": "• 1930 – 2022 •",
     "builtBy": "World Cup Quiz©",
     "dataFrom": "Data from jfjelstul/worldcup",
-    "tryApp": "Try the app!"
+    "tryApp": "Try the app {appName}!"
   },
   "home": {
     "ready": "Ready to test your knowledge?",
@@ -84,7 +84,8 @@
     "champion": "I'm the World Cup Quiz Champion!",
     "runnerUp": "I'm the World Cup Quiz Runner-up!",
     "thirdPlace": "I'm the World Cup Quiz Third place!",
-    "dialogueTitle": "Share your score"
+    "dialogueTitle": "Share your score",
+    "player": "I'm playing World Cup Quz!"
   },
   "settings": {
     "appearance": "Appearance",
@@ -96,9 +97,11 @@
     "off": "Off",
     "language": "Language",
     "close": "Close",
-    "gameplay": "Time Challenge",
+    "gameplay": "Challenge mode",
     "timer": "Round Timer",
-    "timerHint": "2 minutes to complete the round"
+    "timerHint": "2 minutes to complete the round",
+    "showCorrectAnswer": "Show correct answer",
+    "showCorrectAnswerHint": "Show the correct answer in case of an error"
   },
   "questions": {
     "final": "final",

@@ -1,10 +1,10 @@
 {
   "app": {
-    "title": "Quiz Copa do Mundo",
+    "title": "World Cup Qui",
     "subtitle": "• 1930 – 2022 •",
     "builtBy": "World Cup Quiz©",
     "dataFrom": "Dados de jfjelstul/worldcup",
-    "tryApp": "Experimente o aplicativo!"
+    "tryApp": "Experimente o aplicativo {appName}!"
   },
   "home": {
     "ready": "Pronto para testar seu conhecimento?",
@@ -78,13 +78,14 @@
     "shareScore": "Compartilhar pontuação"
   },
   "share": {
-    "quizScore": "Minha pontuação no Quiz da Copa do Mundo",
+    "quizScore": "Minha pontuação no World Cup Quiz",
     "beatScore": "Você consegue bater minha pontuação?",
-    "myScoreAndPercentage": "Eu marquei {finalScore}/{total} ({percentage}%) no Quiz da Copa do Mundo!",
-    "champion": "Eu sou o campeão do Quiz da Copa do Mundo!",
-    "runnerUp": "Eu sou o vice-campeão do Quiz da Copa do Mundo!",
-    "thirdPlace": "Eu fiquei em terceiro lugar no Quiz da Copa do Mundo!",
-    "dialogueTitle": "Compartilhe sua pontuação"
+    "myScoreAndPercentage": "Eu marquei {finalScore}/{total} ({percentage}%) no World Cup Quiz!",
+    "champion": "Eu sou o campeão do World Cup Quiz!",
+    "runnerUp": "Eu sou o vice-campeão do World Cup Quiz!",
+    "thirdPlace": "Eu fiquei em terceiro lugar no World Cup Quiz!",
+    "dialogueTitle": "Compartilhe sua pontuação",
+    "player": "Eu estou jogando o World Cup Quiz!"
   },
   "settings": {
     "appearance": "Aparência",
@@ -96,9 +97,11 @@
     "off": "Desabilitado",
     "language": "Idioma",
     "close": "Fechar",
-    "gameplay": "Desafio contra o tempo",
+    "gameplay": "Modo desafio",
     "timer": "Tempo da rodada",
-    "timerHint": "2 minutos para completar a rodada"
+    "timerHint": "2 minutos para completar a rodada",
+    "showCorrectAnswer": "Mostrar resposta",
+    "showCorrectAnswerHint": "Mostrar a resposta correta em caso de erro"
   },
   "questions": {
     "final": "final",

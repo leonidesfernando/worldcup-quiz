@@ -9,7 +9,7 @@ interface Props {
 
 export default function Settings({ onClose }: Readonly<Props>) {
   const { t } = useTranslation();
-  const { isDarkMode, toggleDarkMode, isTimerEnabled, toggleTimer } = useSettings();
+  const { isDarkMode, toggleDarkMode, isTimerEnabled, toggleTimer, showCorrectAnswer, toggleShowCorrectAnswer } = useSettings();
 
   return (
     <div className="settings-screen">
@@ -43,6 +43,7 @@ export default function Settings({ onClose }: Readonly<Props>) {
         {/* Gameplay — Timer */}
         <div className="settings-section">
           <h3 className="section-title">{t("settings.gameplay")}</h3>
+
           <div className="settings-toggle-row">
             <div className="settings-toggle-label">
               <span>{t("settings.timer")}</span>
@@ -53,6 +54,21 @@ export default function Settings({ onClose }: Readonly<Props>) {
               className={`toggle-switch ${isTimerEnabled ? "active" : ""}`}
               aria-pressed={isTimerEnabled}
               aria-label={t("settings.timer")}
+            >
+              <span className="toggle-knob"></span>
+            </button>
+          </div>
+
+          <div className="settings-toggle-row">
+            <div className="settings-toggle-label">
+              <span>{t("settings.showCorrectAnswer")}</span>
+              <span className="settings-toggle-hint">{t("settings.showCorrectAnswerHint")}</span>
+            </div>
+            <button
+              onClick={toggleShowCorrectAnswer}
+              className={`toggle-switch ${showCorrectAnswer ? "active" : ""}`}
+              aria-pressed={showCorrectAnswer}
+              aria-label={t("settings.showCorrectAnswer")}
             >
               <span className="toggle-knob"></span>
             </button>

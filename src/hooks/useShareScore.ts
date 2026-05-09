@@ -6,6 +6,8 @@ import html2canvas from 'html2canvas';
 import write_blob from 'capacitor-blob-writer';
 import type { Translator } from '../i18n/i18n';
 
+const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.leonidesfernandodeoliveira.worldcupquiz";
+
 function canvasToBlob(canvas: HTMLCanvasElement, quality = 0.95): Promise<Blob> {
   return new Promise((resolve, reject) =>
     canvas.toBlob(
@@ -20,23 +22,25 @@ function buildShareText(finalScore: number, total: number, percentage: number, t
 
     let positionMesage = "";
     if (percentage === 100) {
-      positionMesage = t("share.champion") + "🏆 ";
+      positionMesage = t("share.champion") + "🏆\n";
     } else if (percentage >= 80) {
-      positionMesage = t("share.runnerUp") + "🥈 ";
+      positionMesage = t("share.runnerUp") + "🥈\n";
     } else if (percentage >= 70) {
-      positionMesage = t("share.thirdPlace") + "🥉 ";
+      positionMesage = t("share.thirdPlace") + "🥉\n";
     }else{
-      positionMesage = t("share.myScore", {finalScore, total}) +" 🔥";
+      positionMesage = t("share.player") + " ⚽︎\n";
     }
 
     positionMesage += t("share.myScoreAndPercentage", {finalScore, total, percentage}) +" 🔥";
-    const tryApp = t("app.tryApp");
+    const appName = t('app.title');
+    const tryApp = t("app.tryApp", {appName});
     const beatScore = t("share.beatScore");
-    //console.log('buildShareText:', `${positionMesage} \n\n${beatScore}\n${tryApp}`);
-    return `${positionMesage} \n\n${beatScore}\n${tryApp}`;
+
+    return `${positionMesage} \n\n${beatScore}\n${tryApp}\n\n`;
 }
 
 export function useShareScore() {
+
   const shareScore = useCallback(
     async (
       resultsCardElement: HTMLElement,
@@ -83,6 +87,7 @@ export function useShareScore() {
           title: t('share.quizScore'),//'My World Cup Quiz Score',
           text: buildShareText(finalScore, total, percentage, t),
           files: [uri],
+          url: PLAY_STORE_URL,
           dialogTitle: t('share.dialogueTitle')//'Share your score',
         });
       } catch (error: any) {

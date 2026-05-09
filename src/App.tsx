@@ -69,7 +69,7 @@ useEffect(() => {
 
   return (
     <div id="root">
-      <Header onSettingsClick={openSettings} />
+      <Header onSettingsClick={screen === "home" || screen === "settings" ? openSettings : undefined} />
 
       <main>
         {screen === "home" && (

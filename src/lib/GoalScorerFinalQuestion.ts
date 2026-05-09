@@ -26,7 +26,7 @@ export const NumberOfGoalsFinalQuestion = {
         const numberOfGoals = finalMatch.home_team_score + finalMatch.away_team_score;
         const wrongValues = new Set<number>();
         let i = 0;
-        while (i < 6) {
+        while (i < 10) {
             i++;
             wrongValues.add(Utils.randomNumber(numberOfGoals, 0, numberOfGoals+1));
             if(numberOfGoals -1 <= 0)

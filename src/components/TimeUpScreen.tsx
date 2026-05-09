@@ -1,7 +1,9 @@
 // src/components/TimeUpScreen.tsx
 import { motion } from "framer-motion";
 import { useTranslation } from "../useTranslation";
+import { AdMobService } from "../service/AdMobService";
 import timveOverIcon from "../assets/time-over.png";
+import { useEffect } from "react";
 
 interface Props {
   correctCount: number;
@@ -17,6 +19,17 @@ export default function TimeUpScreen({
   onBack,
 }: Readonly<Props>) {
   const { t } = useTranslation();
+
+// Preload rewarded ad
+  useEffect(() => {
+    AdMobService.loadRewarded();
+  }, []);
+  
+
+  const handleBack = async () => {
+    await AdMobService.showRewarded(() => {});
+    onBack();
+  };
 
   return (
     <div className="timeup-overlay">
@@ -73,7 +86,7 @@ export default function TimeUpScreen({
         <button onClick={onFinish} className="timeup-btn timeup-btn--primary">
           {t("quiz.timeUpSeeResults")}
         </button>
-        <button onClick={onBack} className="timeup-btn timeup-btn--secondary">
+        <button onClick={handleBack} className="timeup-btn timeup-btn--secondary">
           {t("quiz.timeUpBackHome")}
         </button>
       </motion.div>

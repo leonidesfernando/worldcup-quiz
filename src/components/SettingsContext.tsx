@@ -6,6 +6,8 @@ interface SettingsContextType {
   toggleDarkMode: () => void;
   isTimerEnabled: boolean;
   toggleTimer: () => void;
+  showCorrectAnswer: boolean;
+  toggleShowCorrectAnswer: () => void;
 }
 
 const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
@@ -21,6 +23,12 @@ export function SettingsProvider({ children }: Readonly<{ children: ReactNode }>
   const [isTimerEnabled, setIsTimerEnabled] = useState(() => {
     // Timer is OFF by default — opt-in feature
     return localStorage.getItem('timerEnabled') === 'true';
+  });
+
+  const [showCorrectAnswer, setShowCorrectAnswer] = useState(() => {
+    // Show correct answer ON by default — user must opt-in to harder mode
+    const saved = localStorage.getItem('showCorrectAnswer');
+    return saved === null ? true : saved === 'true';
   });
 
   useEffect(() => {
@@ -41,8 +49,14 @@ export function SettingsProvider({ children }: Readonly<{ children: ReactNode }>
 
   const toggleTimer = () => setIsTimerEnabled(prev => !prev);
 
+  useEffect(() => {
+    localStorage.setItem('showCorrectAnswer', String(showCorrectAnswer));
+  }, [showCorrectAnswer]);
+
+  const toggleShowCorrectAnswer = () => setShowCorrectAnswer(prev => !prev);
+
   return (
-    <SettingsContext.Provider value={{ isDarkMode, toggleDarkMode, isTimerEnabled, toggleTimer }}>
+    <SettingsContext.Provider value={{ isDarkMode, toggleDarkMode, isTimerEnabled, toggleTimer, showCorrectAnswer, toggleShowCorrectAnswer }}>
       {children}
     </SettingsContext.Provider>
   );

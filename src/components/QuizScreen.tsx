@@ -9,6 +9,7 @@ import type { QuizQuestion } from "../types/QuizQuestion";
 import GoalAnimation from "./GoalAnimation";
 import MissAnimation from "./MissAnimation";
 import TimeUpScreen from "./TimeUpScreen";
+import { AdMobService } from "../service/AdMobService";
 import { Utils } from "../utils/Utils";
 
 const TIMER_DURATION_SECONDS = 120; // 2 minutes
@@ -53,7 +54,7 @@ function formatTime(seconds: number): string {
 
 export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) {
   const { t } = useTranslation();
-  const { isTimerEnabled } = useSettings();
+  const { isTimerEnabled, showCorrectAnswer } = useSettings();
 
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -90,6 +91,7 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) 
 
   // Pause timer while back-confirm modal is open
   useEffect(() => {
+    AdMobService.loadRewarded();
     if (!isTimerEnabled) return;
     if (showBackConfirm) pause();
     else resume();
@@ -117,7 +119,12 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) 
   };
 
   const handleBackClick   = () => setShowBackConfirm(true);
-  const handleConfirmBack = () => onBack();
+  const handleConfirmBack = async () => {
+    // Show a rewarded/interstitial ad when the user abandons mid-round.
+    // onBack() is always called even if the ad fails — navigation is never blocked.
+    await AdMobService.showRewarded(() => {});
+    onBack();
+  };
   const handleCancelBack  = () => setShowBackConfirm(false);
 
   // ── Time-up screen ────────────────────────────────
@@ -252,8 +259,9 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) 
 
             let className = "option-btn";
             if (answered) {
-              if (isCorrectAnswer)  className += " correct";
-              else if (isSelected)  className += " wrong";
+              // Only highlight the correct answer if the setting is ON
+              if (isCorrectAnswer && showCorrectAnswer) className += " correct";
+              else if (isSelected && !isCorrectAnswer)  className += " wrong";
             }
 
             return (

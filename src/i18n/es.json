@@ -4,7 +4,7 @@
     "subtitle": "• 1930 – 2022 •",
     "builtBy": "Quiz del Mundial©",
     "dataFrom": "Datos de jfjelstul/worldcup",
-    "tryApp": "¡Prueba la aplicación!"
+    "tryApp": "¡Prueba la aplicación {appName}!"
   },
   "home": {
     "ready": "¿Listo para poner a prueba tus conocimientos?",
@@ -87,9 +87,11 @@
     "off": "Apagado",
     "language": "Idioma",
     "close": "Cerrar",
-    "gameplay": "Desafío contrarreloj",
+    "gameplay": "Modo desafío",
     "timer": "Temporizador de ronda",
-    "timerHint": "2 minutos para completar la ronda"
+    "timerHint": "2 minutos para completar la ronda",
+    "showCorrectAnswer": "Mostrar la respuesta correcta",
+    "showCorrectAnswerHint": "Mostrar la respuesta correcta en caso de error"
   },
   "share": {
     "quizScore": "Mi puntuación del Quiz de la Copa del Mundo",
@@ -98,7 +100,8 @@
     "champion": "¡Soy el campeón del Quiz de la Copa del Mundo!",
     "runnerUp": "¡Soy el subcampeón del Quiz de la Copa del Mundo!",
     "thirdPlace": "¡Soy el tercer lugar del Quiz de la Copa del Mundo!",
-    "dialogueTitle": "Comparte tu puntuación"
+    "dialogueTitle": "Comparte tu puntuación",
+    "player": "¡Estoy jugando Quiz del Mundial!"
   },
   "questions": {
     "final": "final",

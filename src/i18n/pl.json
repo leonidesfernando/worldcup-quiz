@@ -4,7 +4,7 @@
     "subtitle": "• 1930 – 2022 •",
     "builtBy": "Quiz Mistrzostw Świata©",
     "dataFrom": "Dane z jfjelstul/worldcup",
-    "tryApp": "Wypróbuj aplikację!"
+    "tryApp": "Wypróbuj aplikację {appName}!"
   },
   "home": {
     "ready": "Gotowy, by sprawdzić swoją wiedzę?",
@@ -84,7 +84,8 @@
     "champion": "Jestem mistrzem quizu o Mistrzostwach Świata!",
     "runnerUp": "Jestem wicemistrzem quizu o Mistrzostwach Świata!",
     "thirdPlace": "Zająłem trzecie miejsce w quizie o Mistrzostwach Świata!",
-    "dialogueTitle": "Udostępnij swój wynik"
+    "dialogueTitle": "Udostępnij swój wynik",
+    "player": "Je joue à Quiz de la Coupe du Monde !"
   },
   "settings": {
     "appearance": "Wygląd",
@@ -96,9 +97,11 @@
     "off": "Wył.",
     "language": "Język",
     "close": "Zamknij",
-    "gameplay": "Wyzwanie czasowe",
+    "gameplay": "Tryb wyzwania",
     "timer": "Czas rundy",
-    "timerHint": "2 minuty na ukończenie rundy"
+    "timerHint": "2 minuty na ukończenie rundy",
+    "showCorrectAnswer": "Pokaż poprawną odpowiedź",
+    "showCorrectAnswerHint": "Pokaż poprawną odpowiedź w przypadku błędu"
   },
   "questions": {
     "final": "finał",

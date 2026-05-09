@@ -1,20 +1,22 @@
 // src/services/AdMobService.ts
 import { AdMob, type BannerAdOptions, BannerAdPosition, BannerAdSize, type RewardAdOptions, RewardAdPluginEvents, type AdMobRewardItem } from '@capacitor-community/admob';
 
-const isTesting = true; // Set to false before production release
+//const isTesting = false; // Set to false before production release
 
 const PRODUCTION_REWARD_ID = "ca-app-pub-1678598187483548~7814389951";
 
 //const TEST_BANNER_ID = "ca-app-pub-3940256099942544/6300978111",
 //const TEST_REWARD_ID = "ca-app-pub-3940256099942544/5224354917"
 
-const BANNER_ID = isTesting 
+const BANNER_ID = PRODUCTION_REWARD_ID;
+/*isTesting 
   ? 'ca-app-pub-3940256099942544/6300978111' 
-  : PRODUCTION_REWARD_ID;
+  : PRODUCTION_REWARD_ID;*/
 
-const REWARDED_ID = isTesting 
+const REWARDED_ID = PRODUCTION_REWARD_ID;
+/*isTesting 
   ? 'ca-app-pub-3940256099942544/5224354917' 
-  : PRODUCTION_REWARD_ID;
+  : PRODUCTION_REWARD_ID;*/
 
 export class AdMobService {
   private static bannerShown = false;
@@ -24,7 +26,7 @@ export class AdMobService {
   static async initialize() {
     try {
       await AdMob.initialize();
-      console.log('AdMob initialized');
+      console.log('AdMob initialized successfuly');
     } catch (e) {
       console.warn('AdMob init failed', e);
     }
