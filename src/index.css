@@ -831,7 +831,7 @@ footer {
 }
 
 .correct .stat-value {
-    color: #22c55e;
+    color: #22c55e !important;
 }
 
 .wrong .stat-value {
@@ -2676,6 +2676,11 @@ footer {
     line-height: 1 !important;
 }
 
+.history-score-correct {
+    color: #22c55e;
+    font-size: 1.25rem;
+}
+
 .correct .stat-value {
     color: #22c55e;
 }
@@ -3684,7 +3689,7 @@ footer {
     display: flex;
     gap: 0.6rem;
     align-items: center;
-    padding-bottom: 1rem;
+    padding-bottom: .2rem;
 }
 
 .history-clear-btn {
@@ -3960,6 +3965,47 @@ footer {
 .history-percentage.bronze { color: #cd7f32; }
 
 /* ==================== END HISTORY SCREEN ==================== */
+
+/* ==================== paginagtion HISTORY SCREEN ==================== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0 1.5rem;
+  flex-wrap: wrap;
+}
+
+.pagination-btn {
+  background: #e8edf7;
+  color: #3b4f8c;
+  border: none;
+  padding: 0.7rem 1.3rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dark .pagination-btn {
+  background: #1e2d4a;
+  color: #93b4f8;
+}
+
+.pagination-info {
+  font-weight: 600;
+  color: #64748b;
+}
+
+.dark .pagination-info {
+  color: #94a3b8;
+}
+/* ==================== END paginagtion HISTORY SCREEN ==================== */
 
 
 /* Small phones adjustment */

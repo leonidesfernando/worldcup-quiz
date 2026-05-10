@@ -113,7 +113,9 @@
     "clearConfirmTitle": "Gesamten Verlauf löschen?",
     "clearConfirmMessage": "Alle Quiz-Ergebnisse werden dauerhaft gelöscht.",
     "deleteConfirmTitle": "Dieses Ergebnis löschen?",
-    "deleteConfirmMessage": "Dieser Eintrag wird dauerhaft entfernt."
+    "deleteConfirmMessage": "Dieser Eintrag wird dauerhaft entfernt.",
+    "previous": "Zurück",
+    "next": "Weiter"
   },
   "dialog": {
     "confirm": "Bestätigen",

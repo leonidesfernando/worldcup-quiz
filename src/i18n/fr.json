@@ -113,7 +113,9 @@
     "clearConfirmTitle": "Effacer tout l’historique ?",
     "clearConfirmMessage": "Tous les résultats du quiz seront définitivement supprimés.",
     "deleteConfirmTitle": "Supprimer ce résultat ?",
-    "deleteConfirmMessage": "Cette entrée sera supprimée définitivement."
+    "deleteConfirmMessage": "Cette entrée sera supprimée définitivement.",
+    "previous": "Précédent",
+    "next": "Suivant"
   },
   "dialog": {
     "confirm": "Confirmer",

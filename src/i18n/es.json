@@ -113,7 +113,9 @@
     "clearConfirmTitle": "¿Borrar todo el historial?",
     "clearConfirmMessage": "Todos los resultados del cuestionario se eliminarán permanentemente.",
     "deleteConfirmTitle": "¿Eliminar este resultado?",
-    "deleteConfirmMessage": "Esta entrada se eliminará permanentemente."
+    "deleteConfirmMessage": "Esta entrada se eliminará permanentemente.",
+    "previous": "Anterior",
+    "next": "Siguiente"
   },
   "dialog": {
     "confirm": "Confirmar",

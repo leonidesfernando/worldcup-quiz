@@ -14,36 +14,38 @@ interface Props {
   onClose: () => void;
 }
 
-  const locales = {
-    en: enUS,
-    "pt-BR": ptBR,
-    pl,
-    fr,
-    es,
-    de,
-  };
+const ITEMS_PER_PAGE = 5;
 
-  const dateFormats = {
-    en: "MMM dd, yyyy • HH:mm",
-    "pt-BR": "dd MMM, yyyy • HH:mm",
-    pl: "dd MMM, yyyy • HH:mm",
-    fr: "dd MMM, yyyy • HH:mm",
-    es: "dd MMM, yyyy • HH:mm",
-    de: "dd MMM, yyyy • HH:mm",
-  };
+const locales = {
+  en: enUS,
+  "pt-BR": ptBR,
+  pl,
+  fr,
+  es,
+  de,
+};
+
+const dateFormats = {
+  en: "MMM dd, yyyy • HH:mm",
+  "pt-BR": "dd MMM, yyyy • HH:mm",
+  pl: "dd MMM, yyyy • HH:mm",
+  fr: "dd MMM, yyyy • HH:mm",
+  es: "dd MMM, yyyy • HH:mm",
+  de: "dd MMM, yyyy • HH:mm",
+};
 
 export default function History({ onClose }: Props) {
   const { t, lang } = useTranslation();
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const [showClearAllDialog, setShowClearAllDialog] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [itemToDelete, setItemToDelete] = useState<string | null>(null);
 
-
-  const dateFormat = dateFormats[lang] ?? "dd MMM yyyy • HH:mm";
-
+  const dateFormat =
+    dateFormats[lang as keyof typeof dateFormats] ?? "dd MMM yyyy • HH:mm";
   const locale = locales[lang as keyof typeof locales] ?? enUS;
 
   const loadHistory = async () => {
@@ -51,25 +53,44 @@ export default function History({ onClose }: Props) {
     const data = await HistoryService.getAll();
     setHistory(data);
     setLoading(false);
+    setCurrentPage(1);
   };
 
-  /*useEffect(() => {
-    loadHistory();
-  }, []);*/
-
   useEffect(() => {
-    const fetchHistory = async () => {
-      try {
-        const data = await HistoryService.getAll();
-        setHistory(data);
-      } catch (error) {
-        console.error("Failed to load history:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchHistory();
+    loadHistory();
   }, []);
+
+  // Pagination
+  const totalPages = Math.ceil(history.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const currentItems = history.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  // ── Percentage colour helper — mirrors results screen tiers ──
+  const percentageClass = (pct: number) => {
+    if (pct === 100) return "history-pct history-pct--gold";
+    if (pct >= 80) return "history-pct history-pct--silver";
+    if (pct >= 70) return "history-pct history-pct--bronze";
+    return "history-pct history-pct--low";
+  };
+
+  const getMedal = (percentage: number) => {
+    if (percentage === 100) return worldCupTrophy;
+    if (percentage >= 80) return silverMedal;
+    if (percentage >= 70) return bronzeMedal;
+    return null;
+  };
+
+  const getCountryCode = (lang: string): string => {
+    const map: Record<string, string> = {
+      en: "US",
+      "pt-BR": "BR",
+      es: "ES",
+      fr: "FR",
+      de: "DE",
+      pl: "PL",
+    };
+    return map[lang] || "UN";
+  };
 
   const handleDelete = (id: string) => {
     setItemToDelete(id);
@@ -91,33 +112,6 @@ export default function History({ onClose }: Props) {
     setShowClearAllDialog(false);
   };
 
-  // ── Percentage colour helper — mirrors results screen tiers ──
-  const percentageClass = (pct: number) => {
-    if (pct === 100) return "history-pct history-pct--gold";
-    if (pct >= 80) return "history-pct history-pct--silver";
-    if (pct >= 70) return "history-pct history-pct--bronze";
-    return "history-pct history-pct--low";
-  };
-
-  const getMedal = (percentage: number) => {
-    if (percentage === 100) return worldCupTrophy; //"world-cup-trophy.png";
-    if (percentage >= 80) return silverMedal; //"silver-medal.png";
-    if (percentage >= 70) return bronzeMedal; // "bronze-medal.png";
-    return null;
-  };
-
-  const getFlagEmoji = (lang: string) => {
-    const flags: Record<string, string> = {
-      en: "US",
-      "pt-BR": "BR",
-      es: "ES",
-      fr: "FR",
-      de: "DE",
-      pl: "PL",
-    };
-    return flags[lang] || "🌍";
-  };
-
   if (loading) return <div className="history-screen">Loading...</div>;
 
   return (
@@ -133,71 +127,98 @@ export default function History({ onClose }: Props) {
               {t("history.clearAll")}
             </button>
           )}
-          <button onClick={onClose} className="history-close-btn">
-            {t("settings.close")}
-          </button>
         </div>
       </div>
 
       {history.length === 0 ? (
         <div className="empty-state">
-          <div className="empty-state__icon">📋</div>
           <p className="empty-state__text">{t("history.empty")}</p>
         </div>
       ) : (
-        <div className="history-list">
-          {history.map((entry) => {
-            const medal = getMedal(entry.percentage);
-            return (
-              <div key={entry.id} className="history-item">
-                <div className="history-flag-topright">
-                  <ReactCountryFlag
-                    countryCode={getFlagEmoji(entry.language)}
-                    svg
-                  />
-                </div>
+        <>
+          <div className="history-list">
+            {currentItems.map((entry) => {
+              const medal = getMedal(entry.percentage);
+              return (
+                <div key={entry.id} className="history-item">
+                  <div className="history-flag-topright">
+                    <ReactCountryFlag
+                      countryCode={getCountryCode(entry.language)}
+                      svg
+                    />
+                  </div>
 
-                <div className="history-left">
-                  <div className="history-meta">
-                    <div className="history-date">
-                      {format(new Date(entry.date), dateFormat, { locale })}
+                  <div className="history-left">
+                    <div className="history-meta">
+                      <div className="history-date">
+                        {format(new Date(entry.date), dateFormat, { locale })}
+                      </div>
+                    </div>
+                    <div className="history-score">
+                      <span className="history-score-correct"><strong>{entry.correct}</strong></span>
+                      <span className="history-score__separator"> / </span>
+                      {entry.total}
                     </div>
                   </div>
-                  <div className="history-score">
-                    <strong>{entry.correct}</strong>
-                    <span className="history-score__separator"> / </span>
-                    {entry.total}
+
+                  <div className="history-right">
+                    {medal && (
+                      <img src={medal} alt="medal" className="history-medal" />
+                    )}
+                    <span className={percentageClass(entry.percentage)}>
+                      {entry.percentage}%
+                    </span>
+                    <button
+                      onClick={() => handleDelete(entry.id)}
+                      className="delete-btn"
+                    >
+                      ✕
+                    </button>
                   </div>
                 </div>
+              );
+            })}
+          </div>
 
-                <div className="history-right">
-                  {medal && (
-                    <img src={medal} alt="medal" className="history-medal" />
-                  )}
-                  <span className={percentageClass(entry.percentage)}>
-                    {entry.percentage}%
-                  </span>
-                  <button
-                    onClick={() => handleDelete(entry.id)}
-                    className="delete-btn"
-                  >
-                    ✕
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="pagination">
+              <button
+                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="pagination-btn"
+              >
+                ← {t("history.previous") || "Previous"}
+              </button>
+
+              <span className="pagination-info">
+                {currentPage} / {totalPages}
+              </span>
+
+              <button
+                onClick={() =>
+                  setCurrentPage((p) => Math.min(totalPages, p + 1))
+                }
+                disabled={currentPage === totalPages}
+                className="pagination-btn"
+              >
+                {t("history.next") || "Next"} →
+              </button>
+            </div>
+          )}
+        </>
       )}
 
-      {/* Reusable Dialogs */}
+      <button onClick={onClose} className="close-settings-btn">
+        {t("settings.close")}
+      </button>
+
+      {/* Confirm Dialogs */}
       <ConfirmDialog
         isOpen={showClearAllDialog}
-        title={t("history.clearConfirmTitle") || "Clear History?"}
-        message={
-          t("history.clearConfirmMessage") || "This action cannot be undone."
-        }
-        confirmText={t("history.clearAll")}
+        titleKey="history.clearConfirmTitle"
+        messageKey="history.clearConfirmMessage"
+        confirmTextKey="history.clearAll"
         confirmVariant="danger"
         onConfirm={confirmClearAll}
         onCancel={() => setShowClearAllDialog(false)}
@@ -205,12 +226,9 @@ export default function History({ onClose }: Props) {
 
       <ConfirmDialog
         isOpen={showDeleteDialog}
-        title={t("history.deleteConfirmTitle") || "Delete Entry?"}
-        message={
-          t("history.deleteConfirmMessage") ||
-          "This entry will be permanently removed."
-        }
-        confirmText="Delete"
+        titleKey="history.deleteConfirmTitle"
+        messageKey="history.deleteConfirmMessage"
+        confirmTextKey="dialog.delete"
         confirmVariant="danger"
         onConfirm={confirmDelete}
         onCancel={() => {

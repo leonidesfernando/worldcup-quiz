@@ -113,7 +113,9 @@
     "clearConfirmTitle": "Clear all history?", 
     "clearConfirmMessage": "All quiz results will be permanently deleted.", 
     "deleteConfirmTitle": "Delete this result?", 
-    "deleteConfirmMessage": "This entry will be permanently removed."
+    "deleteConfirmMessage": "This entry will be permanently removed.",
+    "previous": "Previous",
+    "next": "Next"
   },
   "dialog": { 
     "confirm": "Confirm", 
