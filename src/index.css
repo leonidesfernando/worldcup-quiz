@@ -684,8 +684,9 @@ footer {
 }
 
 .achievement-trophy {
-    width: 100px;
-    height: 100px;
+    width: clamp(80px, 22vw, 110px);
+    height: auto;
+    max-height: 110px;
     object-fit: contain;
     margin-bottom: 1rem;
     filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.25));
@@ -724,14 +725,6 @@ footer {
     letter-spacing: -0.02em;
 }
 
-/*.results-message {
-  font-size: 1.32rem;
-  font-weight: 600;
-  color: #334155;
-  margin: 1rem 0 2.5rem;
-  line-height: 1.45;
-  min-height: 3.4em;
-}*/
 
 .results-message {
     font-size: 1.28rem;
@@ -754,7 +747,6 @@ footer {
     height: 150px;
     margin: 1rem auto 2.5rem;
     border-radius: 50%;
-    /*background: linear-gradient(135deg, #f59e0b, #d97706);*/
     background: linear-gradient(135deg, #fbbf24, #f59e0b, #b45309);
     display: flex;
     flex-direction: column;
@@ -797,29 +789,6 @@ footer {
 }
 
 /* Stats */
-/*.results-stats {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin: 1.25rem 0 1.75rem;
-    max-height: none;
-    flex-wrap: nowrap;
-}
-
-.stat-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: #eef2ff;
-    padding: clamp(0.8rem, 3vw, 1.4rem);
-    border-radius: 1.5rem;
-    min-width: 0;
-    max-width: 40%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-    flex: 1;
-    flex-wrap: nowrap;
-}*/
-
 .results-stats {
     display: flex !important;
     flex-direction: row !important;
@@ -844,12 +813,6 @@ footer {
     max-width: 48% !important;
 }
 
-/*.stat-icon {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    flex-shrink: 0;
-}*/
 .stat-icon {
     width: clamp(18px, 6vw, 24px) !important;
     height: clamp(18px, 6vw, 24px) !important;
@@ -860,12 +823,6 @@ footer {
 .stat-info {
     text-align: left;
 }
-
-/*.stat-value {
-    font-size: 1.5rem;
-    font-weight: 900;
-    line-height: 1;
-}*/
 
 .stat-value {
     font-size: clamp(1.5rem, 5vw, 1.8rem) !important;
@@ -880,12 +837,6 @@ footer {
 .wrong .stat-value {
     color: #ef4444;
 }
-
-/*.stat-label {
-    font-size: 0.9rem;
-    color: #64748b;
-    font-weight: 600;
-}*/
 
 .stat-label {
     font-size: clamp(0.85rem, 3vw, 0.95rem) !important;
@@ -934,6 +885,46 @@ footer {
 
 .secondary-btn:hover {
     background: #d6e0f5;
+}
+
+.results-top-bar {
+position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+  margin-bottom: 1.25rem;
+}
+
+.results-share-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 10;
+  transition: all 0.2s;
+}
+
+.results-share-btn img {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+}
+
+.results-share-btn:hover {
+  transform: scale(1.15);
+}
+
+.dark .results-share-btn:hover {
+  background: rgba(255,255,255,0.1);
 }
 
 /* ==================== END RESULT SCREEN ==================== */
@@ -3623,7 +3614,6 @@ footer {
 /* ==================== END TIME-UP SCREEN ==================== */
 
 /* ==================== HISTORY SCREEN ==================== */
-/* ==================== HISTORY SCREEN ==================== */
 
 .history-screen {
     padding: clamp(1rem, 4vw, 1.5rem) clamp(0.75rem, 3vw, 1rem);
@@ -3634,10 +3624,9 @@ footer {
 }
 
 .history-header {
-    display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     padding-bottom: 1rem;
     border-bottom: 1.5px solid #c7d2fe;
 }
@@ -3647,10 +3636,11 @@ footer {
 }
 
 .history-title {
-    font-size: clamp(1.4rem, 5vw, 1.85rem);
+    font-size: 2rem;
     font-weight: 800;
+    text-align: center;
+    
     color: #1e293b;
-    letter-spacing: -0.02em;
 }
 
 .dark .history-title {
@@ -3659,7 +3649,7 @@ footer {
 
 
 .history-btn {
-  width: 100%;
+  
   background: #f1f5f9;
   color: #1e40af;
   border: 2px solid #c7d2fe;
@@ -3694,6 +3684,7 @@ footer {
     display: flex;
     gap: 0.6rem;
     align-items: center;
+    padding-bottom: 1rem;
 }
 
 .history-clear-btn {
@@ -3790,19 +3781,19 @@ footer {
     flex: 1;
 }
 
-/*.history-date {
+.history-date {
     font-size: clamp(0.8rem, 3vw, 0.9rem);
     color: #64748b;
     margin-bottom: 0.3rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}*/
-.history-date {
+}
+/*.history-date {
   font-size: 0.95rem;
   color: #64748b;
   margin-bottom: 4px;
-}
+}*/
 
 .dark .history-date {
     color: #94a3b8;
@@ -3956,6 +3947,18 @@ footer {
 
 /* ==================== END HISTORY SCREEN ==================== */
 
+
+/* Small phones adjustment */
+@media (max-width: 360px) {
+  .results-top-bar {
+    min-height: 100px;
+    padding-right: 45px;
+  }
+  
+  .achievement-trophy {
+    width: clamp(70px, 20vw, 90px);
+  }
+}
 
 
 @media (max-width: 480px) {

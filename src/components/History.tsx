@@ -100,6 +100,7 @@ export default function History({ onClose }: Props) {
     <div className="history-screen">
       <div className="history-header">
         <h2 className="history-title">{t("history.title")}</h2>
+        </div>
         <div className="history-actions">
           {history.length > 0 && (
             <button
@@ -113,7 +114,7 @@ export default function History({ onClose }: Props) {
             {t("settings.close")}
           </button>
         </div>
-      </div>
+      
 
       {history.length === 0 ? (
         <div className="empty-state">

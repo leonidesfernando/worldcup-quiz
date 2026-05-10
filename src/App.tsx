@@ -103,6 +103,7 @@ useEffect(() => {
             result={roundResult}
             onPlayAgain={startNewRound}
             onBackToHome={() => setScreen("home")}
+            onOpenHistory={() => setScreen("history")}
           />
         )}
         {screen === "settings" && <Settings onClose={closeSettings} onOpenHistory={historyScreen} />}

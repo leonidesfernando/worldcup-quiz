@@ -24,12 +24,14 @@ interface Props {
   result: RoundResult;
   onPlayAgain: () => void;
   onBackToHome: () => void;
+  onOpenHistory: () => void;
 }
 
 export default function Results({
   result,
   onPlayAgain,
   onBackToHome,
+  onOpenHistory,
 }: Readonly<Props>) {
   const { t } = useTranslation();
   const { lang } = useTranslation();
@@ -176,26 +178,34 @@ const handleShareScore = async () => {
       {/* Confetti Effect - placed outside the card so it covers the whole screen */}
       <ConfettiEffect percentage={percentage} />
       <div className="results-card">
-        {/* Trophy Section with Animation */}
-        {hasTrophy && (
-        <motion.div
-          className={`trophy-section ${trophyClass}`}
-          initial="initial"
-          animate="animate"
-          variants={animationVariant}
-        >
-          {trophyImage && (
-            <motion.img
-              src={trophyImage}
-              alt="Achievement"
-              className="achievement-trophy"
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-            />
+        <div className="results-top-bar">
+          {/* Trophy Section with Animation */}
+          {hasTrophy && (
+          <motion.div
+            className={`trophy-section ${trophyClass}`}
+            initial="initial"
+            animate="animate"
+            variants={animationVariant}
+          >
+            {trophyImage && (
+              <motion.img
+                src={trophyImage}
+                alt="Achievement"
+                className="achievement-trophy"
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+              />
+            )}
+          </motion.div>
           )}
-        </motion.div>
-        )}
+          {/* Share Button - Top Right */}
+          <button onClick={handleShareScore} className="results-share-btn" aria-label="Share score">
+            <img src={shareIcon} alt="Share" />
+          </button>          
+        </div>
+
+
         <h2 className="results-title">{t("results.title")}</h2>
 
         {/* Motivational Message */}
@@ -250,9 +260,13 @@ const handleShareScore = async () => {
           </button>
 
           {/* Share Button */}
-          <button onClick={handleShareScore} className="share-btn">
+          {/*<button onClick={handleShareScore} className="share-btn">
             <img src={shareIcon} />
              {t('results.shareScore')}
+          </button> */}
+
+          <button onClick={onOpenHistory} className="share-btn">
+             {t("history.viewHistory")}
           </button>
         </div>
       </div>

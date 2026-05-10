@@ -80,7 +80,8 @@ export default function Settings({ onClose, onOpenHistory }: Readonly<Props>) {
         <div className="settings-section">
           <h3 className="section-title">{t("history.title")}</h3>
           <button onClick={onOpenHistory} className="history-btn">
-            📜 {t("history.viewHistory")}
+            
+            {t("history.viewHistory")}
           </button>
         </div>
 
