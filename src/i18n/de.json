@@ -103,6 +103,27 @@
     "showCorrectAnswer": "Richtige Antwort anzeigen",
     "showCorrectAnswerHint": "Die richtige Antwort im Fehlerfall anzeigen"
   },
+  "history": {
+    "title": "Verlauf",
+     "viewHistory": "Verlauf anzeigen",
+    "empty": "Noch keine vorherigen Runden.",
+    "clearAll": "Alles löschen",
+    "clearConfirm": "Gesamten Verlauf löschen?",
+    "dateFormat": "dd MMM yyyy - HH:mm",
+    "clearConfirmTitle": "Gesamten Verlauf löschen?",
+    "clearConfirmMessage": "Alle Quiz-Ergebnisse werden dauerhaft gelöscht.",
+    "deleteConfirmTitle": "Dieses Ergebnis löschen?",
+    "deleteConfirmMessage": "Dieser Eintrag wird dauerhaft entfernt.",
+    "previous": "Zurück",
+    "next": "Weiter"
+  },
+  "dialog": {
+    "confirm": "Bestätigen",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "confirmTitle": "Bist du sicher?",
+    "confirmMessage": "Diese Aktion kann nicht rückgängig gemacht werden."
+  },
   "questions": {
     "final": "Finale",
     "semiFinal": "Halbfinale",

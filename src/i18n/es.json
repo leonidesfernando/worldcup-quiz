@@ -103,6 +103,27 @@
     "dialogueTitle": "Comparte tu puntuación",
     "player": "¡Estoy jugando Quiz del Mundial!"
   },
+  "history": {
+    "title": "Historial",
+    "viewHistory": "Ver historial",
+    "empty": "Aún no hay rondas anteriores.",
+    "clearAll": "Borrar Todo",
+    "clearConfirm": "¿Borrar todo el historial?",
+    "dateFormat": "dd MMM yyyy - HH:mm",
+    "clearConfirmTitle": "¿Borrar todo el historial?",
+    "clearConfirmMessage": "Todos los resultados del cuestionario se eliminarán permanentemente.",
+    "deleteConfirmTitle": "¿Eliminar este resultado?",
+    "deleteConfirmMessage": "Esta entrada se eliminará permanentemente.",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
+  "dialog": {
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "confirmTitle": "¿Estás seguro?",
+    "confirmMessage": "Esta acción no se puede deshacer."
+  },
   "questions": {
     "final": "final",
     "semiFinal": "semifinal",

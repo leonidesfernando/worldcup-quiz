@@ -103,6 +103,27 @@
     "showCorrectAnswer": "Pokaż poprawną odpowiedź",
     "showCorrectAnswerHint": "Pokaż poprawną odpowiedź w przypadku błędu"
   },
+  "history": {
+    "title": "Historia",
+    "viewHistory": "Zobacz historię",
+    "empty": "Nie ma jeszcze poprzednich rund.",
+    "clearAll": "Wyczyść wszystko",
+    "clearConfirm": "Wyczyścić całą historię?",
+    "dateFormat": "dd MMM yyyy - HH:mm",
+    "clearConfirmTitle": "Wyczyścić całą historię?",
+    "clearConfirmMessage": "Wszystkie wyniki quizu zostaną trwale usunięte.",
+    "deleteConfirmTitle": "Usunąć ten wynik?",
+    "deleteConfirmMessage": "Ten wpis zostanie trwale usunięty.",
+    "previous": "Poprzednia",
+    "next": "Następna"
+  },
+  "dialog": {
+    "confirm": "Potwierdź",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "confirmTitle": "Czy na pewno?",
+    "confirmMessage": "Tej akcji nie można cofnąć."
+  },
   "questions": {
     "final": "finał",
     "semiFinal": "półfinał",
