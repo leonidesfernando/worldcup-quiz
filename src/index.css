@@ -3714,15 +3714,16 @@ footer {
 }
 
 .history-close-btn {
-    background: #e8edf7;
-    color: #3b4f8c;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
+  background: #e8edf7;
+  color: #3b4f8c;
+  border: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .history-close-btn:hover {
@@ -3760,8 +3761,8 @@ footer {
 
 .history-flag-topright {
   position: absolute;
-  top: 12px;
-  right: 16px;
+  top: 0.25rem;
+  right: .8rem;
   font-size: 1.45rem;
   line-height: 0;
 }
@@ -3817,8 +3818,9 @@ footer {
 .history-right {
     display: flex;
     align-items: center;
-    gap: 0.875rem;
+    gap: 1rem;
     flex-shrink: 0;
+    padding-top: .5rem;
 }
 
 /* ── Percentage badge — mirrors results screen tiers ── */
@@ -3859,30 +3861,42 @@ footer {
 }
 
 /* ── Delete button ── */
+/* Delete Button - Proper button style */
 .delete-btn {
-    background: none;
-    border: none;
-    color: #ef4444;
-    font-size: 1rem;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0.55;
-    transition: opacity 0.2s, background 0.2s;
-    flex-shrink: 0;
+  background: #fee2e2;
+  color: #ef4444;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.15);
 }
 
 .delete-btn:hover {
-    opacity: 1;
-    background: #fee2e2;
+  background: #fecaca;
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.25);
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
+}
+
+.dark .delete-btn {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
 }
 
 .dark .delete-btn:hover {
-    background: rgba(239, 68, 68, 0.15);
+  background: rgba(239, 68, 68, 0.35);
 }
 
 /* ── Empty state ── */

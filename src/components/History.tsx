@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "../useTranslation";
 import { HistoryService, type HistoryEntry } from "../service/HistoryService";
 import { format } from "date-fns";
+import { ptBR, pl, fr, es, de, enUS } from "date-fns/locale";
 import ConfirmDialog from "./ConfirmDialog";
 import worldCupTrophy from "../assets/world-cup-trophy.png";
 import silverMedal from "../assets/silver-medal.png";
@@ -13,14 +14,37 @@ interface Props {
   onClose: () => void;
 }
 
+  const locales = {
+    en: enUS,
+    "pt-BR": ptBR,
+    pl,
+    fr,
+    es,
+    de,
+  };
+
+  const dateFormats = {
+    en: "MMM dd, yyyy • HH:mm",
+    "pt-BR": "dd MMM, yyyy • HH:mm",
+    pl: "dd MMM, yyyy • HH:mm",
+    fr: "dd MMM, yyyy • HH:mm",
+    es: "dd MMM, yyyy • HH:mm",
+    de: "dd MMM, yyyy • HH:mm",
+  };
+
 export default function History({ onClose }: Props) {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [loading, setLoading] = useState(true);
 
   const [showClearAllDialog, setShowClearAllDialog] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [itemToDelete, setItemToDelete] = useState<string | null>(null);
+
+
+  const dateFormat = dateFormats[lang] ?? "dd MMM yyyy • HH:mm";
+
+  const locale = locales[lang as keyof typeof locales] ?? enUS;
 
   const loadHistory = async () => {
     setLoading(true);
@@ -100,7 +124,6 @@ export default function History({ onClose }: Props) {
     <div className="history-screen">
       <div className="history-header">
         <h2 className="history-title">{t("history.title")}</h2>
-        </div>
         <div className="history-actions">
           {history.length > 0 && (
             <button
@@ -114,7 +137,7 @@ export default function History({ onClose }: Props) {
             {t("settings.close")}
           </button>
         </div>
-      
+      </div>
 
       {history.length === 0 ? (
         <div className="empty-state">
@@ -128,13 +151,16 @@ export default function History({ onClose }: Props) {
             return (
               <div key={entry.id} className="history-item">
                 <div className="history-flag-topright">
-                  <ReactCountryFlag countryCode={getFlagEmoji(entry.language)} svg/>
+                  <ReactCountryFlag
+                    countryCode={getFlagEmoji(entry.language)}
+                    svg
+                  />
                 </div>
 
                 <div className="history-left">
                   <div className="history-meta">
                     <div className="history-date">
-                      {format(new Date(entry.date), "dd MMM yyyy • HH:mm")}
+                      {format(new Date(entry.date), dateFormat, { locale })}
                     </div>
                   </div>
                   <div className="history-score">
