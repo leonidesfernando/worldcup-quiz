@@ -109,7 +109,18 @@
     "empty": "Aucune partie précédente pour le moment.",
     "clearAll": "Tout effacer",
     "clearConfirm": "Effacer tout l'historique ?",
-    "dateFormat": "dd MMM yyyy - HH:mm"
+    "dateFormat": "dd MMM yyyy - HH:mm",
+    "clearConfirmTitle": "Effacer tout l’historique ?",
+    "clearConfirmMessage": "Tous les résultats du quiz seront définitivement supprimés.",
+    "deleteConfirmTitle": "Supprimer ce résultat ?",
+    "deleteConfirmMessage": "Cette entrée sera supprimée définitivement."
+  },
+  "dialog": {
+    "confirm": "Confirmer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "confirmTitle": "Êtes-vous sûr ?",
+    "confirmMessage": "Cette action est irréversible."
   },
   "questions": {
     "final": "finale",

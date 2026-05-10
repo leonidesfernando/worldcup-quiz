@@ -109,7 +109,18 @@
     "empty": "Nie ma jeszcze poprzednich rund.",
     "clearAll": "Wyczyść wszystko",
     "clearConfirm": "Wyczyścić całą historię?",
-    "dateFormat": "dd MMM yyyy - HH:mm"
+    "dateFormat": "dd MMM yyyy - HH:mm",
+    "clearConfirmTitle": "Wyczyścić całą historię?",
+    "clearConfirmMessage": "Wszystkie wyniki quizu zostaną trwale usunięte.",
+    "deleteConfirmTitle": "Usunąć ten wynik?",
+    "deleteConfirmMessage": "Ten wpis zostanie trwale usunięty."
+  },
+  "dialog": {
+    "confirm": "Potwierdź",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "confirmTitle": "Czy na pewno?",
+    "confirmMessage": "Tej akcji nie można cofnąć."
   },
   "questions": {
     "final": "finał",

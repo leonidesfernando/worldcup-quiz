@@ -109,7 +109,18 @@
     "empty": "Noch keine vorherigen Runden.",
     "clearAll": "Alles löschen",
     "clearConfirm": "Gesamten Verlauf löschen?",
-    "dateFormat": "dd MMM yyyy - HH:mm"
+    "dateFormat": "dd MMM yyyy - HH:mm",
+    "clearConfirmTitle": "Gesamten Verlauf löschen?",
+    "clearConfirmMessage": "Alle Quiz-Ergebnisse werden dauerhaft gelöscht.",
+    "deleteConfirmTitle": "Dieses Ergebnis löschen?",
+    "deleteConfirmMessage": "Dieser Eintrag wird dauerhaft entfernt."
+  },
+  "dialog": {
+    "confirm": "Bestätigen",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "confirmTitle": "Bist du sicher?",
+    "confirmMessage": "Diese Aktion kann nicht rückgängig gemacht werden."
   },
   "questions": {
     "final": "Finale",

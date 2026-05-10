@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Results from "./components/Results";
 import Settings from "./components/Settings";
 import History from "./components/History";
+import SafeHtmlFormatter from "./components/SafeHtmlFormatter";
 
 //import { AdMobService } from "./service/AdMobService";
 
@@ -81,10 +82,11 @@ useEffect(() => {
 
             <div className="card">
               <h2 className="home-title">{t("home.ready")}</h2>
-              <p
+              {/*<p
                 className="home-desc"
                 dangerouslySetInnerHTML={{ __html: t("home.description") }}
-              />
+              /> */}
+              <SafeHtmlFormatter html={t("home.description")} className="home-desc" />
               <button onClick={startNewRound} className="start-btn">
                 {t("home.startButton")}
               </button>

@@ -109,7 +109,17 @@
     "empty": "No previous rounds yet.",
     "clearAll": "Clear All",
     "clearConfirm": "Clear all history?",
-    "dateFormat": "dd MMM yyyy - HH:mm"
+    "dateFormat": "dd MMM yyyy - HH:mm",
+    "clearConfirmTitle": "Clear all history?", 
+    "clearConfirmMessage": "All quiz results will be permanently deleted.", 
+    "deleteConfirmTitle": "Delete this result?", 
+    "deleteConfirmMessage": "This entry will be permanently removed."
+  },
+  "dialog": { 
+    "confirm": "Confirm", 
+    "cancel": "Cancel", "delete": "Delete", 
+    "confirmTitle": "Are you sure?", 
+    "confirmMessage": "This action cannot be undone." 
   },
   "questions": {
     "final": "final",

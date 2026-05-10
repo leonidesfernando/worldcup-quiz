@@ -109,7 +109,18 @@
     "empty": "Nenhuma rodada anterior ainda.",
     "clearAll": "Limpar Tudo",
     "clearConfirm": "Limpar todo o histórico?",
-    "dateFormat": "dd MMM yyyy - HH:mm"
+    "dateFormat": "dd MMM yyyy - HH:mm",
+    "clearConfirmTitle": "Limpar todo o histórico?",
+    "clearConfirmMessage": "Todos os resultados do quiz serão excluídos permanentemente.",
+    "deleteConfirmTitle": "Excluir este resultado?",
+    "deleteConfirmMessage": "Esta entrada será removida permanentemente."
+  },
+  "dialog": {
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "confirmTitle": "Tem certeza?",
+    "confirmMessage": "Esta ação não pode ser desfeita."
   },
   "questions": {
     "final": "final",

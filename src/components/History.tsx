@@ -3,17 +3,32 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "../useTranslation";
 import { HistoryService, type HistoryEntry } from "../service/HistoryService";
 import { format } from "date-fns";
+import ConfirmDialog from "./ConfirmDialog";
 
 interface Props {
   onClose: () => void;
 }
 
-export default function History({ onClose }: Readonly<Props>) {
+export default function History({ onClose }: Props) {
   const { t } = useTranslation();
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Load history on mount
+  const [showClearAllDialog, setShowClearAllDialog] = useState(false);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<string | null>(null);
+
+  const loadHistory = async () => {
+    setLoading(true);
+    const data = await HistoryService.getAll();
+    setHistory(data);
+    setLoading(false);
+  };
+
+  /*useEffect(() => {
+    loadHistory();
+  }, []);*/
+
   useEffect(() => {
     const fetchHistory = async () => {
       try {
@@ -25,37 +40,50 @@ export default function History({ onClose }: Readonly<Props>) {
         setLoading(false);
       }
     };
-
     fetchHistory();
   }, []);
 
-  const deleteEntry = async (id: string) => {
-    await HistoryService.deleteById(id);
-    const updated = await HistoryService.getAll();
-    setHistory(updated);
+  const handleDelete = (id: string) => {
+    setItemToDelete(id);
+    setShowDeleteDialog(true);
   };
 
-  const clearAll = async () => {
-    if (!confirm(t("history.clearConfirm") || "Clear all history?")) return;
+  const confirmDelete = async () => {
+    if (itemToDelete) {
+      await HistoryService.deleteById(itemToDelete);
+      await loadHistory();
+    }
+    setShowDeleteDialog(false);
+    setItemToDelete(null);
+  };
+
+  const confirmClearAll = async () => {
     await HistoryService.clearAll();
     setHistory([]);
+    setShowClearAllDialog(false);
   };
 
-  if (loading) {
-    return <div className="history-screen">Loading history...</div>;
-  }
+  // ── Percentage colour helper — mirrors results screen tiers ──
+  const percentageClass = (pct: number) => {
+    if (pct === 100) return "history-pct history-pct--gold";
+    if (pct >= 80)  return "history-pct history-pct--silver";
+    if (pct >= 70)  return "history-pct history-pct--bronze";
+    return "history-pct history-pct--low";
+  };
+
+  if (loading) return <div className="history-screen">Loading...</div>;
 
   return (
     <div className="history-screen">
       <div className="history-header">
-        <h2>{t("history.title")}</h2>
+        <h2 className="history-title">{t("history.title")}</h2>
         <div className="history-actions">
           {history.length > 0 && (
-            <button onClick={clearAll} className="clear-all-btn">
+            <button onClick={() => setShowClearAllDialog(true)} className="history-clear-btn">
               {t("history.clearAll")}
             </button>
           )}
-          <button onClick={onClose} className="close-btn">
+          <button onClick={onClose} className="history-close-btn">
             {t("settings.close")}
           </button>
         </div>
@@ -63,7 +91,8 @@ export default function History({ onClose }: Readonly<Props>) {
 
       {history.length === 0 ? (
         <div className="empty-state">
-          <p>{t("history.empty")}</p>
+            <div className="empty-state__icon">📋</div>
+            <p className="empty-state__text">{t("history.empty")}</p>
         </div>
       ) : (
         <div className="history-list">
@@ -74,17 +103,15 @@ export default function History({ onClose }: Readonly<Props>) {
                   {format(new Date(entry.date), "dd MMM yyyy • HH:mm")}
                 </div>
                 <div className="history-score">
-                  <strong>{entry.correct}</strong> / {entry.total}
+                <strong>{entry.correct}</strong>
+                <span className="history-score__separator"> / </span>
+                {entry.total}
                 </div>
               </div>
 
               <div className="history-right">
-                <span className="percentage">{entry.percentage}%</span>
-                <button
-                  onClick={() => deleteEntry(entry.id)}
-                  className="delete-btn"
-                  aria-label="Delete entry"
-                >
+                <span className={percentageClass(entry.percentage)}>{entry.percentage}%</span>
+                <button onClick={() => handleDelete(entry.id)} className="delete-btn">
                   ✕
                 </button>
               </div>
@@ -92,6 +119,30 @@ export default function History({ onClose }: Readonly<Props>) {
           ))}
         </div>
       )}
+
+      {/* Reusable Dialogs */}
+      <ConfirmDialog
+        isOpen={showClearAllDialog}
+        title={t("history.clearConfirmTitle") || "Clear History?"}
+        message={t("history.clearConfirmMessage") || "This action cannot be undone."}
+        confirmText={t("history.clearAll")}
+        confirmVariant="danger"
+        onConfirm={confirmClearAll}
+        onCancel={() => setShowClearAllDialog(false)}
+      />
+
+      <ConfirmDialog
+        isOpen={showDeleteDialog}
+        title={t("history.deleteConfirmTitle") || "Delete Entry?"}
+        message={t("history.deleteConfirmMessage") || "This entry will be permanently removed."}
+        confirmText="Delete"
+        confirmVariant="danger"
+        onConfirm={confirmDelete}
+        onCancel={() => {
+          setShowDeleteDialog(false);
+          setItemToDelete(null);
+        }}
+      />
     </div>
   );
 }
