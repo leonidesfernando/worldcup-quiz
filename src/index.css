@@ -3756,15 +3756,23 @@ footer {
 }
 
 .history-item {
-    background: white;
-    border-radius: 1.25rem;
-    padding: clamp(0.875rem, 3vw, 1.1rem) clamp(1rem, 3vw, 1.25rem);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1.5px solid #e8edf7;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-    transition: transform 0.15s, box-shadow 0.15s;
+  position: relative;           /* Important for absolute positioning */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  margin-bottom: 12px;
+}
+
+.history-flag-topright {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.45rem;
+  line-height: 0;
 }
 
 .history-item:hover {
@@ -3780,16 +3788,20 @@ footer {
 
 .history-left {
     flex: 1;
-    min-width: 0;
 }
 
-.history-date {
+/*.history-date {
     font-size: clamp(0.8rem, 3vw, 0.9rem);
     color: #64748b;
     margin-bottom: 0.3rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}*/
+.history-date {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 4px;
 }
 
 .dark .history-date {
@@ -3798,7 +3810,7 @@ footer {
 
 .history-score {
     font-size: clamp(1.1rem, 4vw, 1.35rem);
-    font-weight: 700;
+    font-weight: 600;
     color: #1e293b;
 }
 
@@ -3908,6 +3920,39 @@ footer {
 .dark .empty-state__text {
     color: #94a3b8;
 }
+
+/* History Medal & Flag */
+.history-medal {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  margin-right: 8px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.history-flag {
+  font-size: 1.35rem;
+  margin-right: 8px;
+}
+
+.history-meta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+.history-percentage {
+  font-weight: 800;
+  font-size: 1.35rem;
+  min-width: 52px;
+  text-align: right;
+}
+
+.history-percentage.gold   { color: #fbbf24; }
+.history-percentage.silver { color: #94a3b8; }
+.history-percentage.bronze { color: #cd7f32; }
 
 /* ==================== END HISTORY SCREEN ==================== */
 

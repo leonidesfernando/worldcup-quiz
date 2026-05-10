@@ -4,6 +4,10 @@ import { useTranslation } from "../useTranslation";
 import { HistoryService, type HistoryEntry } from "../service/HistoryService";
 import { format } from "date-fns";
 import ConfirmDialog from "./ConfirmDialog";
+import worldCupTrophy from "../assets/world-cup-trophy.png";
+import silverMedal from "../assets/silver-medal.png";
+import bronzeMedal from "../assets/bronze-medal.png";
+import ReactCountryFlag from "react-country-flag";
 
 interface Props {
   onClose: () => void;
@@ -66,9 +70,28 @@ export default function History({ onClose }: Props) {
   // ── Percentage colour helper — mirrors results screen tiers ──
   const percentageClass = (pct: number) => {
     if (pct === 100) return "history-pct history-pct--gold";
-    if (pct >= 80)  return "history-pct history-pct--silver";
-    if (pct >= 70)  return "history-pct history-pct--bronze";
+    if (pct >= 80) return "history-pct history-pct--silver";
+    if (pct >= 70) return "history-pct history-pct--bronze";
     return "history-pct history-pct--low";
+  };
+
+  const getMedal = (percentage: number) => {
+    if (percentage === 100) return worldCupTrophy; //"world-cup-trophy.png";
+    if (percentage >= 80) return silverMedal; //"silver-medal.png";
+    if (percentage >= 70) return bronzeMedal; // "bronze-medal.png";
+    return null;
+  };
+
+  const getFlagEmoji = (lang: string) => {
+    const flags: Record<string, string> = {
+      en: "US",
+      "pt-BR": "BR",
+      es: "ES",
+      fr: "FR",
+      de: "DE",
+      pl: "PL",
+    };
+    return flags[lang] || "🌍";
   };
 
   if (loading) return <div className="history-screen">Loading...</div>;
@@ -79,7 +102,10 @@ export default function History({ onClose }: Props) {
         <h2 className="history-title">{t("history.title")}</h2>
         <div className="history-actions">
           {history.length > 0 && (
-            <button onClick={() => setShowClearAllDialog(true)} className="history-clear-btn">
+            <button
+              onClick={() => setShowClearAllDialog(true)}
+              className="history-clear-btn"
+            >
               {t("history.clearAll")}
             </button>
           )}
@@ -91,32 +117,49 @@ export default function History({ onClose }: Props) {
 
       {history.length === 0 ? (
         <div className="empty-state">
-            <div className="empty-state__icon">📋</div>
-            <p className="empty-state__text">{t("history.empty")}</p>
+          <div className="empty-state__icon">📋</div>
+          <p className="empty-state__text">{t("history.empty")}</p>
         </div>
       ) : (
         <div className="history-list">
-          {history.map((entry) => (
-            <div key={entry.id} className="history-item">
-              <div className="history-left">
-                <div className="history-date">
-                  {format(new Date(entry.date), "dd MMM yyyy • HH:mm")}
+          {history.map((entry) => {
+            const medal = getMedal(entry.percentage);
+            return (
+              <div key={entry.id} className="history-item">
+                <div className="history-flag-topright">
+                  <ReactCountryFlag countryCode={getFlagEmoji(entry.language)} svg/>
                 </div>
-                <div className="history-score">
-                <strong>{entry.correct}</strong>
-                <span className="history-score__separator"> / </span>
-                {entry.total}
-                </div>
-              </div>
 
-              <div className="history-right">
-                <span className={percentageClass(entry.percentage)}>{entry.percentage}%</span>
-                <button onClick={() => handleDelete(entry.id)} className="delete-btn">
-                  ✕
-                </button>
+                <div className="history-left">
+                  <div className="history-meta">
+                    <div className="history-date">
+                      {format(new Date(entry.date), "dd MMM yyyy • HH:mm")}
+                    </div>
+                  </div>
+                  <div className="history-score">
+                    <strong>{entry.correct}</strong>
+                    <span className="history-score__separator"> / </span>
+                    {entry.total}
+                  </div>
+                </div>
+
+                <div className="history-right">
+                  {medal && (
+                    <img src={medal} alt="medal" className="history-medal" />
+                  )}
+                  <span className={percentageClass(entry.percentage)}>
+                    {entry.percentage}%
+                  </span>
+                  <button
+                    onClick={() => handleDelete(entry.id)}
+                    className="delete-btn"
+                  >
+                    ✕
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
 
@@ -124,7 +167,9 @@ export default function History({ onClose }: Props) {
       <ConfirmDialog
         isOpen={showClearAllDialog}
         title={t("history.clearConfirmTitle") || "Clear History?"}
-        message={t("history.clearConfirmMessage") || "This action cannot be undone."}
+        message={
+          t("history.clearConfirmMessage") || "This action cannot be undone."
+        }
         confirmText={t("history.clearAll")}
         confirmVariant="danger"
         onConfirm={confirmClearAll}
@@ -134,7 +179,10 @@ export default function History({ onClose }: Props) {
       <ConfirmDialog
         isOpen={showDeleteDialog}
         title={t("history.deleteConfirmTitle") || "Delete Entry?"}
-        message={t("history.deleteConfirmMessage") || "This entry will be permanently removed."}
+        message={
+          t("history.deleteConfirmMessage") ||
+          "This entry will be permanently removed."
+        }
         confirmText="Delete"
         confirmVariant="danger"
         onConfirm={confirmDelete}

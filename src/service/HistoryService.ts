@@ -6,13 +6,14 @@ export interface HistoryEntry {
   wrong: number;
   total: number;
   percentage: number;
+  language: string;
 }
 
 const STORAGE_KEY = 'worldcup_quiz_history';
 const MAX_KEEPT_RESULTS = 100;
 
 export const HistoryService = {
-  async saveResult(correct: number, total: number): Promise<void> {
+  async saveResult(correct: number, total: number, language: string): Promise<void> {
     const entry: HistoryEntry = {
       id: Date.now().toString(36) + Math.random().toString(36).substr(2),
       date: new Date().toISOString(),
@@ -20,6 +21,7 @@ export const HistoryService = {
       wrong: total - correct,
       total,
       percentage: Math.round((correct / total) * 100),
+      language
     };
 
     const history = await this.getAll();

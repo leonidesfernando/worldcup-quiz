@@ -32,6 +32,7 @@ export default function Results({
   onBackToHome,
 }: Readonly<Props>) {
   const { t } = useTranslation();
+  const { lang } = useTranslation();
   const percentage = Math.round((result.correct / result.total) * 100);
 
   // State for bonus and reward offer
@@ -48,7 +49,7 @@ export default function Results({
 
   useEffect(() => {
   if (result) {
-    HistoryService.saveResult(result.correct, result.total);
+    HistoryService.saveResult(result.correct, result.total, lang);
   }
 }, [result]);
   
