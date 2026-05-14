@@ -10,6 +10,7 @@ interface Props {
   totalQuestions: number;
   onFinish: () => void;
   onBack: () => void;
+  onOpenHistory: () => void;
 }
 
 export default function TimeUpScreen({
@@ -17,6 +18,7 @@ export default function TimeUpScreen({
   totalQuestions,
   onFinish,
   onBack,
+  onOpenHistory
 }: Readonly<Props>) {
   const { t } = useTranslation();
 
@@ -83,11 +85,14 @@ export default function TimeUpScreen({
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.4 }}
       >
-        <button onClick={onFinish} className="timeup-btn timeup-btn--primary">
+        <button onClick={onFinish} className="primary-btn">
           {t("quiz.timeUpSeeResults")}
         </button>
-        <button onClick={handleBack} className="timeup-btn timeup-btn--secondary">
+        <button onClick={handleBack} className="secondary-btn">
           {t("quiz.timeUpBackHome")}
+        </button>
+        <button onClick={onOpenHistory} className="share-btn">
+            {t("history.viewHistory")}
         </button>
       </motion.div>
     </div>
