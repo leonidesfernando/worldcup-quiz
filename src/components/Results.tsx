@@ -8,10 +8,11 @@ import worldCupTrophy from "../assets/world-cup-trophy.png";
 import silverMedal from "../assets/silver-medal.png";
 import bronzeMedal from "../assets/bronze-medal.png";
 import SafeHtmlFormatter from "./SafeHtmlFormatter";
-import { useEffect, useState } from "react";
+//import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { AdMobService } from "../service/AdMobService";
-import shareIcon from "../assets/share.png";
-import { useShareScore } from '../hooks/useShareScore';
+//import shareIcon from "../assets/share.png";
+//import { useShareScore } from '../hooks/useShareScore';
 import {Utils} from '../utils/Utils';
 import { HistoryService } from "../service/HistoryService";
 interface RoundResult {
@@ -39,11 +40,11 @@ export default function Results({
 
   // State for bonus and reward offer
   //const [bonusPoints, setBonusPoints] = useState(0);
-  const [bonusPoints] = useState(0);
+  //const [bonusPoints] = useState(0);
   //const [showRewardOffer, setShowRewardOffer] = useState(false);
-  const { shareScore } = useShareScore();
+  //const { shareScore } = useShareScore();
 
-  const finalScore = result.correct + bonusPoints;
+  //const finalScore = result.correct + bonusPoints;
   const hasTrophy = percentage >= 70;
 
   // Trigger confetti rain needed
@@ -51,6 +52,10 @@ export default function Results({
 
   useEffect(() => {
   if (result) {
+    if (!hasTrophy) {
+      const divMedal = document.querySelector(".results-top-bar") as HTMLElement;
+      divMedal.style.display = 'none';
+    }
     HistoryService.saveResult(result.correct, result.total, lang);
   }
 }, [result]);
@@ -106,12 +111,12 @@ const handleBackToHome = async () => {
   onBackToHome();
 };
 
-const handleShareScore = async () => {
+/*const handleShareScore = async () => {
   const resultsCard = document.querySelector('.results-card') as HTMLElement;
   if (!resultsCard) return;
 
   await shareScore(resultsCard, finalScore, result.total, percentage, t);
-};
+};*/
 
   // Trophy / Medal logic
   let trophyImage = null;
@@ -178,7 +183,7 @@ const handleShareScore = async () => {
       {/* Confetti Effect - placed outside the card so it covers the whole screen */}
       <ConfettiEffect percentage={percentage} />
       <div className="results-card">
-        <div className="results-top-bar">
+        <div className="results-top-bar" id="resultsTopMedal">
           {/* Trophy Section with Animation */}
           {hasTrophy && (
           <motion.div
@@ -200,9 +205,10 @@ const handleShareScore = async () => {
           </motion.div>
           )}
           {/* Share Button - Top Right */}
-          <button onClick={handleShareScore} className="results-share-btn" aria-label="Share score">
+          
+          {/*<button onClick={handleShareScore} className="results-share-btn" aria-label="Share score">
             <img src={shareIcon} alt="Share" />
-          </button>          
+          </button> */}          
         </div>
 
 

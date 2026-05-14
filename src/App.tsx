@@ -8,7 +8,7 @@ import Results from "./components/Results";
 import Settings from "./components/Settings";
 import History from "./components/History";
 import SafeHtmlFormatter from "./components/SafeHtmlFormatter";
-
+import { useShareScore } from './hooks/useShareScore';
 //import { AdMobService } from "./service/AdMobService";
 
 type Screen = "home" | "quiz" | "results" | "settings" | "history";
@@ -26,6 +26,7 @@ function App() {
   const [roundResult, setRoundResult] = useState<RoundResult | null>(null);
 
   const { t } = useTranslation();
+  const { shareScore } = useShareScore();
 
 // show banner on the bottom all the time, for all pages
   /*  useEffect(() => {
@@ -51,6 +52,16 @@ useEffect(() => {
 }, [screen]);   // Re-run whenever screen changes
 */
 
+const handleShareScore = async () => {
+  if (!roundResult) return;
+
+  const resultsCard = document.querySelector('.results-card') as HTMLElement;
+  if (!resultsCard) return;
+  const percentage = Math.round((roundResult.correct / roundResult.total) * 100);
+  const finalScore = roundResult.correct;
+
+  await shareScore(resultsCard, finalScore, roundResult.total, percentage, t);
+};
 
   const startNewRound = () => {
     setRoundResult(null);
@@ -73,8 +84,9 @@ useEffect(() => {
 
   return (
     <div id="root">
-      <Header onSettingsClick={screen === "home" || screen === "settings" ? openSettings : undefined} />
-
+      <Header onSettingsClick={screen === "home" || screen === "settings" ? openSettings : undefined} 
+      onShareClick={screen === 'results' ? handleShareScore : undefined}   // ← Only show on Results
+    />
       <main>
         {screen === "home" && (
           <div className="home-wrapper">
@@ -91,11 +103,12 @@ useEffect(() => {
                 {t("home.startButton")}
               </button>
             </div>
+            <footer>{t("app.builtBy")}</footer>
           </div>
         )}
 
         {screen === "quiz" && (
-          <QuizScreen totalQuestions={10} onFinish={handleRoundFinish} onBack={goBackHome} />
+          <QuizScreen totalQuestions={10} onFinish={handleRoundFinish} onBack={goBackHome} onOpenHistory={historyScreen} />
         )}
 
         {screen === "results" && roundResult && (
@@ -111,7 +124,7 @@ useEffect(() => {
         {screen === "history" && <History onClose={goBackHome} />}
       </main>
 
-      <footer>{t("app.builtBy")}</footer>
+      
     </div>
   );
 }

@@ -11,6 +11,7 @@ import MissAnimation from "./MissAnimation";
 import TimeUpScreen from "./TimeUpScreen";
 import { AdMobService } from "../service/AdMobService";
 import { Utils } from "../utils/Utils";
+import ConfirmDialog from "./ConfirmDialog";
 
 const TIMER_DURATION_SECONDS = 120; // 2 minutes
 
@@ -18,6 +19,7 @@ interface Props {
   totalQuestions: number;
   onFinish: (correct: number, total: number) => void;
   onBack: () => void;
+  onOpenHistory: () => void;
 }
 
 function generateUniqueQuestions(
@@ -52,7 +54,7 @@ function formatTime(seconds: number): string {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
-export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) {
+export default function QuizScreen({ totalQuestions, onFinish, onBack, onOpenHistory }: Readonly<Props>) {
   const { t } = useTranslation();
   const { isTimerEnabled, showCorrectAnswer } = useSettings();
 
@@ -135,6 +137,7 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) 
         totalQuestions={totalQuestions}
         onFinish={() => onFinish(correctCount, totalQuestions)}
         onBack={onBack}
+        onOpenHistory={onOpenHistory}
       />
     );
   }
@@ -170,37 +173,17 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) 
   return (
     <>
       {/* ── Back confirmation modal ───────────────── */}
-      {showBackConfirm && (
-        <div
-          className="confirm-overlay"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="confirm-title"
-        >
-          <div className="confirm-dialog">
-            <p id="confirm-title" className="confirm-dialog__title">
-              {t("quiz.backConfirmTitle")}
-            </p>
-            <p className="confirm-dialog__message">
-              {t("quiz.backConfirmMessage")}
-            </p>
-            <div className="confirm-dialog__actions">
-              <button
-                onClick={handleCancelBack}
-                className="confirm-dialog__btn confirm-dialog__btn--cancel"
-              >
-                {t("quiz.backConfirmCancel")}
-              </button>
-              <button
-                onClick={handleConfirmBack}
-                className="confirm-dialog__btn confirm-dialog__btn--confirm"
-              >
-                {t("quiz.backConfirmLeave")}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+
+      <ConfirmDialog
+        isOpen={showBackConfirm}
+        titleKey="quiz.backConfirmTitle"
+        messageKey="quiz.backConfirmMessage"
+        confirmTextKey="quiz.backConfirmLeave"
+        confirmVariant="danger"
+        onConfirm={handleConfirmBack}
+        onCancel={handleCancelBack}
+      />
+
 
       {/* ── Quiz card ────────────────────────────── */}
       <div className="quiz-card">
@@ -225,12 +208,15 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack }: Props) 
         )}
 
         <div className="quiz-header">
+          <div className="quiz-header-line">
           <button onClick={handleBackClick} className="back-btn">
             &larr; {t("quiz.back")}
           </button>
-          <div className="score-display">
-            {correctCount} / {totalQuestions}
+          <span className="score-display">
+            <span className="history-score-correct">{correctCount}</span> / {totalQuestions}
+          </span>
           </div>
+
         </div>
 
         {/* Progress + Category + Difficulty Badges */}
