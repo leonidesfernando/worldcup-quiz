@@ -284,12 +284,12 @@ main {
 /* Category Badge */
 .category-badge {
     background-color: #e2e8f0;
-    color: #3102a0;
+    color: #4b4646
 }
 
 .dark .category-badge {
     background-color: #475569;
-    color: #e2e8f0;
+    color: greenyellow;
 }
 
 /* Difficulty Badges */
