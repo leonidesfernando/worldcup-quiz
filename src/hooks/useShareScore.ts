@@ -18,8 +18,8 @@ function canvasToBlob(canvas: HTMLCanvasElement, quality = 0.95): Promise<Blob> 
   );
 }
 
-function buildShareText(finalScore: number, total: number, percentage: number, t:Translator): string {
-
+//function buildShareText(finalScore: number, total: number, percentage: number, t:Translator): string {
+const buildShareText = (finalScore: number, total: number, percentage: number, t: Translator): string => {
     let positionMesage = "";
     if (percentage === 100) {
       positionMesage = t("share.champion") + "🏆\n";
@@ -37,7 +37,7 @@ function buildShareText(finalScore: number, total: number, percentage: number, t
     const beatScore = t("share.beatScore");
 
     return `${positionMesage} \n\n${beatScore}\n${tryApp}\n\n`;
-}
+};
 
 export function useShareScore() {
 

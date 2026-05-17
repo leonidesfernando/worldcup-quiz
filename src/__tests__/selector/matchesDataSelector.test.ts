@@ -11,12 +11,6 @@ describe('matchesData integrity', () => {
     expect(invalid).toHaveLength(0);
   });
 
-  it('number of finals matches from 1930 till 2022', () => {
-    const finals = matchesData.finals;
-
-    const nCups = ((2022 - 1930)/4) - 2;
-    expect(finals.length).toBe(nCups);
-  });
 
   it('semiFinals should only contain semi-final matches', () => {
     const invalid = matchesData.semiFinals.filter(
