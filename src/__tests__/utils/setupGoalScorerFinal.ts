@@ -129,38 +129,23 @@ export const setupFirstGoalScorerQuestion = (opts: SetupFirstGoalScorerOptions =
   const thirdGoal  = createGoalFixture({ given_name: 'Kleberson', family_name: '',      minute_regulation: 85 });
   const fourthGoal = createGoalFixture({ given_name: 'Gilberto',  family_name: 'Silva', minute_regulation: 89 });
 
+  // Map each goal object to its expected scorer name.
+  // Using mockImplementation keyed on object identity is reliable regardless
+  // of how many times or in what order getScorerName is called.
+  const scorerMap = new Map<object, string>([
+    [firstGoal,  scorerName],
+    [secondGoal, wrongScorers[0]],
+    [thirdGoal,  wrongScorers[1]],
+    [fourthGoal, wrongScorers[2]],
+  ]);
+  mockGetScorerName.mockImplementation((g: object) => scorerMap.get(g) ?? '');
+
   mockGoalsByMatchId.clear();
   mockGoalsByMatchId.set(match.match_id, [firstGoal, secondGoal, thirdGoal, fourthGoal]);
 
   mockGetFinals.mockReturnValue([match]);
   mockGetRandomItem.mockReturnValue(match);
   mockShuffleArray.mockImplementation(<T>(arr: T[]) => arr);
-
-  // getScorerName call sequence matches the source exactly:
-  // Line 79  — validGoals filter: called once per goal (4 calls)
-  // Line 88  — const scorer = getScorerName(validGoals[0]) (1 call)
-  // Line 103 — wrongScorers filter: called once per remaining goal (3 calls)
-  // Line 104 — wrongScorers map: called once per passing goal (3 calls)
-  // Total: 11 calls
-  mockGetScorerName
-    // validGoals filter (line 79) — all 4 goals must return truthy to pass
-    .mockReturnValueOnce(scorerName)       // firstGoal  passes filter
-    .mockReturnValueOnce(wrongScorers[0])  // secondGoal passes filter
-    .mockReturnValueOnce(wrongScorers[1])  // thirdGoal  passes filter
-    .mockReturnValueOnce(wrongScorers[2])  // fourthGoal passes filter
-    // const scorer = getScorerName(validGoals[0]) (line 88)
-    .mockReturnValueOnce(scorerName)
-    // wrongScorers filter (line 103) — must differ from scorer
-    .mockReturnValueOnce(wrongScorers[0])
-    .mockReturnValueOnce(wrongScorers[1])
-    .mockReturnValueOnce(wrongScorers[2])
-    // wrongScorers map (line 104)
-    .mockReturnValueOnce(wrongScorers[0])
-    .mockReturnValueOnce(wrongScorers[1])
-    .mockReturnValueOnce(wrongScorers[2])
-    // safety net for any further calls
-    .mockReturnValue(scorerName);
-
   mockGetGoals.mockReturnValue([]);
 
   mockGetCountryNameByI18n.mockImplementation((_: unknown, code: string) => `countries.${code}`);

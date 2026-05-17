@@ -8,7 +8,7 @@ import {
   setupFirstGoalScorerQuestion,
 } from './utils/setupGoalScorerFinal';
 import { SUPPORTED_LOCALES } from './i18n/locales';
-import { mockGetFinals, mockGetRandomItem, mockGenerateWinnerQuestion, mockGoalsByMatchId } from './setup/goalScorerFinal.mocks';
+import { mockGetFinals, mockGetRandomItem, mockShuffleArray, mockGenerateWinnerQuestion, mockGoalsByMatchId } from './setup/goalScorerFinal.mocks';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // NumberOfGoalsFinalQuestion
@@ -19,6 +19,7 @@ describe.each(SUPPORTED_LOCALES)(
   (locale) => {
     beforeEach(() => {
       vi.clearAllMocks();
+      mockShuffleArray.mockImplementation(<T>(arr: T[]) => arr);
     });
     it('generates valid question structure', () => {
       const { t } = setupNumberOfGoalsQuestion({ locale });
@@ -115,6 +116,7 @@ describe.each(SUPPORTED_LOCALES)(
   (locale) => {
     beforeEach(() => {
       vi.clearAllMocks();
+      mockShuffleArray.mockImplementation(<T>(arr: T[]) => arr);
     });
     it('generates valid question structure', () => {
       const { t } = setupFirstGoalScorerQuestion({ locale });

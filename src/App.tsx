@@ -23,13 +23,15 @@ function App() {
 
   const { t } = useTranslation();
   const { shareScore } = useShareScore();
+  const [isSharing, setIsSharing] = useState(false);
 
   // Share handler - stable and safe
   const handleShareScore = async () => {
-    if (!roundResult) {
+    if (!roundResult || isSharing) {
       console.warn("No round result available");
       return;
     }
+    setIsSharing(true);
 
     // Small delay ensures the DOM has the results card
     setTimeout(async () => {
@@ -46,6 +48,8 @@ function App() {
         await shareScore(resultsCard, finalScore, roundResult.total, percentage, t);
       } catch (error) {
         console.error("Share failed:", error);
+      } finally {
+        setIsSharing(false);
       }
     }, 150);
   };
@@ -65,16 +69,18 @@ function App() {
   };
 
   const goBackHome = () => setScreen("home");
-  const openSettings = () => setScreen("settings");
+  //const openSettings = () => setScreen("settings");
   const closeSettings = () => setScreen("home");
   const openHistory = () => setScreen("history");
 
   return (
     <div id="root">
-      <Header 
-        onSettingsClick={screen === "settings" ? undefined : openSettings}
-        onShareClick={screen === 'results' ? handleShareScore : undefined}
-      />
+<Header 
+  onSettingsClick={screen === "settings" ? undefined : () => setScreen("settings")}
+  onShareClick={screen === 'results' ? handleShareScore : undefined}
+  isSharing={isSharing}
+  currentScreen={screen}           // ← Important: pass current screen
+/>
 
       <main>
         {screen === "home" && (
