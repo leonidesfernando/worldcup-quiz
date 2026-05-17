@@ -1,5 +1,4 @@
 // src/App.tsx
-//import { useState, useEffect } from "react";
 import { useState } from "react";
 import QuizScreen from "./components/QuizScreen";
 import { useTranslation } from "./useTranslation";
@@ -9,7 +8,6 @@ import Settings from "./components/Settings";
 import History from "./components/History";
 import SafeHtmlFormatter from "./components/SafeHtmlFormatter";
 import { useShareScore } from './hooks/useShareScore';
-//import { AdMobService } from "./service/AdMobService";
 
 type Screen = "home" | "quiz" | "results" | "settings" | "history";
 
@@ -19,49 +17,42 @@ interface RoundResult {
   total: number;
 }
 
-
-
 function App() {
   const [screen, setScreen] = useState<Screen>("home");
   const [roundResult, setRoundResult] = useState<RoundResult | null>(null);
 
   const { t } = useTranslation();
   const { shareScore } = useShareScore();
+  const [isSharing, setIsSharing] = useState(false);
 
-// show banner on the bottom all the time, for all pages
-  /*  useEffect(() => {
-    AdMobService.showBanner();
-    return () => {
-      AdMobService.hideBanner();
-    };
-  }, []);*/
+  // Share handler - stable and safe
+  const handleShareScore = async () => {
+    if (!roundResult || isSharing) {
+      console.warn("No round result available");
+      return;
+    }
+    setIsSharing(true);
 
-/*  
-useEffect(() => {
-  // Show banner only when on Home screen
-  if (screen === "home") {
-    AdMobService.showBanner();
-  } else {
-    AdMobService.hideBanner();
-  }
+    // Small delay ensures the DOM has the results card
+    setTimeout(async () => {
+      const resultsCard = document.querySelector('.results-card') as HTMLElement;
+      if (!resultsCard) {
+        console.warn("Results card not found in DOM");
+        return;
+      }
 
-  // Cleanup: hide banner when App component unmounts
-  return () => {
-    AdMobService.hideBanner();
+      const percentage = Math.round((roundResult.correct / roundResult.total) * 100);
+      const finalScore = roundResult.correct;
+
+      try {
+        await shareScore(resultsCard, finalScore, roundResult.total, percentage, t);
+      } catch (error) {
+        console.error("Share failed:", error);
+      } finally {
+        setIsSharing(false);
+      }
+    }, 150);
   };
-}, [screen]);   // Re-run whenever screen changes
-*/
-
-const handleShareScore = async () => {
-  if (!roundResult) return;
-
-  const resultsCard = document.querySelector('.results-card') as HTMLElement;
-  if (!resultsCard) return;
-  const percentage = Math.round((roundResult.correct / roundResult.total) * 100);
-  const finalScore = roundResult.correct;
-
-  await shareScore(resultsCard, finalScore, roundResult.total, percentage, t);
-};
 
   const startNewRound = () => {
     setRoundResult(null);
@@ -78,26 +69,24 @@ const handleShareScore = async () => {
   };
 
   const goBackHome = () => setScreen("home");
-  const openSettings = () => setScreen("settings");
+  //const openSettings = () => setScreen("settings");
   const closeSettings = () => setScreen("home");
-  const historyScreen = () => setScreen("history");
+  const openHistory = () => setScreen("history");
 
   return (
     <div id="root">
-      <Header onSettingsClick={screen === "home" || screen === "settings" ? openSettings : undefined} 
-      onShareClick={screen === 'results' ? handleShareScore : undefined}   // ← Only show on Results
-    />
+<Header 
+  onSettingsClick={screen === "settings" ? undefined : () => setScreen("settings")}
+  onShareClick={screen === 'results' ? handleShareScore : undefined}
+  isSharing={isSharing}
+  currentScreen={screen}           // ← Important: pass current screen
+/>
+
       <main>
         {screen === "home" && (
           <div className="home-wrapper">
-
-
             <div className="card">
               <h2 className="home-title">{t("home.ready")}</h2>
-              {/*<p
-                className="home-desc"
-                dangerouslySetInnerHTML={{ __html: t("home.description") }}
-              /> */}
               <SafeHtmlFormatter html={t("home.description")} className="home-desc" />
               <button onClick={startNewRound} className="start-btn">
                 {t("home.startButton")}
@@ -108,23 +97,29 @@ const handleShareScore = async () => {
         )}
 
         {screen === "quiz" && (
-          <QuizScreen totalQuestions={10} onFinish={handleRoundFinish} onBack={goBackHome} onOpenHistory={historyScreen} />
+          <QuizScreen 
+            totalQuestions={10} 
+            onFinish={handleRoundFinish} 
+            onBack={goBackHome}
+            onOpenHistory={openHistory}           // ← Fixed
+          />
         )}
 
         {screen === "results" && roundResult && (
           <Results
             result={roundResult}
             onPlayAgain={startNewRound}
-            onBackToHome={() => setScreen("home")}
-            onOpenHistory={() => setScreen("history")}
+            onBackToHome={goBackHome}
+            onOpenHistory={openHistory}           // ← Fixed
           />
         )}
-        {screen === "settings" && <Settings onClose={closeSettings} onOpenHistory={historyScreen} />}
+
+        {screen === "settings" && (
+          <Settings onClose={closeSettings} onOpenHistory={openHistory} />
+        )}
 
         {screen === "history" && <History onClose={goBackHome} />}
       </main>
-
-      
     </div>
   );
 }

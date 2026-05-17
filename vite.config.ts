@@ -3,32 +3,25 @@
 
 import { defineConfig } from 'vitest/config';  // ← IMPORTANT: import from 'vitest/config'
 import react from '@vitejs/plugin-react';
-import { VitePWA } from 'vite-plugin-pwa';
+//import { VitePWA } from 'vite-plugin-pwa';
+
+const buildTimestamp = Date.now();
 
 export default defineConfig({
   plugins: [
-    react(),
-    VitePWA({
-      registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
-      manifest: {
-        name: 'World Cup Quiz',
-        short_name: 'WC Quiz',
-        description: 'World Cup quiz',
-        theme_color: '#1d4ed8',
-        background_color: '#ffffff',
-        display: 'standalone',
-        icons: [
-          { src: '/pwa-192x192.png', sizes: '192x192', type: 'image/png' },
-          { src: '/pwa-512x512.png', sizes: '512x512', type: 'image/png' }
-        ]
-      },
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
-        maximumFileSizeToCacheInBytes: 40 * 1024 * 1024
-      }
-    })
+    react()
   ],
+
+  build: {
+    rollupOptions: {
+      output: {
+        // Unique filenames per build — WebView never serves stale cached files
+        entryFileNames: `assets/[name]-[hash]-${buildTimestamp}.js`,
+        chunkFileNames: `assets/[name]-[hash]-${buildTimestamp}.js`,
+        assetFileNames: `assets/[name]-[hash]-${buildTimestamp}.[ext]`,
+      },
+    },
+  },
 
   // Vitest config – now recognized because we imported from 'vitest/config'
   test: {

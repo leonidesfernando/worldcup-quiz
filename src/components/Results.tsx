@@ -212,7 +212,7 @@ const handleBackToHome = async () => {
         </div>
 
 
-        <h2 className="results-title">{t("results.title")}</h2>
+        <h2 className="results-title">{t("results.title")} zole</h2>
 
         {/* Motivational Message */}
         <SafeHtmlFormatter html={message} className="results-message" />
