@@ -1,8 +1,8 @@
 {
   "app": {
-    "title": "Quiz Mistrzostw Świata",
+    "title": "World Cup Quiz",
     "subtitle": "• 1930 – 2022 •",
-    "builtBy": "Quiz Mistrzostw Świata©",
+    "builtBy": "World Cup Quiz©",
     "dataFrom": "Dane z jfjelstul/worldcup",
     "tryApp": "Wypróbuj aplikację {appName}!"
   },
