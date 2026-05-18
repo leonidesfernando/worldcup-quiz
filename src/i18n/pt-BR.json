@@ -101,7 +101,7 @@
     "timer": "Tempo da rodada",
     "timerHint": "2 minutos para completar a rodada",
     "showCorrectAnswer": "Mostrar resposta",
-    "showCorrectAnswerHint": "Mostrar a resposta correta em caso de erro"
+    "showCorrectAnswerHint": "Mostrar a resposta correta caso estiver errada"
   },
   "history": {
     "title": "Histórico",

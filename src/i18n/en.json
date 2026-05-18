@@ -101,7 +101,7 @@
     "timer": "Round Timer",
     "timerHint": "2 minutes to complete the round",
     "showCorrectAnswer": "Show correct answer",
-    "showCorrectAnswerHint": "Show the correct answer in case of an error"
+    "showCorrectAnswerHint": "Show the correct answer if the answer is incorrect"
   },
   "history": {
     "title": "History",

@@ -101,7 +101,7 @@
     "timer": "Minuteur de manche",
     "timerHint": "2 minutes pour terminer la manche",
     "showCorrectAnswer": "Afficher la bonne réponse",
-    "showCorrectAnswerHint": "Afficher la bonne réponse en cas d'erreur"
+    "showCorrectAnswerHint": "Afficher la bonne réponse si la réponse est incorrecte"
   },
   "history": {
     "title": "Historique",

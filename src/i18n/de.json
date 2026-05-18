@@ -101,7 +101,7 @@
     "timer": "Runden-Timer",
     "timerHint": "2 Minuten, um die Runde abzuschließen",
     "showCorrectAnswer": "Richtige Antwort anzeigen",
-    "showCorrectAnswerHint": "Die richtige Antwort im Fehlerfall anzeigen"
+    "showCorrectAnswerHint": "Die richtige Antwort anzeigen, wenn die Antwort falsch ist"
   },
   "history": {
     "title": "Verlauf",
