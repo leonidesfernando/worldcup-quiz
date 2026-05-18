@@ -91,7 +91,7 @@
     "timer": "Temporizador de ronda",
     "timerHint": "2 minutos para completar la ronda",
     "showCorrectAnswer": "Mostrar la respuesta correcta",
-    "showCorrectAnswerHint": "Mostrar la respuesta correcta en caso de error"
+    "showCorrectAnswerHint": "Mostrar la respuesta correcta si la respuesta es incorrecta"
   },
   "share": {
     "quizScore": "Mi puntuación del Quiz de la Copa del Mundo",

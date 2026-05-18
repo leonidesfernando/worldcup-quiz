@@ -101,7 +101,7 @@
     "timer": "Czas rundy",
     "timerHint": "2 minuty na ukończenie rundy",
     "showCorrectAnswer": "Pokaż poprawną odpowiedź",
-    "showCorrectAnswerHint": "Pokaż poprawną odpowiedź w przypadku błędu"
+    "showCorrectAnswerHint": "Pokaż poprawną odpowiedź, jeśli odpowiedź jest błędna"
   },
   "history": {
     "title": "Historia",
