@@ -855,6 +855,16 @@ footer {
     background: #d6e0f5;
 }
 
+.results-top-bar.hide-trophy .trophy-section {
+  display: none;
+}
+
+/* Optional: Keep the space clean when trophy is hidden */
+.results-top-bar.hide-trophy {
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+}
+
 .results-top-bar {
   position: relative;
   display: flex;
