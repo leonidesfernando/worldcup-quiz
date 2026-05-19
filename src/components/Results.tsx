@@ -52,10 +52,10 @@ export default function Results({
 
   useEffect(() => {
   if (result) {
-    if (!hasTrophy) {
+    /* (!hasTrophy) {
       const divMedal = document.querySelector(".results-top-bar") as HTMLElement;
       divMedal.style.display = 'none';
-    }
+    }*/
     HistoryService.saveResult(result.correct, result.total, lang);
   }
 }, [result]);
@@ -212,7 +212,7 @@ const handleBackToHome = async () => {
         </div>
 
 
-        <h2 className="results-title">{t("results.title")} zole</h2>
+        <h2 className="results-title">{t("results.title")}</h2>
 
         {/* Motivational Message */}
         <SafeHtmlFormatter html={message} className="results-message" />
