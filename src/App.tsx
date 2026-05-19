@@ -33,6 +33,9 @@ function App() {
     }
     setIsSharing(true);
 
+    // Small delay to let React render any visual changes
+    await new Promise(resolve => setTimeout(resolve, 80));
+
     // Small delay ensures the DOM has the results card
     setTimeout(async () => {
       const resultsCard = document.querySelector('.results-card') as HTMLElement;
