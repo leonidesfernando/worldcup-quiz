@@ -1,3 +1,4 @@
+/*
 /// <reference types="vitest" />
 /// <reference types="vite/client" />  // optional but good for Vite client types
 
@@ -5,23 +6,11 @@ import { defineConfig } from 'vitest/config';  // ← IMPORTANT: import from 'vi
 import react from '@vitejs/plugin-react';
 //import { VitePWA } from 'vite-plugin-pwa';
 
-const buildTimestamp = Date.now();
-
 export default defineConfig({
   plugins: [
     react()
   ],
 
-  build: {
-    rollupOptions: {
-      output: {
-        // Unique filenames per build — WebView never serves stale cached files
-        entryFileNames: `assets/[name]-[hash]-${buildTimestamp}.js`,
-        chunkFileNames: `assets/[name]-[hash]-${buildTimestamp}.js`,
-        assetFileNames: `assets/[name]-[hash]-${buildTimestamp}.[ext]`,
-      },
-    },
-  },
 
   // Vitest config – now recognized because we imported from 'vitest/config'
   test: {
@@ -33,4 +22,28 @@ export default defineConfig({
       reporter: ['text', 'json', 'html'],
     },
   },
+});*/
+
+// vite.config.ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [
+    react(),
+  ],
+
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+        },
+      },
+    },
+  },
+
+  publicDir: 'public',
 });
