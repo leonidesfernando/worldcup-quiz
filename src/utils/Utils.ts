@@ -82,7 +82,7 @@ export const Utils = {
    * @returns 
    */
   containsPosSecondWarCountryName(name: string): boolean {
-    const postSecondWarNames = this.getCountryNamesPosSecondWar();
+    const postSecondWarNames = getCountryNamesPosSecondWar();
     const lowerName = name.toLowerCase();
 
     return postSecondWarNames.some(term =>
@@ -90,8 +90,9 @@ export const Utils = {
     );
   },
 
+};
 
-  getCountryNamesPosSecondWar(): string[] {
+function getCountryNamesPosSecondWar(): string[] {
     return [
       // --- German split ---
       // English
@@ -148,5 +149,3 @@ export const Utils = {
       "Tschechoslowakei",
     ];
   }
-
-};

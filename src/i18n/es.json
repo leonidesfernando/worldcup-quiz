@@ -37,6 +37,7 @@
     "categoryTopScorer": "Máximos goleadores",
     "categoryWinners": "Ganadores",
     "categoryManagers": "Entrenadores",
+    "categoryPlayers": "Jugadores",
     "difficultyEasy": "Fácil",
     "difficultyMedium": "Medio",
     "difficultyHard": "Difícil",
@@ -146,7 +147,8 @@
     "totalGoalsScoredByPlayer": "¿Cuántos goles marcó {playerName} con {countryName} en todas las Copas del Mundo?",
     "totalGoalsScoredByPlayerWorldCup": "¿Cuántos goles marcó {playerName} con {countryName} en el Mundial de {year}?",
     "managerOfTeam": "¿Quién fue el entrenador de {teamName} en la Copa Mundial de {year}?",
-    "managerOfTeamInFinal": "¿Quién fue el entrenador de {teamName} en la final de la Copa Mundial de {year}?"
+    "managerOfTeamInFinal": "¿Quién fue el entrenador de {teamName} en la final de la Copa Mundial de {year}?",
+    "countryPlayers": "¿Qué selecciones defendieron respectivamente {player1}, {player2} y {player3} en los Mundiales?"
   },
   "countries": {
     "DZA": "Argelia",

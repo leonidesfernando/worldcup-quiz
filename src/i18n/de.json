@@ -37,6 +37,7 @@
     "categoryTopScorer": "Top-Torschützen",
     "categoryWinners": "Sieger",
     "categoryManagers": "Trainer",
+    "categoryPlayers": "Spieler",
     "difficultyEasy": "Einfach",
     "difficultyMedium": "Mittel",
     "difficultyHard": "Schwierig",
@@ -146,7 +147,8 @@
     "totalGoalsScoredByPlayer": "Wie viele Tore hat {playerName} für {countryName} bei allen Weltmeisterschaften erzielt?",
     "totalGoalsScoredByPlayerWorldCup": "Wie viele Tore hat {playerName} für {countryName} bei der WM {year} geschossen?",
     "managerOfTeam": "Wer war der Trainer von {teamName} bei der Weltmeisterschaft {year}?",
-    "managerOfTeamInFinal": "Wer war der Trainer von {teamName} im Finale der Weltmeisterschaft {year}?"
+    "managerOfTeamInFinal": "Wer war der Trainer von {teamName} im Finale der Weltmeisterschaft {year}?",
+    "countryPlayers": "Welche Nationalmannschaften vertraten {player1}, {player2} und {player3} jeweils bei Weltmeisterschaften?"
   },
   "countries": {
     "DZA": "Algerien",

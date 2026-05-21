@@ -36,6 +36,7 @@
     "categoryRunnerUp": "Wicemistrzowie",
     "categoryTopScorer": "Najlepsi strzelcy",
     "categoryWinners": "Zwycięzcy",
+    "categoryPlayers": "Zawodnicy",
     "categoryManagers": "Trenerzy",
     "difficultyEasy": "Łatwy",
     "difficultyMedium": "Średni",
@@ -146,7 +147,8 @@
     "totalGoalsScoredByPlayer": "Ile goli strzelił {playerName} dla reprezentacji {countryName} na wszystkich Mistrzostwach Świata?",
     "totalGoalsScoredByPlayerWorldCup": "Ile goli strzelił {playerName} dla reprezentacji {countryName} na Mistrzostwach Świata {year}?",
     "managerOfTeam": "Kto był trenerem {teamName} na Mistrzostwach Świata {year}?",
-    "managerOfTeamInFinal": "Kto był trenerem {teamName} w finale Mistrzostw Świata {year}?"
+    "managerOfTeamInFinal": "Kto był trenerem {teamName} w finale Mistrzostw Świata {year}?",
+    "countryPlayers": "Jakie reprezentacje reprezentowali odpowiednio {player1}, {player2} i {player3} na Mistrzostwach Świata?"
   },
   "countries": {
     "DZA": "Algieria",
