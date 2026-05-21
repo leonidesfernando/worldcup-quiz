@@ -3,7 +3,7 @@ import type { Match } from './../types/worldcup';
 const WOMEN = 'Women';
 
 export const isMensTournament = (tournamentName?: string) =>
-  !tournamentName?.includes(WOMEN);
+  !(tournamentName?.includes(WOMEN));
 
 export const randomSort = () => (Math.random() - 0.5);
 
