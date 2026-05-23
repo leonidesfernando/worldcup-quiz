@@ -9,9 +9,9 @@ const config: CapacitorConfig = {
   },
   plugins: {
     SplashScreen: {
-      launchShowDuration: 2500,           // how long to show splash (ms)
+      launchShowDuration: 3000,           // how long to show splash (ms)
       launchAutoHide: true,
-      backgroundColor: "#e6e8ec",         // your blue color
+      backgroundColor: "#f8fafc",
       androidSplashResourceName: "splash", // name of your image
       androidScaleType: "CENTER_INSIDE",
       showSpinner: false,

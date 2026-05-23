@@ -1,6 +1,5 @@
 // src/service/TournamentServiceFactory.ts
-
-import { tournamentData } from "../../data/tournament";
+import { TournamentData } from "../../selectors/tournamentSelector";
 import type { Tournament } from "../../types/tournament";
 import {TournamentService} from '../TournamentService';
 
@@ -10,7 +9,7 @@ interface TournamentDataInput {
 
 export function createTournamentService(
     data: TournamentDataInput = {
-        tournaments: tournamentData.tournaments
+        tournaments: TournamentData.tournaments
     }
 ): TournamentService {
     return new TournamentService(data);

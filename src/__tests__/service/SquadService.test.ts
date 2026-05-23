@@ -13,7 +13,6 @@ describe('SquadService', () => {
 
         const squads = service.getSquads()
                         .filter(s => s.tournament_name.includes("Women"));
-        console.log(squads)
         expect(squads).toHaveLength(0);
         
     })

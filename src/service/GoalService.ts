@@ -1,4 +1,3 @@
-import { isMensTournament } from "../filters/filters";
 import type { Goal } from "../types/worldcup";
 import { Utils } from "../utils/Utils";
 
@@ -24,6 +23,10 @@ export class GoalService {
     }
 
     getRandomGoal(): Goal {
-        return Utils.getRandomItem(this.goals.filter(g => isMensTournament(g.tournament_name)));
+        return Utils.getRandomItem(this.goals);
+    }
+
+    getGoals(): Goal[] {
+        return this.goals;
     }
 }

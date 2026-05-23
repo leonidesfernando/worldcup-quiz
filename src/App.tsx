@@ -8,6 +8,8 @@ import Settings from "./components/Settings";
 import History from "./components/History";
 import SafeHtmlFormatter from "./components/SafeHtmlFormatter";
 import { useShareScore } from './hooks/useShareScore';
+import { useCacheBuster } from './hooks/useCacheBuster';
+
 
 type Screen = "home" | "quiz" | "results" | "settings" | "history";
 
@@ -24,6 +26,9 @@ function App() {
   const { t } = useTranslation();
   const { shareScore } = useShareScore();
   const [isSharing, setIsSharing] = useState(false);
+  
+
+  useCacheBuster();
 
   // Share handler - stable and safe
   const handleShareScore = async () => {
@@ -75,6 +80,8 @@ function App() {
   //const openSettings = () => setScreen("settings");
   const closeSettings = () => setScreen("home");
   const openHistory = () => setScreen("history");
+
+
 
   return (
     <div id="root">
