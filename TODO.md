@@ -1,15 +1,17 @@
 # TODO
 
+# Layout
+
 ## Features 
-- history
+- history - done
 - placar global, mostrando em qual posicao eu estou, baseado na soma simples dos meus pontos
 - global ranking, showing my current position, based on a simple sum of my points
-- add histroy button on results page
-- move share button to the top of results page
-- adjust history page layout
-- store language on the history
-- add modal to confirm to remove one history
-- add a modal to confirm to remove all history 
+- add histroy button on results page - done
+- move share button to the top of results page - done
+- adjust history page layout - done
+- store language on the history - done
+- add modal to confirm to remove one history - done
+- add a modal to confirm to remove all history - done
 
 ### Segment data in small files
 - referees - done

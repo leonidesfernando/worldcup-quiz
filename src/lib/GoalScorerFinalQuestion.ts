@@ -106,7 +106,7 @@ export const FirstGoalScorerFinalQuestion = {
 
             // Fallback: scorers from same team in the whole tournament
             let attempt:number = 0;
-            while (wrongScorers.length < 3 && attempt < 3) {
+            while (wrongScorers.length < 3 && attempt < 4) {
                 attempt++;
                 const sameTeamGoals = worldCupService.getGoals().filter((g: Goal) =>
                     (g.team_name === finalMatch.home_team_name ||

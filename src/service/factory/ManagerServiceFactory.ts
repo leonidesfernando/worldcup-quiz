@@ -1,4 +1,4 @@
-import { managerData } from "../../data/manager";
+import { ManagerData } from "../../selectors/managerDataSelector";
 import type { Manager } from "../../types/manager";
 import { ManagerService } from "../ManagerService";
 
@@ -8,7 +8,7 @@ interface ManagerDataInput {
 
 export function createManagerService(
     data: ManagerDataInput = {
-        managers: managerData.managers
+        managers: ManagerData.managers
     }
 ): ManagerService{
     return new ManagerService(data);
