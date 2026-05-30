@@ -20,7 +20,8 @@ export default function Header({
 }: Readonly<Props>) {
   const { t } = useTranslation();
 
-  const showSettings = onSettingsClick && currentScreen !== "results";
+  //const showSettings = (onSettingsClick && currentScreen !== "results") || currentScreen == "home"; "quiz" | "results" | "settings"
+  const showSettings = currentScreen === "history" || currentScreen == "home" ;
 
   return (
     <header className="app-header">
