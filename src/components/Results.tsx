@@ -125,8 +125,8 @@ const handleBackToHome = async () => {
   let animationVariant = {};
 
   //numver of messages for top3
-  const indexes = [1,2,3,4];
-  let index = Utils.getRandomItem(Utils.shuffleArray(indexes));
+  const indexes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+  const index = Utils.getRandomItem(Utils.shuffleArray(indexes));
 
   if (percentage === 100) {
     trophyImage = worldCupTrophy;
@@ -168,8 +168,6 @@ const handleBackToHome = async () => {
   } else {
     trophyImage = null;
     trophyClass = "no-trophy";
-    indexes.push(5, 6);
-    index = Utils.getRandomItem(Utils.shuffleArray(indexes));
     message = t(`results.keepGoing${index}`);
 
     animationVariant = {
