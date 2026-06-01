@@ -1,4 +1,4 @@
-// src/i18n/useTranslation.ts
+// src/i18n/useTranslation.tsx
 import { useState, useEffect, createContext, useContext } from 'react';
 
 type Language = 'de' | 'en' | 'es' | 'fr' | 'pl' | 'pt-BR';
@@ -8,15 +8,42 @@ import ptBR from './i18n/pt-BR.json';
 import es from './i18n/es.json';
 import pl from './i18n/pl.json';
 import fr from './i18n/fr.json';
-import deDE from './i18n/de.json'; 
+import deDE from './i18n/de.json';
 
 const translations: Record<Language, any> = {
   'de': deDE,
-  en: en,
+  'en': en,
+  'es': es,
+  'fr': fr,
+  'pl': pl,
   'pt-BR': ptBR,
-  es: es,
-  pl: pl,
-  fr: fr,
+};
+
+// Function to detect best language from device
+const detectDeviceLanguage = (): Language => {
+  const deviceLang = navigator.language || (navigator as any).userLanguage || 'en';
+  
+  const langMap: Record<string, Language> = {
+    'pt': 'pt-BR',
+    'pt-BR': 'pt-BR',
+    'es': 'es',
+    'fr': 'fr',
+    'de': 'de',
+    'pl': 'pl',
+    'en': 'en',
+    'en-US': 'en',
+    'en-GB': 'en',
+  };
+
+  // Try exact match first
+  if (langMap[deviceLang]) return langMap[deviceLang];
+
+  // Try base language (e.g., 'pt' from 'pt-BR')
+  const baseLang = deviceLang.split('-')[0];
+  if (langMap[baseLang]) return langMap[baseLang];
+
+  // Default fallback
+  return 'en';
 };
 
 const TranslationContext = createContext<{
@@ -29,17 +56,21 @@ const TranslationContext = createContext<{
   setLanguage: () => {},
 });
 
-export function TranslationProvider({ children }: Readonly<{ children: React.ReactNode }>) {
+export function TranslationProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLang] = useState<Language>(() => {
-    const saved = localStorage.getItem('lang') as Language | null;
-    return saved && ['de', 'en', 'pt-BR', 'es', 'pl', 'fr'].includes(saved) 
-      ? saved 
-      : 'en';
+    const savedLang = localStorage.getItem('lang') as Language | null;
+    
+    // Use saved language if exists, otherwise detect from device
+    if (savedLang && ['de','en','es','fr','pl','pt-BR'].includes(savedLang)) {
+      return savedLang;
+    }
+    
+    return detectDeviceLanguage();
   });
 
   useEffect(() => {
     localStorage.setItem('lang', lang);
-    document.documentElement.lang = lang;
+    document.documentElement.lang = lang === 'pt-BR' ? 'pt' : lang;
   }, [lang]);
 
   const t = (key: string, params: Record<string, any> = {}) => {
@@ -48,17 +79,22 @@ export function TranslationProvider({ children }: Readonly<{ children: React.Rea
 
     for (const k of keys) {
       value = value?.[k];
-      if (value === undefined || value === null) return key; // fallback
+      if (value === undefined || value === null) {
+        return key; // fallback to key
+      }
     }
 
     if (typeof value !== 'string') return key;
 
-    // Simple interpolation
     return String(value).replace(/{([^}]+)}/g, (_, p) => params[p] ?? `{${p}}`);
   };
 
+  const setLanguage = (newLang: Language) => {
+    setLang(newLang);
+  };
+
   return (
-    <TranslationContext.Provider value={{ t, lang, setLanguage: setLang }}>
+    <TranslationContext.Provider value={{ t, lang, setLanguage }}>
       {children}
     </TranslationContext.Provider>
   );
