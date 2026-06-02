@@ -230,7 +230,7 @@ const handleBackToHome = async () => {
             <img src={correctIcon} alt="Correct" className="stat-icon" />
             <div className="stat-info">
               <div className="stat-value">{result.correct}</div>
-              <div className="stat-label">{t("results.correct")}</div>
+              {/*<div className="stat-label">{t("results.correct")}</div>*/}
             </div>
           </div>
 
@@ -238,7 +238,7 @@ const handleBackToHome = async () => {
             <img src={incorrectIcon} alt="Wrong" className="stat-icon" />
             <div className="stat-info">
               <div className="stat-value">{result.wrong}</div>
-              <div className="stat-label">{t("results.wrong")}</div>
+              {/*<div className="stat-label">{t("results.wrong")}</div> */}
             </div>
           </div>
         </div>
@@ -255,6 +255,13 @@ const handleBackToHome = async () => {
 
         {/* Action Buttons */}
         <div className="results-footer">
+
+          {/* Share Button */}
+          {/*<button onClick={handleShareScore} className="share-btn">
+            <img src={shareIcon} />
+             {t('results.shareScore')}
+          </button> */}
+
           <button onClick={handlePlayAgain} className="primary-btn">
             {t("results.playAgain")}
           </button>
@@ -262,12 +269,6 @@ const handleBackToHome = async () => {
           <button onClick={handleBackToHome} className="secondary-btn">
             {t("results.backToHome")}
           </button>
-
-          {/* Share Button */}
-          {/*<button onClick={handleShareScore} className="share-btn">
-            <img src={shareIcon} />
-             {t('results.shareScore')}
-          </button> */}
 
           <button onClick={onOpenHistory} className="share-btn">
              {t("history.viewHistory")}
