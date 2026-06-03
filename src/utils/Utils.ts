@@ -15,6 +15,18 @@ export const Utils = {
     return array[index];
   },
 
+  getNRandomItemsExcludingThese<T>(
+  arraySrc: T[],
+  nElementsToReturn: number,
+  elementsToExclude: T[]
+  ): T[] {
+    const excludeSet = new Set(elementsToExclude);
+
+    const filtered = arraySrc.filter(item => !excludeSet.has(item));
+
+    const shuffled = this.shuffleArray(filtered);
+    return shuffled.slice(0, nElementsToReturn);
+  },
 
   getRandomNumberInRange(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;

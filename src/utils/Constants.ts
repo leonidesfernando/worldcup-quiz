@@ -3,6 +3,8 @@ export class Constants {
     public static readonly WORLD_CUP_REGEX = /FIFA Men's World Cup/;
     public static readonly WOMEN = 'Women';
 
+    public static readonly confederations = ['AFC','CAF','CONCACAF','CONMEBOL','OFC','UEFA'];
+
     public static readonly countriesMap: Record<string, string> = {
         // Germany
         "Westdeutschland": "Deutschland",

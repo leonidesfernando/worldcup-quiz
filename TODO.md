@@ -33,12 +33,16 @@
 ### Generate questions
  - Runner-up - done
  - How many goals a player scored in a tourment
- - How many world cups a player participate 
+ - How many world cups a player participate - done
  - How many goals a team scored so far - done
  - How many gols a team scored in a world cup 
  - Which team had the best attack
  - Which team had the best defense
- - Which team the player play for
+ - Which team the players play for - done
+ 
+ - Which confederation the team belongs to? (teams.csv) easy
+ - How many world cups the team participate ? (qualified_teams.csv) hard
+
  
  ### Categorize questions
  - easy - done
