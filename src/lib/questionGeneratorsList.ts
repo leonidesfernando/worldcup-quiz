@@ -15,10 +15,11 @@ import { ManagerQuestion } from './ManagerQuestion';
 import { StadiumNameQuestion } from './StadiumNameQuestion';
 import { RefereeAppearanceQuestion } from './RefereeAppearanceQuestion';
 import { CountryPlayersQuestion } from './CountryPlayersQuestion';
+import { TeamConfederationQuestion } from './TeamConfederationQuestion';
 
 // Export the list of pure generator functions
 export const questionGenerators: Array<(t: Translator) => QuizQuestion> =
-    [HostCountryQuestion.generateHostCountryQuestion,
+    [/*HostCountryQuestion.generateHostCountryQuestion,
     RunnerUpQuestion.generateRunnerUpQuestion,
     TopScorerQuestion.generateTopScorerQuestion,
     MatchesPlayedByPlayerQuestion.generateMatchesPlayedByPlayerQuestion,
@@ -33,7 +34,8 @@ export const questionGenerators: Array<(t: Translator) => QuizQuestion> =
     BallNameQuestion.generateBallNameQuestion,
     GoalsScoredQuestion.generateTotalGoalsScoredByPlayer,
     GoalsScoredQuestion.generateTotalGoalScoredByPlayerInAppearance,
-    ManagerQuestion.generateManagerOfTeamInWorldCup,
+    ManagerQuestion.generateManagerOfTeamInWorldCup,*/
     StadiumNameQuestion.generateStadiumNameQuestion,
-    RefereeAppearanceQuestion.generateRefereeAppearanceQuestion,
-    CountryPlayersQuestion.generateCountryPlayersQuestion] as const;
+    TeamConfederationQuestion.generateTeamConfederationQuestion,
+    /*CountryPlayersQuestion.generateCountryPlayersQuestion,
+    RefereeAppearanceQuestion.generateRefereeAppearanceQuestion*/] as const;

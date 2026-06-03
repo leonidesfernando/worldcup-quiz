@@ -38,6 +38,7 @@
     "categoryWinners": "Winners",
     "categoryManagers": "Coaches",
     "categoryPlayers": "Players",
+    "categoryFederation": "Federation",
     "difficultyEasy" : "Easy",
     "difficultyMedium" : "Medium",
     "difficultyHard" : "Hard",
@@ -185,7 +186,8 @@
     "totalGoalsScoredByPlayerWorldCup": "How many goals did {playerName} score for {countryName} at the {year} World Cup?",
     "managerOfTeam": "Who managed {teamName} in the {year} World Cup?",
     "managerOfTeamInFinal": "Who managed {teamName} in the World Cup final in {year}?",
-    "countryPlayers": "Which national teams did {player1}, {player2}, and {player3} respectively represent in World Cups?"
+    "countryPlayers": "Which national teams did {player1}, {player2}, and {player3} respectively represent in World Cups?",
+    "teamFederation": "Which federation does the {teamName} national team belong to?"
   },
   "countries": {
       "DZA": "Algeria",
