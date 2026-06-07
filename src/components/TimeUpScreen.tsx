@@ -24,12 +24,14 @@ export default function TimeUpScreen({
 
 // Preload rewarded ad
   useEffect(() => {
-    AdMobService.loadRewarded();
+    //AdMobService.loadRewarded();
+    AdMobService.loadInterstitial();
   }, []);
   
 
   const handleBack = async () => {
-    await AdMobService.showRewarded(() => {});
+    //await AdMobService.showRewarded(() => {});
+    await AdMobService.showInterstitial();
     onBack();
   };
 

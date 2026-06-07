@@ -63,7 +63,8 @@ export default function Results({
 
 // Preload rewarded ad
   useEffect(() => {
-    AdMobService.loadRewarded();
+    //AdMobService.loadRewarded();
+    AdMobService.loadInterstitial();
   }, []);
 
 
@@ -97,17 +98,19 @@ export default function Results({
 
 
   const handlePlayAgain = async () => {
-    await AdMobService.showRewarded(() => {
+    /*await AdMobService.showRewarded(() => {
       // Optional: give bonus even on Play Again
       // setBonusPoints(50);
-    });
+    });*/
+    await AdMobService.showInterstitial();
     onPlayAgain();
   };
 
 const handleBackToHome = async () => {
-  await AdMobService.showRewarded(() => {
+  /*await AdMobService.showRewarded(() => {
     // Optional bonus on Back to Home
-  });
+  });*/
+  await AdMobService.showInterstitial();
   onBackToHome();
 };
 

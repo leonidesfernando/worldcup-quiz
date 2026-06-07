@@ -19,7 +19,7 @@ import { TeamConfederationQuestion } from './TeamConfederationQuestion';
 
 // Export the list of pure generator functions
 export const questionGenerators: Array<(t: Translator) => QuizQuestion> =
-    [/*HostCountryQuestion.generateHostCountryQuestion,
+    [HostCountryQuestion.generateHostCountryQuestion,
     RunnerUpQuestion.generateRunnerUpQuestion,
     TopScorerQuestion.generateTopScorerQuestion,
     MatchesPlayedByPlayerQuestion.generateMatchesPlayedByPlayerQuestion,
@@ -34,8 +34,8 @@ export const questionGenerators: Array<(t: Translator) => QuizQuestion> =
     BallNameQuestion.generateBallNameQuestion,
     GoalsScoredQuestion.generateTotalGoalsScoredByPlayer,
     GoalsScoredQuestion.generateTotalGoalScoredByPlayerInAppearance,
-    ManagerQuestion.generateManagerOfTeamInWorldCup,*/
+    ManagerQuestion.generateManagerOfTeamInWorldCup,
     StadiumNameQuestion.generateStadiumNameQuestion,
     TeamConfederationQuestion.generateTeamConfederationQuestion,
-    /*CountryPlayersQuestion.generateCountryPlayersQuestion,
-    RefereeAppearanceQuestion.generateRefereeAppearanceQuestion*/] as const;
+    CountryPlayersQuestion.generateCountryPlayersQuestion,
+    RefereeAppearanceQuestion.generateRefereeAppearanceQuestion] as const;

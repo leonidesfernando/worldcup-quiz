@@ -93,7 +93,8 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack, onOpenHis
 
   // Pause timer while back-confirm modal is open
   useEffect(() => {
-    AdMobService.loadRewarded();
+    //AdMobService.loadRewarded();
+    AdMobService.loadInterstitial();
     if (!isTimerEnabled) return;
     if (showBackConfirm) pause();
     else resume();
@@ -124,7 +125,8 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack, onOpenHis
   const handleConfirmBack = async () => {
     // Show a rewarded/interstitial ad when the user abandons mid-round.
     // onBack() is always called even if the ad fails — navigation is never blocked.
-    await AdMobService.showRewarded(() => {});
+    //await AdMobService.showRewarded(() => {});
+    await AdMobService.showInterstitial();
     onBack();
   };
   const handleCancelBack  = () => setShowBackConfirm(false);

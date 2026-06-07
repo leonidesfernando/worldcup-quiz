@@ -8,6 +8,8 @@ const PRODUCTION_REWARD_ID = "ca-app-pub-1678598187483548~7814389951";
 //const TEST_BANNER_ID = "ca-app-pub-3940256099942544/6300978111",
 //const TEST_REWARD_ID = "ca-app-pub-3940256099942544/5224354917"
 
+
+
 const BANNER_ID = PRODUCTION_REWARD_ID;
 /*isTesting 
   ? 'ca-app-pub-3940256099942544/6300978111' 
@@ -19,8 +21,13 @@ const REWARDED_ID = PRODUCTION_REWARD_ID;
   : PRODUCTION_REWARD_ID;*/
 
 export class AdMobService {
+  
+  private static readonly INTERSTITIAL_ID = "ca-app-pub-1678598187483548/4872799715";
+
   private static bannerShown = false;
   private static rewardListenerAdded = false;
+  private static interstitialReady = false;
+
 
   /** Initialize AdMob once when the app starts */
   static async initialize() {
@@ -29,6 +36,32 @@ export class AdMobService {
       console.log('AdMob initialized successfuly');
     } catch (e) {
       console.warn('AdMob init failed', e);
+    }
+  }
+
+  static async loadInterstitial() {
+    try {
+      await AdMob.prepareInterstitial({
+        adId: this.INTERSTITIAL_ID,
+      });
+      this.interstitialReady = true;
+      console.log('✅ Interstitial preloaded');
+    } catch (e) {
+      console.warn('Failed to preload interstitial', e);
+    }
+  }
+
+  static async showInterstitial() {
+    if (!this.interstitialReady) {
+      await this.loadInterstitial();
+    }
+
+    try {
+      await AdMob.showInterstitial();
+      console.log('✅ Interstitial shown');
+      this.interstitialReady = false; // reload next time
+    } catch (e) {
+      console.warn('Failed to show interstitial', e);
     }
   }
 
