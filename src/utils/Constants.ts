@@ -5,6 +5,10 @@ export class Constants {
 
     public static readonly confederations = ['AFC','CAF','CONCACAF','CONMEBOL','OFC','UEFA'];
 
+    public static readonly NUMBER_OF_QUESTIONS_PER_ROUND = 10;
+    public static readonly QUESTIONS_POOL_SIZE = 300;
+    public static readonly QUESTION_POOL_KEY = 'worldcup_question_pool_v2';
+
     public static readonly countriesMap: Record<string, string> = {
         // Germany
         "Westdeutschland": "Deutschland",

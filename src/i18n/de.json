@@ -49,7 +49,8 @@
     "timeUp": "Zeit abgelaufen!",
     "timeUpMessage": "Die Zeit ist abgelaufen. So hast du abgeschnitten:",
     "timeUpSeeResults": "Ergebnisse ansehen",
-    "timeUpBackHome": "Zurück zur Startseite"
+    "timeUpBackHome": "Zurück zur Startseite",
+    "loadingQuestions": "Ihre Fragen werden vorbereitet"
   },
   "results": {
     "champion1": "Gut gemacht!<br/><strong>Du bist der Champion!</strong><br/>Du hast Ruhm erlangt!",

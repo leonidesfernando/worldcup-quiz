@@ -9,6 +9,7 @@ import History from "./components/History";
 import SafeHtmlFormatter from "./components/SafeHtmlFormatter";
 import { useShareScore } from './hooks/useShareScore';
 import { useCacheBuster } from './hooks/useCacheBuster';
+import { Constants }from './utils/Constants';
 
 
 type Screen = "home" | "quiz" | "results" | "settings" | "history";
@@ -23,7 +24,7 @@ function App() {
   const [screen, setScreen] = useState<Screen>("home");
   const [roundResult, setRoundResult] = useState<RoundResult | null>(null);
 
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
   const { shareScore } = useShareScore();
   const [isSharing, setIsSharing] = useState(false);
   
@@ -108,10 +109,11 @@ function App() {
 
         {screen === "quiz" && (
           <QuizScreen 
-            totalQuestions={10} 
+            totalQuestions={Constants.NUMBER_OF_QUESTIONS_PER_ROUND}
             onFinish={handleRoundFinish} 
             onBack={goBackHome}
-            onOpenHistory={openHistory}           // ← Fixed
+            onOpenHistory={openHistory}
+            currentLang={lang}
           />
         )}
 
