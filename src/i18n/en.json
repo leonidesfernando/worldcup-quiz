@@ -49,7 +49,8 @@
     "timeUp": "Time's Up!",
     "timeUpMessage": "Your time ran out. Here's how you did:",
     "timeUpSeeResults": "See Results",
-    "timeUpBackHome": "Back to Home"
+    "timeUpBackHome": "Back to Home",
+    "loadingQuestions": "Preparing your questions"
   },
   "results": {
     "champion1": "Well done!<br/><strong>You are the champion!</strong><br/>You achieved glory!",

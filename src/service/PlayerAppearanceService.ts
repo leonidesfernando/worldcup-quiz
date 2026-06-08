@@ -21,4 +21,8 @@ export class PlayerAppearanceService {
             );
   }
 
+  getAllByMatchId(matchId: string): PlayerAppearance[] {
+    return this.playerAppearances.filter(p => p.match_id === matchId);
+  }
+
  }

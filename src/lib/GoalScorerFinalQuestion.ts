@@ -9,9 +9,12 @@ import type { Goal, Match } from '../types/worldcup';
 import { LangUtils } from '../utils/LangUtils';
 import { createMatchesService } from '../service/factory/MatchesServiceFactory';
 import { WinnerQuestion } from './WinnerQuestion';
+import { createPlayerAppearanceService } from '../service/factory/PlayerAppearanceServiceFactory';
+import { PlayerAppearanceUtils } from '../utils/PlayerAppearanceUtil';
 
 const worldCupService = new WorldCupService();
 const matchesService = createMatchesService();
+const playerAppearanceService = createPlayerAppearanceService();
 
 function getYear(finalMatch: Match): string {
     return finalMatch.tournament_name.replace(Constants.WORLD_CUP_REGEX, '');
@@ -104,6 +107,9 @@ export const FirstGoalScorerFinalQuestion = {
                 .map((g: Goal) => GoalUtils.getScorerName(g))
                 .filter(Boolean);
 
+            wrongScorers.push(...playerAppearanceService.getAllByMatchId(finalMatch.match_id)
+                .map(p => PlayerAppearanceUtils.getPlayerName(p)).filter(Boolean));
+
             // Fallback: scorers from same team in the whole tournament
             let attempt:number = 0;
             while (wrongScorers.length < 3 && attempt < 4) {
@@ -120,7 +126,7 @@ export const FirstGoalScorerFinalQuestion = {
                 );
             }
 
-            const uniqueWrong = Array.from(new Set(wrongScorers)).slice(0, 3);
+            const uniqueWrong = Array.from(new Set(Utils.shuffleArray(wrongScorers))).slice(0, 3);
             const options = Utils.shuffleArray([scorer, ...uniqueWrong]);
 
             return {

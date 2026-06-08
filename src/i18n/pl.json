@@ -49,7 +49,8 @@
     "timeUp": "Koniec czasu!",
     "timeUpMessage": "Czas minął. Oto Twój wynik:",
     "timeUpSeeResults": "Zobacz wyniki",
-    "timeUpBackHome": "Powrót do strony głównej"
+    "timeUpBackHome": "Powrót do strony głównej",
+    "loadingQuestions": "Przygotowywanie pytań"
   },
   "results": {
     "champion1": "Brawo!<br/><strong>Jesteś mistrzem!</strong><br/>Osiągnąłeś chwałę!",

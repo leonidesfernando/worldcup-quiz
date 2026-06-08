@@ -1,7 +1,5 @@
 // src/components/QuizScreen.tsx
 import { useState, useEffect, useRef } from "react";
-import { generateRandomQuestion } from "../lib/questionGenerator";
-import { questionGenerators } from "../lib/questionGeneratorsList";
 import { useTranslation } from "../useTranslation";
 import { useSettings } from "../components/SettingsContext";
 import { useTimer } from "../hooks/useTimer";
@@ -10,8 +8,9 @@ import GoalAnimation from "./GoalAnimation";
 import MissAnimation from "./MissAnimation";
 import TimeUpScreen from "./TimeUpScreen";
 import { AdMobService } from "../service/AdMobService";
-import { Utils } from "../utils/Utils";
 import ConfirmDialog from "./ConfirmDialog";
+import { QuestionPoolService } from '../service/QuestionPoolService';
+import  Loader  from "./Loader";
 
 const TIMER_DURATION_SECONDS = 120; // 2 minutes
 
@@ -20,9 +19,10 @@ interface Props {
   onFinish: (correct: number, total: number) => void;
   onBack: () => void;
   onOpenHistory: () => void;
+  currentLang: string;
 }
 
-function generateUniqueQuestions(
+/*function generateUniqueQuestions(
   total: number,
   generator: () => QuizQuestion,
   maxAttempts = total * 10,
@@ -45,7 +45,7 @@ function generateUniqueQuestions(
   }
 
   return Array.from(questionsByKey.values());
-}
+}*/
 
 // Format seconds as M:SS (e.g. 90 → "1:30")
 function formatTime(seconds: number): string {
@@ -54,7 +54,7 @@ function formatTime(seconds: number): string {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
-export default function QuizScreen({ totalQuestions, onFinish, onBack, onOpenHistory }: Readonly<Props>) {
+export default function QuizScreen({ totalQuestions, onFinish, onBack, onOpenHistory, currentLang }: Readonly<Props>) {
   const { t } = useTranslation();
   const { isTimerEnabled, showCorrectAnswer } = useSettings();
 
@@ -65,11 +65,13 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack, onOpenHis
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [showBackConfirm, setShowBackConfirm] = useState(false);
   const [isTimeUp, setIsTimeUp] = useState(false);
+  const [isLoadingPool, setIsLoadingPool] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
 
   // ── Question generation ───────────────────────────
   const initialized = useRef(false);
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (initialized.current) return;
     initialized.current = true;
 
@@ -80,10 +82,40 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack, onOpenHis
 
     setQuestions(generated);
   }, [totalQuestions]); // ← t is omitted on purpose
+  */
+
+  // ←←← NEW: Use Question Pool Service ←←←
+useEffect(() => {
+    if (initialized.current) return;
+    initialized.current = true;
+
+const loadQuestions = async () => {
+  let loaderTimer: ReturnType<typeof setTimeout> | undefined;
+
+  try {
+    loaderTimer = setTimeout(() => {
+      setShowLoader(true);
+    }, 200);
+
+    setIsLoadingPool(true);
+
+    QuestionPoolService.loadPool(t, currentLang);
+    const roundQuestions = QuestionPoolService.getNextRound(t, currentLang);
+
+    setQuestions(roundQuestions);
+  } finally {
+    clearTimeout(loaderTimer);
+    setShowLoader(false);
+    setIsLoadingPool(false);
+  }
+};
+
+    loadQuestions();
+  }, [t, currentLang]);
 
   // ── Timer ─────────────────────────────────────────
   // Only starts counting once questions are loaded
-  const questionsReady = questions.length > 0;
+  const questionsReady = questions.length > 0 && !isLoadingPool;
 
   const { secondsLeft, percentLeft, pause, resume } = useTimer({
     durationSeconds: TIMER_DURATION_SECONDS,
@@ -130,6 +162,12 @@ export default function QuizScreen({ totalQuestions, onFinish, onBack, onOpenHis
     onBack();
   };
   const handleCancelBack  = () => setShowBackConfirm(false);
+
+
+  // Show loader while generating pool
+  if (isLoadingPool && showLoader) {
+    return <Loader message={t("quiz.loadingQuestions") } />;
+  }
 
   // ── Time-up screen ────────────────────────────────
   if (isTimeUp) {
