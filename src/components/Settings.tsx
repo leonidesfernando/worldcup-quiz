@@ -2,6 +2,7 @@
 import { useTranslation } from "../useTranslation";
 import LanguageSelector from "./LanguageSelector";
 import { useSettings } from "../components/SettingsContext";
+//import { useShareApp } from "../hooks/useShareApp";
 
 interface Props {
   onClose: () => void;
@@ -11,6 +12,8 @@ interface Props {
 export default function Settings({ onClose, onOpenHistory }: Readonly<Props>) {
   const { t } = useTranslation();
   const { isDarkMode, toggleDarkMode, isTimerEnabled, toggleTimer, showCorrectAnswer, toggleShowCorrectAnswer } = useSettings();
+
+  //const { shareApp } = useShareApp()
 
   return (
     <div className="settings-screen">
@@ -84,6 +87,17 @@ export default function Settings({ onClose, onOpenHistory }: Readonly<Props>) {
             {t("history.viewHistory")}
           </button>
         </div>
+
+        {/* === NEW: Share the App === */}
+        {/*<div className="settings-section">
+          <h3 className="section-title">{t("settings.shareApp")}</h3>
+          <button 
+            onClick={() => shareApp(t)}
+            className="share-app-btn"
+          >
+            🔗  {t("settings.shareWithFriends")}
+          </button>
+        </div> */}
 
         <button onClick={onClose} className="close-settings-btn">
           {t("settings.close")}

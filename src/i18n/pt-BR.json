@@ -126,7 +126,8 @@
     "runnerUp": "Eu sou o vice-campeão do World Cup Quiz!",
     "thirdPlace": "Eu fiquei em terceiro lugar no World Cup Quiz!",
     "dialogueTitle": "Compartilhe sua pontuação",
-    "player": "Eu estou jogando o World Cup Quiz!"
+    "player": "Eu estou jogando o World Cup Quiz!",
+    "inviteMessage": "Oi! Tenho jogado o World Cup Quiz e é super divertido! Acredito que você também irá se divertir!"
   },
   "settings": {
     "appearance": "Aparência",
@@ -142,7 +143,9 @@
     "timer": "Tempo da rodada",
     "timerHint": "2 minutos para completar a rodada",
     "showCorrectAnswer": "Mostrar resposta",
-    "showCorrectAnswerHint": "Mostrar a resposta correta caso estiver errada"
+    "showCorrectAnswerHint": "Mostrar a resposta correta caso estiver errada",
+    "shareApp": "Compartilhar",
+    "shareWithFriends": "Compartilhar com amigos"
   },
   "history": {
     "title": "Histórico",

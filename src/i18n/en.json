@@ -126,7 +126,8 @@
     "runnerUp": "I'm the World Cup Quiz Runner-up!",
     "thirdPlace": "I'm the World Cup Quiz Third place!",
     "dialogueTitle": "Share your score",
-    "player": "I'm playing World Cup Quz!"
+    "player": "I'm playing World Cup Quz!",
+    "inviteMessage": "Hi! I've been playing World Cup Quiz and it's super fun! I think you'll enjoy it too!"
   },
   "settings": {
     "appearance": "Appearance",
@@ -142,7 +143,9 @@
     "timer": "Round Timer",
     "timerHint": "2 minutes to complete the round",
     "showCorrectAnswer": "Show correct answer",
-    "showCorrectAnswerHint": "Show the correct answer if the answer is incorrect"
+    "showCorrectAnswerHint": "Show the correct answer if the answer is incorrect",
+    "shareApp": "Share",
+    "shareWithFriends": "Share with friends"
   },
   "history": {
     "title": "History",

@@ -126,7 +126,8 @@
     "runnerUp": "Je suis le finaliste du quiz de la Coupe du Monde !",
     "thirdPlace": "J'ai obtenu la troisième place au quiz de la Coupe du Monde !",
     "dialogueTitle": "Partage ton score",
-    "player": "Je joue à Quiz de la Coupe du Monde !"
+    "player": "Je joue à Quiz de la Coupe du Monde !",
+    "inviteMessage": "Salut ! Je joue à World Cup Quiz et c'est vraiment amusant ! Je pense que tu vas aussi adorer !"
   },
   "settings": {
     "appearance": "Apparence",
@@ -142,7 +143,9 @@
     "timer": "Minuteur de manche",
     "timerHint": "2 minutes pour terminer la manche",
     "showCorrectAnswer": "Afficher la bonne réponse",
-    "showCorrectAnswerHint": "Afficher la bonne réponse si la réponse est incorrecte"
+    "showCorrectAnswerHint": "Afficher la bonne réponse si la réponse est incorrecte",
+    "shareApp": "Partager",
+    "shareWithFriends": "Partager avec des amis"
   },
   "history": {
     "title": "Historique",

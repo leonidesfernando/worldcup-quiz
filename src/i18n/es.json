@@ -132,7 +132,9 @@
     "timer": "Temporizador de ronda",
     "timerHint": "2 minutos para completar la ronda",
     "showCorrectAnswer": "Mostrar la respuesta correcta",
-    "showCorrectAnswerHint": "Mostrar la respuesta correcta si la respuesta es incorrecta"
+    "showCorrectAnswerHint": "Mostrar la respuesta correcta si la respuesta es incorrecta",
+    "shareApp": "Compartir",
+    "shareWithFriends": "Compartir con amigos"
   },
   "share": {
     "quizScore": "Mi puntuación del Quiz de la Copa del Mundo",
@@ -142,7 +144,8 @@
     "runnerUp": "¡Soy el subcampeón del Quiz de la Copa del Mundo!",
     "thirdPlace": "¡Soy el tercer lugar del Quiz de la Copa del Mundo!",
     "dialogueTitle": "Comparte tu puntuación",
-    "player": "¡Estoy jugando Quiz del Mundial!"
+    "player": "¡Estoy jugando Quiz del Mundial!",
+    "inviteMessage": "¡Hola! He estado jugando a World Cup Quiz y es muy divertido. ¡Creo que a ti también te gustará!"
   },
   "history": {
     "title": "Historial",
