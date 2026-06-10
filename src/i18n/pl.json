@@ -126,7 +126,8 @@
     "runnerUp": "Jestem wicemistrzem quizu o Mistrzostwach Świata!",
     "thirdPlace": "Zająłem trzecie miejsce w quizie o Mistrzostwach Świata!",
     "dialogueTitle": "Udostępnij swój wynik",
-    "player": "Je joue à Quiz de la Coupe du Monde !"
+    "player": "Gram w Quiz Mistrzostw Świata!",
+    "inviteMessage": "Cześć! Gram ostatnio w World Cup Quiz i to świetna zabawa! Myślę, że Tobie też się spodoba!"
   },
   "settings": {
     "appearance": "Wygląd",
@@ -142,7 +143,9 @@
     "timer": "Czas rundy",
     "timerHint": "2 minuty na ukończenie rundy",
     "showCorrectAnswer": "Pokaż poprawną odpowiedź",
-    "showCorrectAnswerHint": "Pokaż poprawną odpowiedź, jeśli odpowiedź jest błędna"
+    "showCorrectAnswerHint": "Pokaż poprawną odpowiedź, jeśli odpowiedź jest błędna",
+    "shareApp": "Udostępnij",
+    "shareWithFriends": "Udostępnij znajomym"
   },
   "history": {
     "title": "Historia",

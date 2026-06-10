@@ -126,7 +126,8 @@
     "runnerUp": "Ich bin der Zweitplatzierte im Weltmeisterschafts-Quiz!",
     "thirdPlace": "Ich habe den dritten Platz im Weltmeisterschafts-Quiz erreicht!",
     "dialogueTitle": "Teile dein Ergebnis",
-    "player": "Ich spiele WM-Quiz!"
+    "player": "Ich spiele WM-Quiz!",
+    "inviteMessage": "Hallo! Ich spiele gerade World Cup Quiz und es macht riesigen Spaß! Ich glaube, es wird dir auch gefallen!"
   },
   "settings": {
     "appearance": "Erscheinungsbild",
@@ -142,7 +143,9 @@
     "timer": "Runden-Timer",
     "timerHint": "2 Minuten, um die Runde abzuschließen",
     "showCorrectAnswer": "Richtige Antwort anzeigen",
-    "showCorrectAnswerHint": "Die richtige Antwort anzeigen, wenn die Antwort falsch ist"
+    "showCorrectAnswerHint": "Die richtige Antwort anzeigen, wenn die Antwort falsch ist",
+    "shareApp": "Teilen",
+    "shareWithFriends": "Mit Freunden teilen"
   },
   "history": {
     "title": "Verlauf",

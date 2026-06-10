@@ -7,10 +7,11 @@ import Results from "./components/Results";
 import Settings from "./components/Settings";
 import History from "./components/History";
 import SafeHtmlFormatter from "./components/SafeHtmlFormatter";
-import { useShareScore } from './hooks/useShareScore';
-import { useCacheBuster } from './hooks/useCacheBuster';
-import { Constants }from './utils/Constants';
-
+import { useShareScore } from "./hooks/useShareScore";
+import { useCacheBuster } from "./hooks/useCacheBuster";
+import { Constants } from "./utils/Constants";
+import { useShareApp } from "./hooks/useShareApp";
+import shareIcon from "./assets/share.png";
 
 type Screen = "home" | "quiz" | "results" | "settings" | "history";
 
@@ -27,7 +28,7 @@ function App() {
   const { t, lang } = useTranslation();
   const { shareScore } = useShareScore();
   const [isSharing, setIsSharing] = useState(false);
-  
+  const { shareApp } = useShareApp()
 
   useCacheBuster();
 
@@ -40,21 +41,31 @@ function App() {
     setIsSharing(true);
 
     // Small delay to let React render any visual changes
-    await new Promise(resolve => setTimeout(resolve, 80));
+    await new Promise((resolve) => setTimeout(resolve, 80));
 
     // Small delay ensures the DOM has the results card
     setTimeout(async () => {
-      const resultsCard = document.querySelector('.results-card') as HTMLElement;
+      const resultsCard = document.querySelector(
+        ".results-card",
+      ) as HTMLElement;
       if (!resultsCard) {
         console.warn("Results card not found in DOM");
         return;
       }
 
-      const percentage = Math.round((roundResult.correct / roundResult.total) * 100);
+      const percentage = Math.round(
+        (roundResult.correct / roundResult.total) * 100,
+      );
       const finalScore = roundResult.correct;
 
       try {
-        await shareScore(resultsCard, finalScore, roundResult.total, percentage, t);
+        await shareScore(
+          resultsCard,
+          finalScore,
+          roundResult.total,
+          percentage,
+          t,
+        );
       } catch (error) {
         console.error("Share failed:", error);
       } finally {
@@ -82,25 +93,38 @@ function App() {
   const closeSettings = () => setScreen("home");
   const openHistory = () => setScreen("history");
 
-
-
   return (
     <div id="root">
-<Header 
-  onSettingsClick={screen === "settings" ? undefined : () => setScreen("settings")}
-  onShareClick={screen === 'results' ? handleShareScore : undefined}
-  isSharing={isSharing}
-  currentScreen={screen}           // ← Important: pass current screen
-/>
+      <Header
+        onSettingsClick={
+          screen === "settings" ? undefined : () => setScreen("settings")
+        }
+        onShareClick={screen === "results" ? handleShareScore : undefined}
+        isSharing={isSharing}
+        currentScreen={screen} // ← Important: pass current screen
+      />
 
       <main>
         {screen === "home" && (
           <div className="home-wrapper">
             <div className="card">
               <h2 className="home-title">{t("home.ready")}</h2>
-              <SafeHtmlFormatter html={t("home.description")} className="home-desc" />
+              <SafeHtmlFormatter
+                html={t("home.description")}
+                className="home-desc"
+              />
               <button onClick={startNewRound} className="start-btn">
                 {t("home.startButton")}
+              </button>
+
+              {/* Secondary Share Button */}
+              <button
+                onClick={() => shareApp(t)}
+                className="share-app-home-screen-btn"
+              >
+                
+                <img src={shareIcon} className="share-icon" alt="Share" />
+                {t("settings.shareWithFriends")}
               </button>
             </div>
             <footer>{t("app.builtBy")}</footer>
@@ -108,9 +132,9 @@ function App() {
         )}
 
         {screen === "quiz" && (
-          <QuizScreen 
+          <QuizScreen
             totalQuestions={Constants.NUMBER_OF_QUESTIONS_PER_ROUND}
-            onFinish={handleRoundFinish} 
+            onFinish={handleRoundFinish}
             onBack={goBackHome}
             onOpenHistory={openHistory}
             currentLang={lang}
@@ -122,7 +146,7 @@ function App() {
             result={roundResult}
             onPlayAgain={startNewRound}
             onBackToHome={goBackHome}
-            onOpenHistory={openHistory}           // ← Fixed
+            onOpenHistory={openHistory} // ← Fixed
           />
         )}
 
