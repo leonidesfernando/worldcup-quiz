@@ -145,7 +145,8 @@
     "showCorrectAnswer": "Pokaż poprawną odpowiedź",
     "showCorrectAnswerHint": "Pokaż poprawną odpowiedź, jeśli odpowiedź jest błędna",
     "shareApp": "Udostępnij",
-    "shareWithFriends": "Udostępnij znajomym"
+    "shareWithFriends": "Udostępnij znajomym",
+     "loading": "Ładowanie"
   },
   "history": {
     "title": "Historia",

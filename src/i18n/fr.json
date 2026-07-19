@@ -127,7 +127,8 @@
     "thirdPlace": "J'ai obtenu la troisième place au quiz de la Coupe du Monde !",
     "dialogueTitle": "Partage ton score",
     "player": "Je joue à Quiz de la Coupe du Monde !",
-    "inviteMessage": "Salut ! Je joue à World Cup Quiz et c'est vraiment amusant ! Je pense que tu vas aussi adorer !"
+    "inviteMessage": "Salut ! Je joue à World Cup Quiz et c'est vraiment amusant ! Je pense que tu vas aussi adorer !",
+     "loading": "Chargement"
   },
   "settings": {
     "appearance": "Apparence",

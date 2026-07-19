@@ -127,7 +127,8 @@
     "thirdPlace": "Eu fiquei em terceiro lugar no World Cup Quiz!",
     "dialogueTitle": "Compartilhe sua pontuação",
     "player": "Eu estou jogando o World Cup Quiz!",
-    "inviteMessage": "Oi! Tenho jogado o World Cup Quiz e é super divertido! Acredito que você também irá se divertir!"
+    "inviteMessage": "Oi! Tenho jogado o World Cup Quiz e é super divertido! Acredito que você também irá se divertir!",
+    "loading": "Carregando"
   },
   "settings": {
     "appearance": "Aparência",

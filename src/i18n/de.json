@@ -127,7 +127,8 @@
     "thirdPlace": "Ich habe den dritten Platz im Weltmeisterschafts-Quiz erreicht!",
     "dialogueTitle": "Teile dein Ergebnis",
     "player": "Ich spiele WM-Quiz!",
-    "inviteMessage": "Hallo! Ich spiele gerade World Cup Quiz und es macht riesigen Spaß! Ich glaube, es wird dir auch gefallen!"
+    "inviteMessage": "Hallo! Ich spiele gerade World Cup Quiz und es macht riesigen Spaß! Ich glaube, es wird dir auch gefallen!",
+     "loading": "Wird geladen"
   },
   "settings": {
     "appearance": "Erscheinungsbild",
