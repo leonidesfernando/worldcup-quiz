@@ -134,7 +134,8 @@
     "showCorrectAnswer": "Mostrar la respuesta correcta",
     "showCorrectAnswerHint": "Mostrar la respuesta correcta si la respuesta es incorrecta",
     "shareApp": "Compartir",
-    "shareWithFriends": "Compartir con amigos"
+    "shareWithFriends": "Compartir con amigos",
+     "loading": "Cargando"
   },
   "share": {
     "quizScore": "Mi puntuación del Quiz de la Copa del Mundo",

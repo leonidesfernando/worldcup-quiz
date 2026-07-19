@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function Loader({
-  message = "Preparing questions...",
+  message = "...",
   size = 72,
   fullScreen = true,
 }: Readonly<Props>) {

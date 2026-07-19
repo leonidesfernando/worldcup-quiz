@@ -127,7 +127,8 @@
     "thirdPlace": "I'm the World Cup Quiz Third place!",
     "dialogueTitle": "Share your score",
     "player": "I'm playing World Cup Quz!",
-    "inviteMessage": "Hi! I've been playing World Cup Quiz and it's super fun! I think you'll enjoy it too!"
+    "inviteMessage": "Hi! I've been playing World Cup Quiz and it's super fun! I think you'll enjoy it too!",
+     "loading": "Loading"
   },
   "settings": {
     "appearance": "Appearance",

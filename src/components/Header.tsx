@@ -36,7 +36,7 @@ export default function Header({
             disabled={isSharing}
             aria-label="Share score"
           >
-            {isSharing ? <Loader size={22} /> : <img src={shareIcon} alt="Share" />}
+            {isSharing ? <Loader message={t("share.loading")} size={22} /> : <img src={shareIcon} alt="Share" />}
           </button>
         )}
 
