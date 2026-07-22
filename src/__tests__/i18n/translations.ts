@@ -6,7 +6,8 @@ export const QUESTION_TRANSLATIONS: Record<Locale, string> = {
   es: '¿Qué país fue anfitrión del Mundial en {{year}}?',
   pt: 'Qual país sediou a Copa do Mundo em {{year}}?',
   fr: 'question": "Quel pays a accueilli la Coupe du monde en {{year}} ?',
-  de: 'Welches Land hat die Weltmeisterschaft im Jahr {{year}} ausgerichtet?'
+  de: 'Welches Land hat die Weltmeisterschaft im Jahr {{year}} ausgerichtet?',
+  hi: 'विश्व कप {{year}} की मेज़बानी किस देश ने की?'
 };
 
 export const COUNTRY_TRANSLATIONS: Record<Locale, Record<string, string>> = {
@@ -51,5 +52,12 @@ export const COUNTRY_TRANSLATIONS: Record<Locale, Record<string, string>> = {
     "GER": "Deutschland",
     "FRA": "Frankreich",
     "ARG": "Argentinien"
+  },
+  hi: {
+    RUS: 'रूस',
+    BRA: 'ब्राज़ील',
+    GER: 'जर्मनी',
+    FRA: 'फ़्रांस',
+    ARG: 'अर्जेंटीना',
   }
 };

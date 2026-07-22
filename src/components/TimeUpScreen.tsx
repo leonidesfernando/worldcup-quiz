@@ -87,14 +87,14 @@ export default function TimeUpScreen({
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.4 }}
       >
-        <button onClick={onFinish} className="primary-btn">
+        <button onClick={onFinish} className="timeup-btn timeup-btn--primary">
           {t("quiz.timeUpSeeResults")}
         </button>
-        <button onClick={handleBack} className="secondary-btn">
+        <button onClick={handleBack} className="timeup-btn timeup-btn--secondary">
           {t("quiz.timeUpBackHome")}
         </button>
-        <button onClick={onOpenHistory} className="share-btn">
-            {t("history.viewHistory")}
+        <button onClick={onOpenHistory} className="timeup-btn timeup-btn--tertiary">
+          {t("history.viewHistory")}
         </button>
       </motion.div>
     </div>

@@ -8,8 +8,9 @@ const languageOptions = [
   { value: 'en', label: 'English', flag: 'US' },
   { value: 'es', label: 'Español', flag: 'ES' },
   { value: 'fr', label: 'Français', flag: 'FR' },
+  { value: 'hi', label: 'हिन्दी', flag: 'IN' },
   { value: 'pl', label: 'Polski', flag: 'PL' },
-  { value: 'pt-BR', label: 'Português (BR)', flag: 'BR' },
+  { value: 'pt-BR', label: 'Português (BR)', flag: 'BR' }
 ];
 
 export default function LanguageSelector() {

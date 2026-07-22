@@ -1747,14 +1747,16 @@ footer {
 /* ==================== TIME-UP SCREEN ==================== */
 
 .timeup-overlay {
-    
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    
-    min-height: 60vh;
+    flex: 1;
+    align-self: stretch;
+    padding: 1.5rem 1rem;
     gap: 0;
+    box-sizing: border-box;
 }
 
 .timeup-icon {
@@ -1844,18 +1846,43 @@ footer {
 }
 
 .timeup-btn--secondary {
-    background: #e8edf7;
-    color: #3b4f8c;
+    background: rgba(255, 255, 255, 0.08);
+    color: #93b4f8;
+    border: 1.5px solid rgba(147, 180, 248, 0.3);
 }
 
 .timeup-btn--secondary:hover {
-    background: #d6e0f5;
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateY(-1px);
+}
+
+/* Tertiary — least prominent, text-like with subtle border */
+.timeup-btn--tertiary {
+    background: transparent;
+    color: #64748b;
+    border: 1.5px solid rgba(100, 116, 139, 0.25);
+    font-weight: 600;
+}
+
+.timeup-btn--tertiary:hover {
+    background: rgba(100, 116, 139, 0.08);
+    color: #475569;
     transform: translateY(-1px);
 }
 
 /* Dark mode */
 .dark .timeup-title {
     color: #f87171;
+}
+
+.dark .timeup-btn--tertiary {
+    color: #94a3b8;
+    border-color: rgba(148, 163, 184, 0.2);
+}
+
+.dark .timeup-btn--tertiary:hover {
+    background: rgba(148, 163, 184, 0.08);
+    color: #cbd5e1;
 }
 
 .dark .timeup-message {

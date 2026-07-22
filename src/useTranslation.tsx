@@ -1,7 +1,7 @@
 // src/i18n/useTranslation.tsx
 import { useState, useEffect, createContext, useContext } from 'react';
 
-type Language = 'de' | 'en' | 'es' | 'fr' | 'pl' | 'pt-BR';
+type Language = 'de' | 'en' | 'es' | 'fr' | 'pl' | 'pt-BR' | 'hi';
 
 import en from './i18n/en.json';
 import ptBR from './i18n/pt-BR.json';
@@ -9,14 +9,16 @@ import es from './i18n/es.json';
 import pl from './i18n/pl.json';
 import fr from './i18n/fr.json';
 import deDE from './i18n/de.json';
+import hi from './i18n/hi.json';
 
 const translations: Record<Language, any> = {
   'de': deDE,
   'en': en,
   'es': es,
   'fr': fr,
+  'hi': hi,
   'pl': pl,
-  'pt-BR': ptBR,
+  'pt-BR': ptBR
 };
 
 // Function to detect best language from device
@@ -33,6 +35,7 @@ const detectDeviceLanguage = (): Language => {
     'en': 'en',
     'en-US': 'en',
     'en-GB': 'en',
+    'hi': 'hi'
   };
 
   // Try exact match first
@@ -61,7 +64,7 @@ export function TranslationProvider({ children }: { children: React.ReactNode })
     const savedLang = localStorage.getItem('lang') as Language | null;
     
     // Use saved language if exists, otherwise detect from device
-    if (savedLang && ['de','en','es','fr','pl','pt-BR'].includes(savedLang)) {
+    if (savedLang && ['de','en','es','fr','pl','pt-BR', 'hi'].includes(savedLang)) {
       return savedLang;
     }
     

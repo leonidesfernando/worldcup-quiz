@@ -127,7 +127,8 @@
     "thirdPlace": "Zająłem trzecie miejsce w quizie o Mistrzostwach Świata!",
     "dialogueTitle": "Udostępnij swój wynik",
     "player": "Gram w Quiz Mistrzostw Świata!",
-    "inviteMessage": "Cześć! Gram ostatnio w World Cup Quiz i to świetna zabawa! Myślę, że Tobie też się spodoba!"
+    "inviteMessage": "Cześć! Gram ostatnio w World Cup Quiz i to świetna zabawa! Myślę, że Tobie też się spodoba!",
+    "loading": "Ładowanie"
   },
   "settings": {
     "appearance": "Wygląd",
@@ -145,8 +146,7 @@
     "showCorrectAnswer": "Pokaż poprawną odpowiedź",
     "showCorrectAnswerHint": "Pokaż poprawną odpowiedź, jeśli odpowiedź jest błędna",
     "shareApp": "Udostępnij",
-    "shareWithFriends": "Udostępnij znajomym",
-     "loading": "Ładowanie"
+    "shareWithFriends": "Udostępnij znajomym"
   },
   "history": {
     "title": "Historia",
